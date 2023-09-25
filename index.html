@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Home</title>
+    <link rel="icon" href="/CharSet/images/logo.ico" type="image/x-icon" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="char-info">
+        <div class="character-name">
+          <strong>Character name: </strong>
+          <p>-</p>
+        </div>
+        <div class="level">
+          <strong>Level: </strong>
+          <p>-</p>
+        </div>
+        <div class="xp">
+          <strong>XP: </strong>
+          <p>-</p>
+        </div>
+      </header>
+      <div class="skill-stats-container">
+        <div id="stats">
+          <div class="main-stats">
+            <div class="ac">
+              <strong> AC</strong>
+              <p>-</p>
+            </div>
+            <div class="health-container">
+              <div class="health">
+                <strong>HIT POINTS</strong>
+                <p>- / -</p>
+              </div>
+              <div class="temp-hp-container">
+                <p id="temp-hp">-</p>
+                <strong>TEMPORARY HP</strong>
+              </div>
+            </div>
+            <div class="health-hit-dice hexagon">
+              <strong>HIT DICE</strong>
+              <div class="hit-dice-d6">
+                <p class="hit-dice-number">- d -</p>
+              </div>
+            </div>
+          </div>
+          <div class="aux-stats-container">
+            <div>
+              <strong>SPEED</strong>
+              <p class="speed">-</p>
+            </div>
+            <div>
+              <strong>INITIATIVE</strong>
+              <p class="init">-</p>
+            </div>
+            <div>
+              <strong>PROFICIENCY</strong>
+              <p class="prof-bonus">-</p>
+            </div>
+            <div>
+              <strong>P.P.</strong>
+              <p class="passive-wis">-</p>
+            </div>
+          </div>
+          <div class="core-stats-container">
+            <div class="core-stats">
+              <div class="str-container">
+                <strong>STRENGTH</strong>
+                <p class="str-mod">-</p>
+                <p class="str">-</p>
+              </div>
+              <div class="dex-container">
+                <strong>DEXTERITY</strong>
+                <p class="dex-mod">-</p>
+                <p class="dex">-</p>
+              </div>
+              <div class="con-container">
+                <strong>CONSTITUTION</strong>
+                <p class="con-mod">-</p>
+                <p class="con">-</p>
+              </div>
+              <div class="int-container">
+                <strong>INTELLIGENCE</strong>
+                <p class="int-mod">-</p>
+                <p class="int">-</p>
+              </div>
+              <div class="wis-container">
+                <strong>WISDOM</strong>
+                <p class="wis-mod">-</p>
+                <p class="wis">-</p>
+              </div>
+              <div class="cha-container">
+                <strong>CHARISMA</strong>
+                <p class="cha-mod">-</p>
+                <p class="cha">-</p>
+              </div>
+            </div>
+            <div class="saving-throws">
+              <header>
+                <h3>SAVING THROWS</h3>
+              </header>
+              <ul>
+                <li>
+                  <p>Strength: <em class="str-save">-</em></p>
+                </li>
+                <li>
+                  <p>Dexterity: <em class="dex-save">-</em></p>
+                </li>
+                <li>
+                  <p>Constitution: <em class="con-save">-</em></p>
+                </li>
+                <li>
+                  <p>Intelligence: <em class="int-save">-</em></p>
+                </li>
+                <li>
+                  <p>Wisdom: <em class="wis-save">-</em></p>
+                </li>
+                <li>
+                  <p>Charisma: <em class="cha-save">-</em></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="skills-container">
+          <header><h2>Skills</h2></header>
+          <ul class="skills">
+            <li class="acrobatics">
+              <p>Acrobatics</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="animal-handling">
+              <p>Animal Handling</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="arcana">
+              <p>Arcana</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="athletics">
+              <p>Athletics</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="deception">
+              <p>Deception</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="history">
+              <p>History</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="insight">
+              <p>Insight</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="intimidation">
+              <p>Intimidation</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="investigation">
+              <p>Investigation</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="medicine">
+              <p>Medicine</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="nature">
+              <p>Nature</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="perception">
+              <p>Perception</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="performance">
+              <p>Performance</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="persuasion">
+              <p>Persuasion</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="religion">
+              <p>Religion</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="sleight-of-hand">
+              <p>Sleight of Hand</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="stealth">
+              <p>Stealth</p>
+              <p class="skill-value">-</p>
+            </li>
+            <li class="survival">
+              <p>Survival</p>
+              <p class="skill-value">-</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer class="navigation">
+      <div class="navigation-container">
+        <div class="nav-stats"><a href="#" class="fa-solid fa-user"></a></div>
+        <div class="nav-inventory"><a href="#" class="fa-solid fa-coins"></a></div>
+        <div class="nav-combat"><a href="#" class="fa-solid fa-shield-halved"></a></div>
+        <div class="nav-spells"><a href="#" class="fa-solid fa-wand-magic-sparkles"></a></div>
+        <div class="nav-features"><a href="#" class="fa-solid fa-file"></a></div>
+      </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/0603127183.js" crossorigin="anonymous"></script>
+  </body>
+</html>

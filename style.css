@@ -1,0 +1,424 @@
+/* Main styles */
+* {
+  --main-width: 1200px;
+  --object-color: #1c212a;
+  --modal-color: #4c576a;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.576);
+}
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Proxima Nova", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: rgb(45, 54, 69);
+  position: relative;
+}
+ul {
+  list-style: none;
+}
+ul > li {
+  margin-bottom: 16px;
+}
+/* Setting structure of the page */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: var(--main-width);
+  margin: 30px auto;
+}
+em {
+  font-style: normal;
+}
+/* Start of character info header styles */
+.char-info {
+  display: flex;
+  justify-content: space-between;
+}
+.char-info div {
+  display: flex;
+  padding: 13px;
+  background-color: var(--object-color);
+  border-radius: 7px;
+  justify-content: space-between;
+}
+.char-info div strong {
+  margin-right: 5px;
+  text-transform: capitalize;
+  font-size: 16px;
+}
+.character-name {
+  width: 450px;
+}
+.level {
+  width: 450px;
+}
+.xp {
+  width: 170px;
+}
+/* End of character info header styles */
+
+/* Start of skills and stats styles */
+.skill-stats-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  padding: auto;
+}
+#skills-container,
+#stats {
+  width: 575px;
+}
+
+/* Start of stats styles */
+#stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Start of main stats styles */
+.main-stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+.ac,
+.health,
+.health-hit-dice,
+.temp-hp-container,
+.aux-stats-container div,
+.saving-throws {
+  background-color: var(--object-color);
+}
+strong {
+  font-size: 8px;
+}
+.main-stats p {
+  font-size: 30px;
+}
+.ac,
+.health,
+.temp-hp-container,
+.aux-stats-container div,
+.saving-throws {
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+#temp-hp {
+  font-size: 15px;
+}
+.health-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.health-hit-dice {
+  justify-content: space-between;
+}
+.health-hit-dice p {
+  font-size: 13px;
+}
+/* End of main stats styles */
+
+/* Start of Aux Stats styling */
+.aux-stats-container {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+/* End of Aux Stats styling */
+
+/* Start of Core stats styling */
+.core-stats-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+.core-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+}
+.core-stats div {
+  background-color: var(--object-color);
+  border-radius: 5px;
+  width: 120px;
+  padding: 10px;
+}
+.str-mod,
+.con-mod,
+.dex-mod,
+.int-mod,
+.wis-mod,
+.cha-mod {
+  font-size: 40px;
+}
+.saving-throws {
+  width: 250px;
+  font-size: 14px;
+}
+
+.saving-throws header {
+  text-align: center;
+  font-size: 10px;
+  padding: 5px;
+}
+/* End of Core stats styling */
+/* End of stats styles */
+
+/* Start of skills styles */
+#skills-container header {
+  text-align: center;
+  padding: 10px;
+}
+.skills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+}
+.skills li {
+  width: 282.5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 13px;
+  background-color: var(--object-color);
+  border-radius: 7px;
+}
+/* End of skills styles */
+
+/* Start of navigation styles */
+.navigation {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: rgb(30, 36, 46);
+  width: 100%;
+  border-top: 2px solid black;
+  font-size: 20px;
+}
+.navigation-container {
+  width: var(--main-width);
+  margin: 5px auto;
+  display: flex;
+  justify-content: space-between;
+}
+/* End of navigation styles */
+
+/* Shapes */
+.hexagon {
+  width: 100px;
+  height: 57.735px;
+  background: var(--object-color);
+  position: relative;
+  border: 0.5px solid var(--object-color);
+}
+.hexagon::before {
+  content: "";
+  position: absolute;
+  top: -28.8675px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 28.8675px solid var(--object-color);
+}
+.hexagon::after {
+  content: "";
+  position: absolute;
+  bottom: -28.8675px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 28.8675px solid var(--object-color);
+}
+
+/* MODAL STYLES */
+/* Main modal sizing and colors */
+.modal-main-container {
+  background-color: var(--modal-color);
+  z-index: 9999;
+  width: var(--main-width);
+  margin: 5% auto;
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  min-height: 666px;
+}
+.modal-main-container header {
+  text-align: center;
+}
+
+/* Start of stats and background selector styling */
+.stats-race-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 975px;
+}
+/* Start of stats selector styling */
+.stats-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+  align-items: center;
+}
+.stats-selector-stat {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.stat-value {
+  background-color: var(--object-color);
+  padding: 7px;
+  border-radius: 5px;
+  min-width: 38px;
+  text-align: center;
+}
+.stats-selector-stat label,
+.reroll-stats-button p {
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.stats-selector-stat select,
+.reroll-stats-button button {
+  background-color: var(--modal-color);
+  border: 1px solid var(--object-color);
+  border-radius: 5px;
+  padding: 2px;
+}
+.reroll-stats-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.reroll-stats-button button:hover {
+  cursor: pointer;
+}
+
+/* End of stats selector styling */
+
+/* Start of race selector styling */
+.race-selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  border: 2px solid var(--object-color);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.race-list {
+  display: flex;
+  list-style: none;
+  overflow-x: auto;
+  border: 1px solid var(--object-color);
+  border-radius: 5px;
+  margin-bottom: -15px;
+}
+.race-list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.race-details {
+  background-color: var(--object-color);
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  gap: 5px;
+}
+.race-list div {
+  border-left: 2px solid var(--object-color);
+  padding: 5px 5px;
+  font-size: 12px;
+  flex: 1 0 80px;
+  text-align: center;
+  padding-bottom: 15px;
+}
+.race-list > div:first-child {
+  border-left: 0;
+}
+.race-details-content {
+  overflow: scroll;
+}
+.race-details-content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.race-asi h4 {
+  font-size: 16px;
+  font-weight: bold;
+}
+.race-asi select,
+.race-details-features select {
+  background-color: var(--object-color);
+  border: 1px solid var(--modal-color);
+  border-radius: 5px;
+  padding: 2px;
+  size: 20px;
+}
+.race-asi {
+  margin: auto;
+  min-width: 200px;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 0 20px;
+}
+.race-details-features strong {
+  font-size: 16px;
+  font-weight: bold;
+}
+.race-asi label {
+  font-size: 14px;
+}
+li > ul {
+  list-style: circle;
+  margin-left: 20px;
+}
+li > ul > li {
+  margin-bottom: 0;
+}
+.empty > p {
+  margin: auto;
+}
+
+/* Default Hidding */
+
+.hidden {
+  display: none;
+}
+
+/* Default Hidding */
+/* End of race selector styling */
+/* End of stats and background selector styling */
+
+/* Class page styles */
+.class-selector {
+  display: flex;
+}
