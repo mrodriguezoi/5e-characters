@@ -121,3 +121,5 @@ for (let i = 0; i <= raceListItems.length - 1; i++) {
     showRaceDetails(event.target.innerText.toLowerCase());
   });
 }
+// Escribir un componente para los detalles de la raza, que le puedas pasar un json con un array de features,
+//  y las features pueden tener dependecias entre si, de modo que si una feature tiene opciones al seleccionar una opcion se muestra la correcta
