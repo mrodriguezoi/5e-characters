@@ -126,6 +126,7 @@ let placeHolderRaceDetails = {
   subraces: ["subrace-1", "subrace-2"],
   features: [
     {
+      // este es el tipo de feature normal
       featureName: "age",
       text: "Placeholder",
     },
@@ -135,15 +136,17 @@ let placeHolderRaceDetails = {
       text: "You gain proficiency with the artisan's tools of your choice.",
       dependecy: "subrace-1",
       type: "list",
-      listOptions: ["option-1", "option-2"],
+      options: ["option-1", "option-2"],
     },
     {
+      // este tipo de feature es una donde tenes que seleccionar una opcion
       featureName: "half-elf-versatility",
       text: "Choose one of the following traits:",
       type: "radio",
-      radioOptions: [
+      options: [
         "option-1",
         "option-2",
+        // esta opcion es una donde tenes que seleccionar cierta cantidad de opciones
         { checkboxText: "text", checkboxes: ["checkbox-1", "checkbox-2"], limit: 2, require: 2 },
       ],
     },
