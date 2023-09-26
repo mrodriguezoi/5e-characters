@@ -338,7 +338,9 @@ strong {
   overflow-x: auto;
   border: 1px solid var(--object-color);
   border-radius: 5px;
-  margin-bottom: -15px;
+  margin-bottom: -22px;
+  border-right-width: 2px;
+  border-left-width: 2px;
 }
 .race-list::-webkit-scrollbar {
   width: 0;
@@ -351,13 +353,16 @@ strong {
   display: flex;
   gap: 5px;
 }
-.race-list div {
-  border-left: 2px solid var(--object-color);
-  padding: 5px 5px;
+.race-list button {
+  padding: 10px 5px;
   font-size: 12px;
-  flex: 1 0 80px;
   text-align: center;
   padding-bottom: 15px;
+  background-color: var(--modal-color);
+  width: 120px;
+  border: none;
+  border-left: 2px solid var(--object-color);
+  border-top: 2px solid var(--object-color);
 }
 .race-list > div:first-child {
   border-left: 0;
@@ -407,6 +412,9 @@ li > ul > li {
 }
 .empty > p {
   margin: auto;
+}
+#selected-race {
+  background-color: var(--object-color);
 }
 
 /* Default Hidding */

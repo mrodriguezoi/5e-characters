@@ -114,10 +114,10 @@ function showRaceDetails(race) {
 let raceListItems = document.querySelectorAll(".race-list > div > button");
 for (let i = 0; i <= raceListItems.length - 1; i++) {
   raceListItems[i].addEventListener("click", () => {
-    for (let j = 0; j <= raceListItems - 1; j++) {
-      raceListItems[j].removeAttribute("style");
+    for (let j = 0; j <= raceListItems.length - 1; j++) {
+      raceListItems[j].removeAttribute("id");
     }
-    event.target.setAttribute("style", "background-color: var(--object-color)");
+    event.target.setAttribute("id", "selected-race");
     showRaceDetails(event.target.innerText.toLowerCase());
   });
 }
