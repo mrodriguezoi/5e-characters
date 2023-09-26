@@ -260,6 +260,7 @@ strong {
   display: flex;
   justify-content: space-between;
   min-height: 666px;
+  max-height: 666px;
 }
 .modal-main-container header {
   text-align: center;

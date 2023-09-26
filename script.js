@@ -102,11 +102,22 @@ for (let i = 0; i <= 5; i++) {
 
 function showRaceDetails(race) {
   let allRaces = document.querySelectorAll(".race-details");
-  for (let i = 0; i <= allRaces.length; i++) {
-    if ((allRaces[i].className, includes(race))) {
+  for (let i = 0; i <= allRaces.length - 1; i++) {
+    if (Array.from(allRaces[i].classList).includes(race)) {
       allRaces[i].classList.remove("hidden");
     } else {
       allRaces[i].classList.add("hidden");
     }
   }
+}
+
+let raceListItems = document.querySelectorAll(".race-list > div > button");
+for (let i = 0; i <= raceListItems.length - 1; i++) {
+  raceListItems[i].addEventListener("click", () => {
+    for (let j = 0; j <= raceListItems - 1; j++) {
+      raceListItems[j].removeAttribute("style");
+    }
+    event.target.setAttribute("style", "background-color: var(--object-color)");
+    showRaceDetails(event.target.innerText.toLowerCase());
+  });
 }
