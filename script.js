@@ -121,5 +121,34 @@ for (let i = 0; i <= raceListItems.length - 1; i++) {
     showRaceDetails(event.target.innerText.toLowerCase());
   });
 }
+let placeHolderRaceDetails = {
+  name: "Race",
+  subraces: ["subrace-1", "subrace-2"],
+  features: [
+    {
+      featureName: "age",
+      text: "Placeholder",
+    },
+    {
+      // este tipo de feature es una lista donde seleccionamos una opcion
+      featureName: "tool-proficiency",
+      text: "You gain proficiency with the artisan's tools of your choice.",
+      dependecy: "subrace-1",
+      type: "list",
+      listOptions: ["option-1", "option-2"],
+    },
+    {
+      featureName: "half-elf-versatility",
+      text: "Choose one of the following traits:",
+      type: "radio",
+      radioOptions: [
+        "option-1",
+        "option-2",
+        { checkboxText: "text", checkboxes: ["checkbox-1", "checkbox-2"], limit: 2, require: 2 },
+      ],
+    },
+  ],
+};
+function constructRaceDetails() {}
 // Escribir un componente para los detalles de la raza, que le puedas pasar un json con un array de features,
 //  y las features pueden tener dependecias entre si, de modo que si una feature tiene opciones al seleccionar una opcion se muestra la correcta
