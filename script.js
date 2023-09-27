@@ -1,6 +1,6 @@
 // Create a character:
 
-// Getting stats
+// Function to create new stats and event to trigger it
 function createNewStats() {
   let stats = [];
   let sum = 0;
@@ -27,7 +27,7 @@ document.querySelector(".reroll-stats-button button").addEventListener("click", 
 });
 document.querySelector(".reroll-stats-button button").click();
 
-// Selecting stats
+// Logic for Selecting Stats on the Stat container
 function hideSelectedStatsOptions() {
   let selectedOptions = [];
   for (let j = 0; j <= 5; j++) {
@@ -94,22 +94,24 @@ function hideSelectedStatsOptions() {
     }
   }
 }
-
 let statAllocators = document.querySelectorAll(".stats-selector-stat select");
 for (let i = 0; i <= 5; i++) {
   statAllocators[i].addEventListener("change", () => hideSelectedStatsOptions());
 }
 
-function showRaceDetails(race) {
-  let allRaces = document.querySelectorAll(".race-details");
-  for (let i = 0; i <= allRaces.length - 1; i++) {
-    if (Array.from(allRaces[i].classList).includes(race)) {
-      allRaces[i].classList.remove("hidden");
+// Function to show selected option only on a list
+function showListOptionDetails(listContainer, option) {
+  for (let i = 0; i <= listContainer.length - 1; i++) {
+    if (Array.from(listContainer[i].classList).includes(option)) {
+      listContainer[i].classList.remove("hidden");
     } else {
-      allRaces[i].classList.add("hidden");
+      listContainer[i].classList.add("hidden");
     }
   }
 }
+
+// Race Details functions:
+//
 // Auxiliary functions to create content
 function createListFromOptions(array) {
   let select = document.createElement("select");
@@ -210,24 +212,41 @@ function constructRaceDetails(races) {
     // Adding container for features
     let featuresList = document.createElement("ul");
     featuresList.classList.add("race-details-features");
+    // Appending each race-level feature to the list
     raceDetails.features.forEach((feature) => {
       featuresList.appendChild(constructLiWithTitle(feature));
     });
+    // Appending a Sub-race selector to the list
+    let capitalizedRaceName = raceDetails.name.charAt(0).toUpperCase() + raceDetails.name.slice(1);
+    let subraceObject = {
+      featureName: "Sub-races:",
+      text: ` Select a sub-race for your ${capitalizedRaceName}.`,
+      type: "list",
+      options: raceDetails.subraces,
+    };
+    featuresList.appendChild(constructLiWithTitle(subraceObject));
+    // Language selector
+
+    // Append whole race container to the modal
     raceDetailsContentContainer.appendChild(featuresList);
-    // TO-DO: Add language and subrace selector
     raceDetailsContainer.appendChild(raceDetailsContentContainer);
     const raceSelector = document.querySelector(".race-selector");
     raceSelector.appendChild(raceDetailsContainer);
   });
-  // Adding Event Listener to said element
+  // Adding Event Listener to Buttons
   let raceListItems = document.querySelectorAll(".race-list > div > button");
+  let allRaces = document.querySelectorAll(".race-details");
   for (let i = 0; i <= raceListItems.length - 1; i++) {
     raceListItems[i].addEventListener("click", () => {
       for (let j = 0; j <= raceListItems.length - 1; j++) {
         raceListItems[j].removeAttribute("id");
       }
       event.target.setAttribute("id", "selected-race");
-      showRaceDetails(event.target.innerText.toLowerCase());
+      showListOptionDetails(allRaces, event.target.innerText.toLowerCase());
     });
   }
 }
+
+let languagesJson =
+  '[["dwarvish", "Dwarvish"],["elvish", "Elvish"],["giant", "Giant"],["gnomish", "Gnomish"],["goblin", "Goblin"],["halfling", "Halfling"],["orc", "Orc"],["abyssal", "Abyssal"],["celestial", "Celestial"],["deep-speech", "Deep Speech"],["infernal", "Infernal"],["primordial", "Primordial"],["sylvan", "Sylvan"],["undercommon", "Undercommon"]]';
+languagesJson = JSON.parse(languagesJson);
