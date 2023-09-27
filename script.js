@@ -233,6 +233,11 @@ function constructLiWithTitle(feature) {
   if (feature.type === "checkbox") {
     li.appendChild(createCheckboxSelector(feature.options));
   }
+  if (feature.type === "subfeature") {
+    let subfeatureContainer = document.createElement("ul");
+    feature.options.forEach((option) => subfeatureContainer.appendChild(constructLiWithTitle(option)));
+    li.appendChild(subfeatureContainer);
+  }
 
   return li;
 }
