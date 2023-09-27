@@ -429,6 +429,9 @@ li > ul > li {
   margin-bottom: 5px;
   margin-right: 5px;
 }
+.race-image > img {
+  max-width: 100%;
+}
 /* Default Hidding */
 
 .hidden {
