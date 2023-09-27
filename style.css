@@ -38,6 +38,7 @@ em {
 .char-info {
   display: flex;
   justify-content: space-between;
+  gap: 50px;
 }
 .char-info div {
   display: flex;
@@ -196,6 +197,7 @@ strong {
   padding: 13px;
   background-color: var(--object-color);
   border-radius: 7px;
+  margin-bottom: 0;
 }
 /* End of skills styles */
 
@@ -210,10 +212,9 @@ strong {
   font-size: 20px;
 }
 .navigation-container {
-  width: var(--main-width);
   margin: 5px auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 /* End of navigation styles */
 
