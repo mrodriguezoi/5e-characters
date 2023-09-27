@@ -110,70 +110,7 @@ function showRaceDetails(race) {
     }
   }
 }
-
-// let raceListItems = document.querySelectorAll(".race-list > div > button");
-// for (let i = 0; i <= raceListItems.length - 1; i++) {
-//   raceListItems[i].addEventListener("click", () => {
-//     for (let j = 0; j <= raceListItems.length - 1; j++) {
-//       raceListItems[j].removeAttribute("id");
-//     }
-//     event.target.setAttribute("id", "selected-race");
-//     showRaceDetails(event.target.innerText.toLowerCase());
-//   });
-// }
-let placeHolderRaceDetails = {
-  name: "Race",
-  description: "placeholder",
-  subraces: ["subrace-1", "subrace-2"],
-  features: [
-    {
-      // This is a the normal feature, consists of a feature name and description
-      featureName: "age",
-      text: "Placeholder",
-    },
-    {
-      // This type of feature is a list where the user selects one option from a list
-      featureName: "tool-proficiency",
-      text: "You gain proficiency with the artisan's tools of your choice.",
-      dependecy: "subrace-1",
-      type: "list",
-      listOptions: [
-        // In this case the first element is the value, and the second is the text
-        ["option-1", "This is option 1"],
-        ["option-2", "This is option 2"],
-      ],
-    },
-    {
-      // This is a kind of feature that requests you to pick one of the available options, like Half-Elves Skill Versatility
-      featureName: "half-elf-versatility",
-      text: "Choose one of the following traits:",
-      type: "radio",
-      options: [
-        { featureName: "Radio Feature 1", text: "This is radio feature one", featureId: "radio-feature-1" },
-        {
-          featureName: "Radio Feature 2",
-          text: "This is radio feature two",
-          featureId: "radio-feature-2",
-          type: "list",
-          options: [
-            ["radio-list-1", "First option on the list of the radio selector"],
-            ["radio-list-2", "Second option on the list of the radio selector"],
-          ],
-        },
-      ],
-    },
-    {
-      // This is a kind of feature that requests you to pick one of the available options, like Half-Elves Skill Versatility
-      featureName: "half-elf-versatility",
-      text: "Choose one of the following traits:",
-      type: "checkbox",
-      options: [
-        ["option-1", "This is option 1"],
-        ["option-2", "This is option 2"],
-      ],
-    },
-  ],
-};
+// Auxiliary functions to create content
 function createListFromOptions(array) {
   let select = document.createElement("select");
   let defaultOption = document.createElement("option");
@@ -241,7 +178,6 @@ function constructLiWithTitle(feature) {
 
   return li;
 }
-
 function constructRaceDetails(races) {
   let raceList = document.querySelector(".race-list");
   races.forEach((raceDetails) => {
@@ -256,8 +192,8 @@ function constructRaceDetails(races) {
 
     // Creating Race Details containers
     let raceDetailsContainer = document.createElement("div");
-    raceDetailsContainer.classList.add("race-details", raceDetails.name, "hidden");
     let raceDetailsContentContainer = document.createElement("div");
+    raceDetailsContainer.classList.add("race-details", raceDetails.name, "hidden");
     raceDetailsContentContainer.classList.add("race-details-content");
     // Adding race description
     let raceDescriptionP = document.createElement("p");
@@ -273,10 +209,15 @@ function constructRaceDetails(races) {
     raceDetailsContentContainer.appendChild(featuresHeader);
     // Adding container for features
     let featuresList = document.createElement("ul");
+    featuresList.classList.add("race-details-features");
     raceDetails.features.forEach((feature) => {
-      raceDetailsContentContainer.appendChild(constructLiWithTitle(feature));
+      featuresList.appendChild(constructLiWithTitle(feature));
     });
+    raceDetailsContentContainer.appendChild(featuresList);
     // TO-DO: Add language and subrace selector
+    raceDetailsContainer.appendChild(raceDetailsContentContainer);
+    const raceSelector = document.querySelector(".race-selector");
+    raceSelector.appendChild(raceDetailsContainer);
   });
   // Adding Event Listener to said element
   let raceListItems = document.querySelectorAll(".race-list > div > button");
@@ -290,6 +231,3 @@ function constructRaceDetails(races) {
     });
   }
 }
-
-// Escribir un componente para los detalles de la raza, que le puedas pasar un json con un array de features,
-//  y las features pueden tener dependecias entre si, de modo que si una feature tiene opciones al seleccionar una opcion se muestra la correcta
