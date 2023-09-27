@@ -354,10 +354,11 @@ strong {
   gap: 5px;
 }
 .race-list button {
+  text-transform: capitalize;
   padding: 10px 5px;
   font-size: 12px;
   text-align: center;
-  padding-bottom: 15px;
+  padding-bottom: 40px;
   background-color: var(--modal-color);
   width: 120px;
   border: none;
