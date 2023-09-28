@@ -104,10 +104,10 @@ function showListOptionDetails(listContainer, option, idToSet) {
   for (let i = 0; i <= listContainer.length - 1; i++) {
     if (Array.from(listContainer[i].classList).includes(option)) {
       listContainer[i].classList.remove("hidden");
-      listContainer[i].removeAttribute("_id");
+      listContainer[i].removeAttribute("id");
     } else {
       listContainer[i].classList.add("hidden");
-      listContainer[i].setAttribute("_id", idToSet);
+      listContainer[i].setAttribute("id", idToSet);
     }
   }
 }
