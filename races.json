@@ -129,7 +129,8 @@
           }
         ]
       }
-    ]
+    ],
+    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/340/420/618/636272677995471928.png"
   },
   {
     "_id": { "$oid": "6514c1704e43791967607e5a" },
@@ -193,7 +194,8 @@
         "text": "You have proficiency with light and medium armor.",
         "dependency": "mountain"
       }
-    ]
+    ],
+    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/254/420/618/636271781394265550.png"
   },
   {
     "_id": { "$oid": "6514c9954e43791967607e5d" },
@@ -306,7 +308,8 @@
         "text": "You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.",
         "dependency": "wood"
       }
-    ]
+    ],
+    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/7/639/420/618/636287075350739045.png"
   },
   {
     "_id": { "$oid": "6514e5894e43791967607e5f" },
@@ -377,6 +380,7 @@
         ],
         "dependency": "rock"
       }
-    ]
+    ],
+    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/334/420/618/636272671553055253.png"
   }
 ]

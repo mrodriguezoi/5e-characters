@@ -400,6 +400,9 @@ strong {
   gap: 5px;
   padding: 0 20px;
 }
+#selected-race-image {
+  width: 100%;
+}
 .race-details-features strong {
   font-size: 16px;
   font-weight: bold;
@@ -417,7 +420,7 @@ li > ul > li {
 .empty > p {
   margin: auto;
 }
-#selected-race {
+#selected-race-button {
   background-color: var(--object-color);
 }
 .skill-versatility-container {
@@ -444,14 +447,15 @@ li > ul > li {
 
 /* Background obscurer */
 .background-obscurer {
-  width: 100vw;
-  height: 100vh;
-  opacity: 0.2;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
   z-index: 9998;
   position: fixed;
   left: 0;
   top: 0;
-  background-color: black;
+  background-color: #636363;
+  transition: opacity 1s;
 }
 
 /* Class page styles */

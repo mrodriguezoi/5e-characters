@@ -104,10 +104,10 @@ function showListOptionDetails(listContainer, option, idToSet) {
   for (let i = 0; i <= listContainer.length - 1; i++) {
     if (Array.from(listContainer[i].classList).includes(option)) {
       listContainer[i].classList.remove("hidden");
-      listContainer[i].removeAttribute("id");
+      listContainer[i].setAttribute("id", idToSet);
     } else {
       listContainer[i].classList.add("hidden");
-      listContainer[i].setAttribute("id", idToSet);
+      listContainer[i].removeAttribute("id");
     }
   }
 }
@@ -183,8 +183,15 @@ function constructLiWithTitle(feature) {
 
   return li;
 }
+function createImage(source, altText) {
+  let image = document.createElement("img");
+  image.setAttribute("src", source);
+  image.setAttribute("alt", altText);
+  return image;
+}
 function constructRaceDetails(races) {
   let raceList = document.querySelector(".race-list");
+  let raceAsiSidebar = document.querySelector(".race-asi");
   races.forEach((raceDetails) => {
     // Adding Element to the Races list
     let raceListContainer = document.createElement("div");
@@ -227,8 +234,9 @@ function constructRaceDetails(races) {
       type: "list",
       listOptions: raceDetails.subraces,
     };
-    constructLiWithTitle(subraceObject);
-    featuresList.appendChild(constructLiWithTitle(subraceObject));
+    let subraceDisplay = constructLiWithTitle(subraceObject);
+    subraceDisplay.classList.add("subclass-select");
+    featuresList.appendChild(subraceDisplay);
     // Language selector
     let languagesFeature = {
       featureName: "Languages",
@@ -237,13 +245,22 @@ function constructRaceDetails(races) {
       listOptions: languages,
     };
     featuresList.appendChild(constructLiWithTitle(languagesFeature));
+    // Construct Sub-race features
+    raceDetails.subRaceFeatures.forEach((feature) => {
+      featuresList.appendChild(constructLiWithTitle(feature));
+    });
     // Append whole race container to the modal
     raceDetailsContentContainer.appendChild(featuresList);
     raceDetailsContainer.appendChild(raceDetailsContentContainer);
     const raceSelector = document.querySelector(".race-selector");
     raceSelector.appendChild(raceDetailsContainer);
+    // Adding image to sidebar
+    let raceImage = createImage(raceDetails.imgLink, `${raceDetails.name} portrait`);
+    raceImage.classList.add(raceDetails.name, "hidden");
+    raceAsiSidebar.prepend(raceImage);
   });
   // Adding Event Listener to Buttons
+  let raceImages = document.querySelectorAll(".race-asi > img");
   let raceListItems = document.querySelectorAll(".race-list > div > button");
   let allRaces = document.querySelectorAll(".race-details");
   for (let i = 0; i <= raceListItems.length - 1; i++) {
@@ -251,8 +268,29 @@ function constructRaceDetails(races) {
       for (let j = 0; j <= raceListItems.length - 1; j++) {
         raceListItems[j].removeAttribute("id");
       }
-      event.target.setAttribute("id", "selected-race");
+      event.target.setAttribute("id", "selected-race-button");
       showListOptionDetails(allRaces, event.target.innerText.toLowerCase(), "selected-race");
+      showListOptionDetails(raceImages, event.target.innerText.toLowerCase(), "selected-race-image");
+    });
+  }
+
+  // Adding event to hide/unhide subclass features
+  let subclassSelectors = document.querySelectorAll(".subclass-select > select");
+  for (let j = 0; j < subclassSelectors.length; j++) {
+    subclassSelectors[j].addEventListener("change", () => {
+      let raceDetailsFeatures = document.querySelector("#selected-race .race-details-features").children;
+      for (let i = 0; i < raceDetailsFeatures.length; i++) {
+        if (
+          raceDetailsFeatures[i].classList.length >= 1 &&
+          !Array.from(raceDetailsFeatures[i].classList).includes("subclass-select")
+        ) {
+          if (Array.from(raceDetailsFeatures[i].classList).includes(event.target.value)) {
+            raceDetailsFeatures[i].classList.remove("hidden");
+          } else {
+            raceDetailsFeatures[i].classList.add("hidden");
+          }
+        }
+      }
     });
   }
 }
