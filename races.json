@@ -1,9 +1,14 @@
 [
   {
+    "_id": { "$oid": "65137b5f4e43791967607d74" },
     "glossaryType": "race",
     "name": "dragonborn",
     "description": "The dragonborn walk proudly through a world that greets them with fearful incomprehension. Shaped by the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids.",
-    "subraces": ["metallic", "chromatic", "gem"],
+    "subraces": [
+      ["metallic", "Metallic"],
+      ["chromatic", "Chromatic"],
+      ["gem", "Gem"]
+    ],
     "features": [
       {
         "featureName": "Age",
@@ -127,10 +132,14 @@
     ]
   },
   {
+    "_id": { "$oid": "6514c1704e43791967607e5a" },
     "glossaryType": "race",
     "name": "dwarf",
     "description": "Kingdoms rich in ancient grandeur, halls carved into the roots of mountains, the echoing of picks and hammers in deep mines and blazing forges, a commitment to clan and tradition, and a burning hatred of goblins and orcs – these common threads unite all dwarves.",
-    "subraces": ["hill", "mountain"],
+    "subraces": [
+      ["hill", "Hill"],
+      ["mountain", "Mountain"]
+    ],
     "features": [
       {
         "featureName": "Age",
@@ -187,10 +196,15 @@
     ]
   },
   {
+    "_id": { "$oid": "6514c9954e43791967607e5d" },
     "glossaryType": "race",
     "name": "elf",
     "description": "Elves are a magical people of otherworldly grace, living in places of ethereal beauty, in the midst of ancient forests or in silvery spires glittering with faerie light, where soft music drifts through the air and gentle fragrances waft on the breeze. Elves love nature and magic, art and artistry, music and poetry.",
-    "subraces": ["dark", "high", "wood"],
+    "subraces": [
+      ["dark", "Dark"],
+      ["high", "High"],
+      ["wood", "Wood"]
+    ],
     "features": [
       {
         "featureName": "Age",
@@ -295,10 +309,14 @@
     ]
   },
   {
+    "_id": { "$oid": "6514e5894e43791967607e5f" },
     "glossaryType": "race",
     "name": "gnome",
     "description": "A constant hum of busy activity pervades the warrens and neighborhoods where gnomes form their close-knit communities. Louder sounds punctuate the hum: a crunch of grinding gears here, a minor explosion there, a yelp of surprise or triumph, and especially bursts of laughter. Gnomes take delight in life, enjoying every moment of invention, exploration, investigation, creation, and play.",
-    "subraces": ["forest", "rock"],
+    "subraces": [
+      ["forest", "Forest"],
+      ["rock", "Rock"]
+    ],
     "features": [
       {
         "featureName": "Age",

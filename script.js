@@ -113,7 +113,7 @@ function showListOptionDetails(listContainer, option, idToSet) {
 }
 
 // Race Details functions:
-//
+
 // Auxiliary functions to create content
 function createListFromOptions(array) {
   let select = document.createElement("select");
@@ -194,7 +194,6 @@ function constructRaceDetails(races) {
     raceListButton.appendChild(raceListButtonText);
     raceListContainer.appendChild(raceListButton);
     raceList.appendChild(raceListContainer);
-    // Si algo se rompe es porque no agregue las clases aca
 
     // Creating Race Details containers
     let raceDetailsContainer = document.createElement("div");
