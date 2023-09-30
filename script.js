@@ -297,11 +297,11 @@ function constructRaceDetails(races) {
 
 let languages = [];
 fetch("https://mrodriguezoi.github.io/5e-characters/languages.json")
-  .then((response) => response.json())
+  .then(await ((response) => response.json()))
   .then((data) => (languages = data.languages));
 let races = {};
 fetch("https://mrodriguezoi.github.io/5e-characters/races.json")
-  .then((response) => response.json())
+  .then(await ((response) => response.json()))
   .then((data) => {
     races = data;
     constructRaceDetails(races);
