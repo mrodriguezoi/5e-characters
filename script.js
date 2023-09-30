@@ -123,23 +123,3 @@ for (let i = 0; i <= raceListItems.length - 1; i++) {
 }
 // Escribir un componente para los detalles de la raza, que le puedas pasar un json con un array de features,
 //  y las features pueden tener dependecias entre si, de modo que si una feature tiene opciones al seleccionar una opcion se muestra la correcta
-
-var myHeaders = new Headers();
-myHeaders.append("Content-Type", "text/plain");
-myHeaders.append("apiKey", "dLNeXTEL6Vie1qnxCiVgSVBLWqjdDU7nMXyUdDFDQq8Pc4MiBvjuk6pGkNHvP3P0");
-myHeaders.append("Content-Type", "application/ejson");
-
-var raw =
-  '{\n    "dataSource": "Cluster0",\n    "database": "5e_characters",\n    "collection": "glossary",\n    "filter": {\n        "glossaryType": "race"\n    }\n}';
-
-var requestOptions = {
-  method: "POST",
-  headers: myHeaders,
-  body: raw,
-  redirect: "follow",
-};
-
-fetch("https://data.mongodb-api.com/app/data-rohzz/endpoint/data/v1/action/find", requestOptions)
-  .then((response) => response.text())
-  .then((result) => console.log(result))
-  .catch((error) => console.log("error", error));
