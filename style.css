@@ -196,6 +196,7 @@ strong {
   padding: 13px;
   background-color: var(--object-color);
   border-radius: 7px;
+  margin-bottom: 0;
 }
 /* End of skills styles */
 
