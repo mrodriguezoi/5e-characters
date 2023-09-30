@@ -296,11 +296,11 @@ function constructRaceDetails(races) {
 }
 
 let languages = [];
-fetch("/languages.json")
+fetch("languages.json")
   .then((response) => response.json())
   .then((data) => (languages = data.languages));
 let races = {};
-fetch("/races.json")
+fetch("races.json")
   .then((response) => response.json())
   .then((data) => {
     races = data;
