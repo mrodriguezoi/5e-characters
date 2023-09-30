@@ -1,3 +1,4 @@
+const baseURI = document.baseURI;
 // Create a character:
 
 // Function to create new stats and event to trigger it
@@ -133,12 +134,24 @@ function createListFromOptions(array) {
   });
   return select;
 }
-function createRadioSelector(array) {
+function createRadioSelector(array, featureName) {
   let radioUlContainer = document.createElement("ul");
-  array.forEach((option) => radioUlContainer.appendChild(constructLiWithTitle(option)));
+  radioUlContainer.classList.add("radio-ul-container");
+  array.forEach((option) => {
+    let radioLi = constructLiWithTitle(option);
+    let transformedFeatureName = featureName.replaceAll(" ", "-");
+    let transformedOptionName = option.featureName.replaceAll(" ", "-");
+    let radioButton = document.createElement("input");
+    radioButton.setAttribute("type", "radio");
+    radioButton.setAttribute("value", transformedOptionName);
+    radioButton.setAttribute("name", transformedFeatureName);
+    radioLi.prepend(radioButton);
+    radioUlContainer.appendChild(radioLi);
+  });
   return radioUlContainer;
 }
-function createCheckboxSelector(array) {
+function createCheckboxSelector(array, limit, featureName) {
+  let transformedFeatureName = featureName.replaceAll(" ", "-");
   let checkboxContainer = document.createElement("div");
   let form = document.createElement("form");
   array.forEach((option) => {
@@ -149,8 +162,21 @@ function createCheckboxSelector(array) {
     optionLabel.appendChild(optionInput);
     let optionText = document.createTextNode(option[1]);
     optionLabel.appendChild(optionText);
-    form.appendChild(optionElement);
+    optionLabel.addEventListener("change", () => {
+      let relevantCheckbox = document.querySelector(".checkbox-form." + transformedFeatureName).children;
+      let checkedCounter = 0;
+      for (let v = 0; v < relevantCheckbox.length; v++) {
+        if (relevantCheckbox[v].children[0].checked === true) {
+          checkedCounter++;
+        }
+        if (checkedCounter > limit) {
+          event.target.checked = false;
+        }
+      }
+    });
+    form.appendChild(optionLabel);
   });
+  form.classList.add("checkbox-form", transformedFeatureName);
   checkboxContainer.appendChild(form);
   return checkboxContainer;
 }
@@ -169,11 +195,11 @@ function constructLiWithTitle(feature) {
     li.appendChild(createListFromOptions(feature.listOptions));
   }
   if (feature.type === "radio") {
-    li.appendChild(createRadioSelector(feature.options));
+    li.appendChild(createRadioSelector(feature.options, feature.featureName));
   }
 
   if (feature.type === "checkbox") {
-    li.appendChild(createCheckboxSelector(feature.options));
+    li.appendChild(createCheckboxSelector(feature.options, feature.limit, feature.featureName));
   }
   if (feature.type === "subfeature") {
     let subfeatureContainer = document.createElement("ul");
@@ -234,9 +260,11 @@ function constructRaceDetails(races) {
       type: "list",
       listOptions: raceDetails.subraces,
     };
-    let subraceDisplay = constructLiWithTitle(subraceObject);
-    subraceDisplay.classList.add("subclass-select");
-    featuresList.appendChild(subraceDisplay);
+    if (raceDetails.subRaceFeatures !== undefined) {
+      let subraceDisplay = constructLiWithTitle(subraceObject);
+      subraceDisplay.classList.add("subclass-select");
+      featuresList.appendChild(subraceDisplay);
+    }
     // Language selector
     let languagesFeature = {
       featureName: "Languages",
@@ -246,9 +274,11 @@ function constructRaceDetails(races) {
     };
     featuresList.appendChild(constructLiWithTitle(languagesFeature));
     // Construct Sub-race features
-    raceDetails.subRaceFeatures.forEach((feature) => {
-      featuresList.appendChild(constructLiWithTitle(feature));
-    });
+    if (raceDetails.subRaceFeatures !== undefined) {
+      raceDetails.subRaceFeatures.forEach((feature) => {
+        featuresList.appendChild(constructLiWithTitle(feature));
+      });
+    }
     // Append whole race container to the modal
     raceDetailsContentContainer.appendChild(featuresList);
     raceDetailsContainer.appendChild(raceDetailsContentContainer);
@@ -296,11 +326,11 @@ function constructRaceDetails(races) {
 }
 
 let languages = [];
-fetch("https://mrodriguezoi.github.io/5e-characters/languages.json")
+fetch(baseURI + "languages.json")
   .then((response) => response.json())
   .then((data) => (languages = data.languages));
 let races = {};
-fetch("https://mrodriguezoi.github.io/5e-characters/races.json")
+fetch(baseURI + "races.json")
   .then((response) => response.json())
   .then((data) => {
     races = data;

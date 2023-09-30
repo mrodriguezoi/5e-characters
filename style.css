@@ -24,6 +24,9 @@ ul {
 ul > li {
   margin-bottom: 16px;
 }
+input {
+  margin-right: 5px;
+}
 /* Setting structure of the page */
 .main-container {
   display: flex;
@@ -437,6 +440,16 @@ li > ul > li {
 }
 .race-image > img {
   max-width: 100%;
+}
+.checkbox-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-around;
+  align-items: center;
+}
+.radio-ul-container {
+  list-style: none;
 }
 /* Default Hidding */
 

@@ -382,5 +382,93 @@
       }
     ],
     "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/334/420/618/636272671553055253.png"
+  },
+  {
+    "_id": { "$oid": "65186290a387de7a36162224" },
+    "glossaryType": "race",
+    "name": "half-elf",
+    "description": "Walking in two worlds but truly belonging to neither, half-elves combine what some say are the best qualities of their elf and human parents: human curiosity, inventiveness, and ambition tempered by the refined senses, love of nature, and artistic tastes of the elves.",
+    "subraces": [],
+    "features": [
+      {
+        "featureName": "Age",
+        "text": "Half-elves age at much the same rate as humans, reaching adulthood at the age of 20. They live much longer than humans, however, often exceeding 180 years."
+      },
+      {
+        "featureName": "Size",
+        "text": "Half-elves are more or less the same size as humans, ranging from 5 to 6 feet tall. Your size is Medium."
+      },
+      { "featureName": "Speed", "text": "Your base walking speed is 30 feet.", "characterImpact": "speed-base" },
+      { "featureName": "Heavy Armor Training", "text": "Your speed is not reduced by wearing heavy armor." },
+      {
+        "featureName": "Darkvision",
+        "text": "Thanks to your elven heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+      },
+      {
+        "featureName": "Fey Ancestry",
+        "text": "You have advantage on saving throws against being charmed, and magic can't put you to sleep."
+      },
+      { "featureName": "Languages", "text": "You can read, speak, and write Elven.", "characterImpact": "language" },
+      {
+        "featureName": "Half-Elf Versatility",
+        "text": "Choose one of the following traits:",
+        "type": "radio",
+        "options": [
+          {
+            "featureName": "Skill Versatility",
+            "text": "You gain proficiency in two skills of your choice:",
+            "type": "checkbox",
+            "limit": 2,
+            "options": [
+              ["acrobatics", "Acrobatics"],
+              ["animal-handling", "Animal Handling"],
+              ["arcana", "Arcana"],
+              ["athletics", "Athletics"],
+              ["deception", "Deception"],
+              ["history", "History"],
+              ["insight", "Insight"],
+              ["intimidation", "Intimidation"],
+              ["investigation", "Investigation"],
+              ["medicine", "Medicine"],
+              ["nature", "Nature"],
+              ["performance", "Performance"],
+              ["persuasion", "Persuasion"],
+              ["religion", "Religion"],
+              ["sleight-of-hand", "Sleight of Hand"],
+              ["stealth", "Stealth"],
+              ["survival", "Survival"]
+            ]
+          },
+          {
+            "featureName": "Elf Weapon Training",
+            "text": "You have proficiency with the longsword, shortsword, shortbow, and longbow."
+          },
+          {
+            "featureName": "Cantrip",
+            "text": "You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it.",
+            "characterImpact": "spell-picker"
+          },
+          {
+            "featureName": "Fleet of Foot",
+            "text": "Your base walking speed increases to 35 feet.",
+            "characterImpact": "speed-base"
+          },
+          {
+            "featureName": "Mask of the Wild",
+            "text": "You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
+          },
+          {
+            "featureName": "Drow Magic",
+            "text": "You know the Dancing Lights cantrip. When you reach 3rd level, you can cast Faerie Fire once, and it recharges after a long rest. When you reach 5th level, you can cast Darkness once, and it recharges after a long rest. Charisma is your spellcasting ability for these spells.",
+            "spells": [
+              { "spell": "dancingLights", "level": 0 },
+              { "spell": "faerieFire", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+              { "spell": "darkness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+            ]
+          }
+        ]
+      }
+    ],
+    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/481/420/618/636274618102950794.png"
   }
 ]
