@@ -29,75 +29,83 @@ document.querySelector(".reroll-stats-button button").addEventListener("click", 
 document.querySelector(".reroll-stats-button button").click();
 
 // Logic for Selecting Stats on the Stat container
-function hideSelectedStatsOptions() {
+function hideSelectedStatsOptions(containerClass) {
   let selectedOptions = [];
-  for (let j = 0; j <= 5; j++) {
-    selectedOptions.push(document.querySelectorAll(".stats-selector-stat select")[j].value);
+  let targetSelects = document.querySelectorAll(containerClass + " select");
+  for (let j = 0; j < targetSelects.length; j++) {
+    selectedOptions.push(targetSelects[j].value);
   }
-  let optionsStr = document.querySelectorAll(".option-str");
-  let optionsDex = document.querySelectorAll(".option-dex");
-  let optionsCon = document.querySelectorAll(".option-con");
-  let optionsInt = document.querySelectorAll(".option-int");
-  let optionsWis = document.querySelectorAll(".option-wis");
-  let optionsCha = document.querySelectorAll(".option-cha");
+  let optionsStr = document.querySelectorAll(containerClass + " .option-str");
+  let optionsDex = document.querySelectorAll(containerClass + " .option-dex");
+  let optionsCon = document.querySelectorAll(containerClass + " .option-con");
+  let optionsInt = document.querySelectorAll(containerClass + " .option-int");
+  let optionsWis = document.querySelectorAll(containerClass + " .option-wis");
+  let optionsCha = document.querySelectorAll(containerClass + " .option-cha");
   if (selectedOptions.includes("str")) {
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i < optionsStr.length; i++) {
       optionsStr[i].classList.add("hidden");
     }
   } else {
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i < optionsStr.length; i++) {
       optionsStr[i].classList.remove("hidden");
     }
   }
   if (selectedOptions.includes("dex")) {
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i < optionsDex.length; i++) {
       optionsDex[i].classList.add("hidden");
     }
   } else {
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i < optionsDex.length; i++) {
       optionsDex[i].classList.remove("hidden");
     }
   }
   if (selectedOptions.includes("con")) {
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i < optionsCon.length; i++) {
       optionsCon[i].classList.add("hidden");
     }
   } else {
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i < optionsCon.length; i++) {
       optionsCon[i].classList.remove("hidden");
     }
   }
   if (selectedOptions.includes("int")) {
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i < optionsInt.length; i++) {
       optionsInt[i].classList.add("hidden");
     }
   } else {
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i < optionsInt.length; i++) {
       optionsInt[i].classList.remove("hidden");
     }
   }
   if (selectedOptions.includes("wis")) {
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i < optionsWis.length; i++) {
       optionsWis[i].classList.add("hidden");
     }
   } else {
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i < optionsWis.length; i++) {
       optionsWis[i].classList.remove("hidden");
     }
   }
   if (selectedOptions.includes("cha")) {
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i < optionsCha.length; i++) {
       optionsCha[i].classList.add("hidden");
     }
   } else {
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i < optionsCha.length; i++) {
       optionsCha[i].classList.remove("hidden");
     }
   }
 }
 let statAllocators = document.querySelectorAll(".stats-selector-stat select");
 for (let i = 0; i <= 5; i++) {
-  statAllocators[i].addEventListener("change", () => hideSelectedStatsOptions());
+  statAllocators[i].addEventListener("change", () => hideSelectedStatsOptions(".stats-selector"));
+}
+// For Race-asi
+let raceStatAllocators = document.querySelectorAll(".race-asi select");
+for (let i = 0; i <= 1; i++) {
+  raceStatAllocators[i].addEventListener("change", () => {
+    hideSelectedStatsOptions(".race-asi");
+  });
 }
 
 // Function to show selected option only on a list
