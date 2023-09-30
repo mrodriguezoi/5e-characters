@@ -253,7 +253,7 @@ strong {
 .modal-main-container {
   background-color: var(--modal-color);
   z-index: 9999;
-  width: var(--main-width);
+  width: 85vw;
   margin: 5% auto;
   padding: 15px;
   border-radius: 5px;
@@ -261,6 +261,8 @@ strong {
   justify-content: space-between;
   min-height: 666px;
   max-height: 666px;
+  position: fixed;
+  left: 7.5vw;
 }
 .modal-main-container header {
   text-align: center;
@@ -438,6 +440,18 @@ li > ul > li {
 /* Default Hidding */
 /* End of race selector styling */
 /* End of stats and background selector styling */
+
+/* Background obscurer */
+.background-obscurer {
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.2;
+  z-index: 9998;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: black;
+}
 
 /* Class page styles */
 .class-selector {
