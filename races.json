@@ -399,7 +399,6 @@
         "text": "Half-elves are more or less the same size as humans, ranging from 5 to 6 feet tall. Your size is Medium."
       },
       { "featureName": "Speed", "text": "Your base walking speed is 30 feet.", "characterImpact": "speed-base" },
-      { "featureName": "Heavy Armor Training", "text": "Your speed is not reduced by wearing heavy armor." },
       {
         "featureName": "Darkvision",
         "text": "Thanks to your elven heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
@@ -470,5 +469,224 @@
       }
     ],
     "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/481/420/618/636274618102950794.png"
+  },
+  {
+    "_id": { "$oid": "65188778a387de7a3616222c" },
+    "glossaryType": "race",
+    "name": "half-orc",
+    "description": "When alliances between humans and orcs are sealed by marriages, half-orcs are born. Some half-orcs rise to become proud chiefs of orc tribes, their human blood giving them an edge over their full-blooded orc rivals. Some venture into the world to prove their worth among humans and other more civilized races. Many of these become adventurers, achieving greatness for their mighty deeds and notoriety for their barbaric customs and savage fury.",
+    "subraces": [],
+    "features": [
+      {
+        "featureName": "Age",
+        "text": "Half-orcs mature a little faster than humans, reaching adulthood around age 14. They age noticeably faster and rarely live longer than 75 years."
+      },
+      {
+        "featureName": "Size",
+        "text": "Half-orcs are somewhat larger and bulkier than humans, and they range from 5 to well over 6 feet tall. Your size is Medium."
+      },
+      { "featureName": "Speed", "text": "Your base walking speed is 30 feet.", "characterImpact": "speed-base" },
+      {
+        "featureName": "Darkvision",
+        "text": "Thanks to your orc blood, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+      },
+      {
+        "featureName": "Menacing",
+        "text": "You gain proficiency in the Intimidation skill.",
+        "characterImpact": "skill"
+      },
+      {
+        "featureName": "Relentless Endurance",
+        "text": "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can't use this feature again until you finish a long rest."
+      },
+      {
+        "featureName": "Savage Attacks",
+        "text": "When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit."
+      }
+    ],
+    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/466/420/618/636274570630462055.png"
+  },
+  {
+    "_id": { "$oid": "651893a2a387de7a3616222f" },
+    "glossaryType": "race",
+    "name": "halfling",
+    "description": "The comforts of home are the goals of most halflings' lives: a place to settle in peace and quiet, far from marauding monsters and clashing armies. Others form nomadic bands that travel constantly, lured by the open road and the wide horizon to discover the wonders of new lands and peoples. Halflings work readily with others, and they are loyal to their friends, whether halfling or otherwise. They can display remarkable ferocity when their friends, families, or communities are threatened.",
+    "subraces": [
+      ["lightfoot", "Lightfoot"],
+      ["stout", "Stout"]
+    ],
+    "features": [
+      {
+        "featureName": "Age",
+        "text": "A halfling reaches adulthood at the age of 20 and generally lives into the middle of his or her second century."
+      },
+      {
+        "featureName": "Size",
+        "text": "Halflings average about 3 feet tall and weigh about 40 pounds. Your size is small."
+      },
+      { "featureName": "Speed", "text": "Your base walking speed is 25 feet.", "characterImpact": "speed-base" },
+      {
+        "featureName": "Lucky",
+        "text": "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die. You must use the new result, even if it is a 1."
+      },
+      { "featureName": "Brave", "text": "You have advantage on saving throws against being frightened." },
+      {
+        "featureName": "Nimble",
+        "text": "You can move through the space of any creature that is of a size larger than yours."
+      }
+    ],
+    "subRaceFeatures": [
+      {
+        "featureName": "Naturally Stealthy",
+        "text": "You can attempt to hide even when you are only obscured by a creature that is at least one size larger than you.",
+        "dependency": "lightfoot"
+      },
+      {
+        "featureName": "Stout Resilience",
+        "text": "You have advantage on saving throws against poison, and you have resistance to poison damage.",
+        "dependency": "stout"
+      }
+    ],
+    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/256/420/618/636271789409776659.png"
+  },
+  {
+    "_id": { "$oid": "6518950fa387de7a36162230" },
+    "glossaryType": "race",
+    "name": "human",
+    "description": "In the reckonings of most worlds, humans are the youngest of the common races, late to arrive on the world scene and short-lived in comparison to dwarves, elves, and dragons. Perhaps it is because of their shorter lives that they strive to achieve as much as they can in the years they are given. Or maybe they feel they have something to prove to the elder races, and that's why they build their mighty empires on the foundation of conquest and trade. Whatever drives them, humans are the innovators, the achievers, and the pioneers of the worlds.",
+    "subraces": [],
+    "features": [
+      { "featureName": "Age", "text": "Humans reach adulthood in their late teens and live less than a century." },
+      {
+        "featureName": "Size",
+        "text": "Humans vary widely in height and build, from barely 5 feet to well over 6 feet tall. Regardless of your position in that range, your size is Medium."
+      },
+      { "featureName": "Speed", "text": "Your base walking speed is 30 feet.", "characterImpact": "speed-base" }
+    ],
+    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/258/420/618/636271801914013762.png"
+  },
+  {
+    "_id": { "$oid": "651899aaa387de7a36162231" },
+    "glossaryType": "race",
+    "name": "tiefling",
+    "description": "To be greeted with stares and whispers, to suffer violence and insult on the street, to see mistrust and fear in every eye: this is the lot of the tiefling. And to twist the knife, tieflings know that this is because a pact struck generations ago infused the essence of Asmodeus, overlord of the Nine Hells (and many of the other powerful devils serving under him) into their bloodline. Their appearance and their nature are not their fault but the result of an ancient sin, for which they and their children and their children's children will always be held accountable.",
+    "subraces": [
+      ["asmodeus", "Bloodline of Asmodeus"],
+      ["baalzebul", "Bloodline of Baalzebul"],
+      ["dispater", "Bloodline of Dispater"],
+      ["fierna", "Bloodline of Fierna"],
+      ["glasya", "Bloodline of Glasya"],
+      ["levistus", "Bloodline of Levistus"],
+      ["mammon", "Bloodline of Mammon"],
+      ["mephistopheles", "Bloodline of Mephistopheles"],
+      ["zariel", "Bloodline of Zariel"]
+    ],
+    "features": [
+      { "featureName": "Age", "text": "Tieflings mature at the same rate as humans but live a few years longer." },
+      { "featureName": "Size", "text": "Tieflings are about the same size and build as humans. Your size is Medium." },
+      { "featureName": "Speed", "text": "Your walking speed is 30 feet.", "characterImpact": "speed-base" },
+      {
+        "featureName": "Darkvision",
+        "text": "Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray."
+      },
+      {
+        "featureName": "Hellish Resistance",
+        "text": "You have resistance to fire damage.",
+        "characterImpact": "resistance"
+      }
+    ],
+    "subRaceFeatures": [
+      {
+        "featureName": "Legacy of Nessus",
+        "text": "You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Hellish Rebuke spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Darkness spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
+        "spells": [
+          { "spell": "thaumaturgy", "level": 0 },
+          { "spell": "hellishRebuke", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+          { "spell": "darkness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+        ],
+        "dependency": "asmodeus"
+      },
+      {
+        "featureName": "Legacy of Maladomini",
+        "text": "You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Ray of Sickness spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Crown of Madness spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
+        "spells": [
+          { "spell": "thaumaturgy", "level": 0 },
+          { "spell": "rayOfSickness", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+          { "spell": "crownOfMadness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+        ],
+        "dependency": "baalzebul"
+      },
+      {
+        "featureName": "Legacy of Dis",
+        "text": "You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Disguise Self spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Detect Thoughts spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
+        "spells": [
+          { "spell": "thaumaturgy", "level": 0 },
+          { "spell": "disguiseSelf", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+          { "spell": "detectThoughts", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+        ],
+        "dependency": "dispater"
+      },
+      {
+        "featureName": "Legacy of Phlegethos",
+        "text": "You know the Friends cantrip. Once you reach 3rd level, you can cast the Charm Person spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Suggestion spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
+        "spells": [
+          { "spell": "friends", "level": 0 },
+          { "spell": "charmPerson", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+          { "spell": "suggestion", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+        ],
+        "dependency": "fierna"
+      },
+      {
+        "featureName": "Legacy of Malbolge",
+        "text": "You know the Minor Illusion cantrip. Once you reach 3rd level, you can cast the Disguise Self spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Invisibility spell once as a 2nd-level spell. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
+        "spells": [
+          { "spell": "minorIllusion", "level": 0 },
+          { "spell": "disguiseSelf", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+          { "spell": "invisibility", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+        ],
+        "dependency": "glasya"
+      },
+      {
+        "featureName": "Legacy of Stygia",
+        "text": "You know the Ray of Frost cantrip. Once you reach 3rd level, you can cast the Armor of Agathys spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Darkness spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
+        "spells": [
+          { "spell": "rayOfFrost", "level": 0 },
+          { "spell": "armorOfAgathys", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+          { "spell": "darkness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+        ],
+        "dependency": "levistus"
+      },
+      {
+        "featureName": "Legacy of Minauros",
+        "text": "You know the Mage Hand cantrip. Once you reach 3rd level, you can cast the Tenser's Floating Disk spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Arcane Lock spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
+        "spells": [
+          { "spell": "mageHand", "level": 0 },
+          { "spell": "floatingDisk", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+          { "spell": "arcaneLock", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+        ],
+        "dependency": "mammon"
+      },
+      {
+        "featureName": "Legacy of Cania",
+        "text": "You know the Mage Hand cantrip. Once you reach 3rd level, you can cast the Burning Hands spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Flame Blade spell once as a 3rd-level spell. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
+        "spells": [
+          { "spell": "mageHand", "level": 0 },
+          { "spell": "burningHands", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+          { "spell": "flameBlade", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+        ],
+        "dependency": "mephistopheles"
+      },
+      {
+        "featureName": "Legacy of Avernus",
+        "text": "You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Searing Smite spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Branding Smite spell once as a 3rd-level spell. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
+        "spells": [
+          { "spell": "thaumaturgy", "level": 0 },
+          { "spell": "searingSmite", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+          { "spell": "brandingSmite", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+        ],
+        "dependency": "zariel"
+      }
+    ],
+    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/7/641/420/618/636287076637981942.png"
   }
 ]

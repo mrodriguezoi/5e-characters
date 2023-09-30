@@ -278,6 +278,7 @@ strong {
   flex-direction: column;
   gap: 15px;
   min-width: 975px;
+  max-width: 975px;
 }
 /* Start of stats selector styling */
 .stats-selector {
@@ -396,7 +397,6 @@ strong {
 .race-asi {
   margin: auto;
   min-width: 200px;
-  max-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
