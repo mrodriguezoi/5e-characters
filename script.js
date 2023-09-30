@@ -228,18 +228,15 @@ function constructRaceDetails(races) {
       type: "list",
       listOptions: raceDetails.subraces,
     };
-    console.log("did subraces");
     constructLiWithTitle(subraceObject);
     featuresList.appendChild(constructLiWithTitle(subraceObject));
     // Language selector
-    console.log("what");
     let languagesFeature = {
       featureName: "Languages",
       text: "You can speak, read, and write Common and one other language that you and your DM agree is appropriate for the character.",
       type: "list",
-      listOptions: languagesJson,
+      listOptions: languages,
     };
-    console.log("did langs");
     featuresList.appendChild(constructLiWithTitle(languagesFeature));
     // Append whole race container to the modal
     raceDetailsContentContainer.appendChild(featuresList);
@@ -261,136 +258,14 @@ function constructRaceDetails(races) {
   }
 }
 
-let languagesJson =
-  '[["dwarvish", "Dwarvish"],["elvish", "Elvish"],["giant", "Giant"],["gnomish", "Gnomish"],["goblin", "Goblin"],["halfling", "Halfling"],["orc", "Orc"],["abyssal", "Abyssal"],["celestial", "Celestial"],["deep-speech", "Deep Speech"],["infernal", "Infernal"],["primordial", "Primordial"],["sylvan", "Sylvan"],["undercommon", "Undercommon"]]';
-languagesJson = JSON.parse(languagesJson);
-let dragonbornArray = [
-  {
-    glossaryType: "race",
-    name: "dragonborn",
-    description:
-      "The dragonborn walk proudly through a world that greets them with fearful incomprehension. Shaped by the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids.",
-    subraces: [
-      ["metallic", "Metallic"],
-      ["chromatic", "Chromatic"],
-      ["gem", "Gem"],
-    ],
-    features: [
-      {
-        featureName: "Age",
-        text: "Young dragonborn grow quickly. They walk hours after hatching, attain the size and development of a 10-year-old human child by the age of 3, and reach adulthood by 15. They live to be around 80.",
-      },
-      {
-        featureName: "Size",
-        text: "Dragonborn are taller and heavier than humans, standing well over 6 feet tall and averaging almost 250 pounds. Your size is Medium.",
-      },
-      {
-        featureName: "Speed",
-        text: "Your walking speed is 30 feet.",
-      },
-    ],
-    subRaceFeatures: [
-      {
-        featureName: "Chromatic Ancestry",
-        text: "You trace your ancestry to a chromatic dragon, granting you a special magical affinity. Choose one type of dragon from the Chromatic Ancestry table. This determines the damage type for your other traits as shown in the table.",
-        type: "list",
-        options: [
-          ["acid", "Black (Acid)"],
-          ["lightning", "Blue (Lightning)"],
-          ["poison", "Green (Poison)"],
-          ["fire", "Red (Fire)"],
-          ["cold", "White (Cold)"],
-        ],
-        dependency: "chromatic",
-      },
-      {
-        featureName: "Breath Weapon",
-        text: "When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in a 30-foot line that is 5 feet wide. Each creature in that area must make a Dexterity saving throw (DC = 8 + your Constitution modifier + your proficiency bonus). On a failed save, the creature takes 1d10 damage of the type associated with your Chromatic Ancestry. On a successful save, it takes half as much damage. This damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10). You can use your Breath Weapon a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
-        dependency: "chromatic",
-      },
-      {
-        featureName: "Draconic Resistance",
-        text: "You have resistance to the damage type associated with your Chromatic Ancestry.",
-        dependency: "chromatic",
-      },
-      {
-        featureName: "Chromatic Warding",
-        text: "Starting at 5th level, as an action, you can channel your draconic energy to protect yourself. For 1 minute, you become immune to the damage type associated with your Chromatic Ancestry. Once you use this trait, you can’t do so again until you finish a long rest.",
-        dependency: "chromatic",
-      },
-      {
-        featureName: "Gem Ancestry",
-        text: "You trace your ancestry to a Gem dragon, granting you a special magical affinity. Choose one type of dragon from the Gem Ancestry table. This determines the damage type for your other traits as shown in the table.",
-        type: "list",
-        options: [
-          ["force", "Amethyst (Force)"],
-          ["radiant", "Crystal (Radiant)"],
-          ["psychic", "Emerald (Psychic)"],
-          ["thunder", "Sapphire (Thunder)"],
-          ["necrotic", "Topaz (Necrotic)"],
-        ],
-        dependency: "gem",
-      },
-      {
-        featureName: "Breath Weapon",
-        text: "When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in a 15-foot cone. Each creature in that area must make a Dexterity saving throw (DC = 8 + your Constitution modifier + your proficiency bonus). On a failed save, the creature takes 1d10 damage of the type associated with your Gem Ancestry. On a successful save, it takes half as much damage. This damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10). You can use your Breath Weapon a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
-        dependency: "gem",
-      },
-      {
-        featureName: "Draconic Resistance",
-        text: "You have resistance to the damage type associated with your Gem Ancestry.",
-        dependency: "gem",
-      },
-      {
-        featureName: "Psionic Mind",
-        text: "You can telepathically speak to any creature you can see within 30 feet of you. You don’t need to share a language with the creature, but the creature must be able to understand at least one language.",
-        dependency: "gem",
-      },
-      {
-        featureName: "Gem Flight",
-        text: "Starting at 5th level, you can use a bonus action to manifest spectral wings on your body. These wings last for 1 minute. For the duration, you gain a flying speed equal to your walking speed and can hover. Once you use this trait, you can’t do so again until you finish a long rest.",
-        dependency: "gem",
-      },
-      {
-        featureName: "Metallic Ancestry",
-        text: "You trace your ancestry to a metallic dragon, granting you a special magical affinity. Choose one type of dragon from the Metallic Ancestry table. This determines the damage type for your other traits as shown in the table.",
-        type: "list",
-        options: [
-          ["fire", "Brass (Fire)"],
-          ["lightning", "Bronze (Lightning)"],
-          ["acid", "Copper (Acid)"],
-          ["fire", "Gold (Fire)"],
-          ["cold", "Silver (Cold)"],
-        ],
-        dependency: "metallic",
-      },
-      {
-        featureName: "Breath Weapon",
-        text: "When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in a 15-foot cone. Each creature in that area must make a Dexterity saving throw (DC = 8 + your Constitution modifier + your proficiency bonus). On a failed save, the creature takes 1d10 damage of the type associated with your Metallic Ancestry. On a successful save, it takes half as much damage. This damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10). You can use your Breath Weapon a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
-        dependency: "metallic",
-      },
-      {
-        featureName: "Draconic Resistance",
-        text: "You have resistance to the damage type associated with your Metallic Ancestry.",
-        dependency: "metallic",
-      },
-      {
-        featureName: "Metallic Breath Weapon",
-        text: "At 5th level, you gain a second breath weapon. When you take the Attack action on your turn, you can replace one of your attacks with an exhalation in a 15-foot cone. The save DC for this breath is 8 + your Constitution modifier + your proficiency bonus. Once you use your Metallic Breath Weapon, you can’t do so again until you finish a long rest. Whenever you use this trait, choose one:",
-        dependency: "metallic",
-        type: "subfeature",
-        options: [
-          {
-            featureName: "Enervating Breath",
-            text: "Each creature in the cone must succeed on a Constitution saving throw or become incapacitated until the start of your next turn.",
-          },
-          {
-            featureName: "Repulsion Breath",
-            text: "Each creature in the cone must succeed on a Strength saving throw or be pushed 20 feet away from you and be knocked prone.",
-          },
-        ],
-      },
-    ],
-  },
-];
-constructRaceDetails(dragonbornArray);
+let languages = [];
+fetch("/languages.json")
+  .then((response) => response.json())
+  .then((data) => (languages = data.languages));
+let races = {};
+fetch("/races.json")
+  .then((response) => response.json())
+  .then((data) => {
+    races = data;
+    constructRaceDetails(races);
+  });
