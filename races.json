@@ -1,0 +1,386 @@
+[
+  {
+    "_id": { "$oid": "65137b5f4e43791967607d74" },
+    "glossaryType": "race",
+    "name": "dragonborn",
+    "description": "The dragonborn walk proudly through a world that greets them with fearful incomprehension. Shaped by the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids.",
+    "subraces": [
+      ["metallic", "Metallic"],
+      ["chromatic", "Chromatic"],
+      ["gem", "Gem"]
+    ],
+    "features": [
+      {
+        "featureName": "Age",
+        "text": "Young dragonborn grow quickly. They walk hours after hatching, attain the size and development of a 10-year-old human child by the age of 3, and reach adulthood by 15. They live to be around 80."
+      },
+      {
+        "featureName": "Size",
+        "text": "Dragonborn are taller and heavier than humans, standing well over 6 feet tall and averaging almost 250 pounds. Your size is Medium."
+      },
+      { "featureName": "Speed", "text": "Your walking speed is 30 feet.", "characterImpact": "speed-base" }
+    ],
+    "subRaceFeatures": [
+      {
+        "featureName": "Chromatic Ancestry",
+        "text": "You trace your ancestry to a chromatic dragon, granting you a special magical affinity. Choose one type of dragon from the Chromatic Ancestry table. This determines the damage type for your other traits as shown in the table.",
+        "type": "list",
+        "characterImpact": "resistance",
+        "listOptions": [
+          ["acid", "Black (Acid)"],
+          ["lightning", "Blue (Lightning)"],
+          ["poison", "Green (Poison)"],
+          ["fire", "Red (Fire)"],
+          ["cold", "White (Cold)"]
+        ],
+        "dependency": "chromatic"
+      },
+      {
+        "featureName": "Breath Weapon",
+        "text": "When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in a 30-foot line that is 5 feet wide. Each creature in that area must make a Dexterity saving throw (DC = 8 + your Constitution modifier + your proficiency bonus). On a failed save, the creature takes 1d10 damage of the type associated with your Chromatic Ancestry. On a successful save, it takes half as much damage. This damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10). You can use your Breath Weapon a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
+        "dependency": "chromatic",
+        "attack": { "damage": "d10", "save": "dex", "ability": "con", "progression": "cantrip" }
+      },
+      {
+        "featureName": "Draconic Resistance",
+        "text": "You have resistance to the damage type associated with your Chromatic Ancestry.",
+        "dependency": "chromatic"
+      },
+      {
+        "featureName": "Chromatic Warding",
+        "text": "Starting at 5th level, as an action, you can channel your draconic energy to protect yourself. For 1 minute, you become immune to the damage type associated with your Chromatic Ancestry. Once you use this trait, you can’t do so again until you finish a long rest.",
+        "dependency": "chromatic"
+      },
+      {
+        "featureName": "Gem Ancestry",
+        "text": "You trace your ancestry to a Gem dragon, granting you a special magical affinity. Choose one type of dragon from the Gem Ancestry table. This determines the damage type for your other traits as shown in the table.",
+        "type": "list",
+        "characterImpact": "resistance",
+        "listOptions": [
+          ["force", "Amethyst (Force)"],
+          ["radiant", "Crystal (Radiant)"],
+          ["psychic", "Emerald (Psychic)"],
+          ["thunder", "Sapphire (Thunder)"],
+          ["necrotic", "Topaz (Necrotic)"]
+        ],
+        "dependency": "gem"
+      },
+      {
+        "featureName": "Breath Weapon",
+        "text": "When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in a 15-foot cone. Each creature in that area must make a Dexterity saving throw (DC = 8 + your Constitution modifier + your proficiency bonus). On a failed save, the creature takes 1d10 damage of the type associated with your Gem Ancestry. On a successful save, it takes half as much damage. This damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10). You can use your Breath Weapon a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
+        "dependency": "gem",
+        "attack": { "damage": "d10", "save": "dex", "ability": "con", "progression": "cantrip" }
+      },
+      {
+        "featureName": "Draconic Resistance",
+        "text": "You have resistance to the damage type associated with your Gem Ancestry.",
+        "dependency": "gem"
+      },
+      {
+        "featureName": "Psionic Mind",
+        "text": "You can telepathically speak to any creature you can see within 30 feet of you. You don’t need to share a language with the creature, but the creature must be able to understand at least one language.",
+        "dependency": "gem"
+      },
+      {
+        "featureName": "Gem Flight",
+        "text": "Starting at 5th level, you can use a bonus action to manifest spectral wings on your body. These wings last for 1 minute. For the duration, you gain a flying speed equal to your walking speed and can hover. Once you use this trait, you can’t do so again until you finish a long rest.",
+        "dependency": "gem"
+      },
+      {
+        "featureName": "Metallic Ancestry",
+        "text": "You trace your ancestry to a metallic dragon, granting you a special magical affinity. Choose one type of dragon from the Metallic Ancestry table. This determines the damage type for your other traits as shown in the table.",
+        "type": "list",
+        "characterImpact": "resistance",
+        "listOptions": [
+          ["fire", "Brass (Fire)"],
+          ["lightning", "Bronze (Lightning)"],
+          ["acid", "Copper (Acid)"],
+          ["fire", "Gold (Fire)"],
+          ["cold", "Silver (Cold)"]
+        ],
+        "dependency": "metallic"
+      },
+      {
+        "featureName": "Breath Weapon",
+        "text": "When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in a 15-foot cone. Each creature in that area must make a Dexterity saving throw (DC = 8 + your Constitution modifier + your proficiency bonus). On a failed save, the creature takes 1d10 damage of the type associated with your Metallic Ancestry. On a successful save, it takes half as much damage. This damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10). You can use your Breath Weapon a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
+        "dependency": "metallic",
+        "attack": { "damage": "d10", "save": "dex", "ability": "con", "progression": "cantrip" }
+      },
+      {
+        "featureName": "Draconic Resistance",
+        "text": "You have resistance to the damage type associated with your Metallic Ancestry.",
+        "dependency": "metallic"
+      },
+      {
+        "featureName": "Metallic Breath Weapon",
+        "text": "At 5th level, you gain a second breath weapon. When you take the Attack action on your turn, you can replace one of your attacks with an exhalation in a 15-foot cone. The save DC for this breath is 8 + your Constitution modifier + your proficiency bonus. Once you use your Metallic Breath Weapon, you can’t do so again until you finish a long rest. Whenever you use this trait, choose one:",
+        "dependency": "metallic",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "Enervating Breath",
+            "attack": { "save": "con", "ability": "con" },
+            "text": "Each creature in the cone must succeed on a Constitution saving throw or become incapacitated until the start of your next turn."
+          },
+          {
+            "featureName": "Repulsion Breath",
+            "attack": { "save": "con", "ability": "con" },
+            "text": "Each creature in the cone must succeed on a Strength saving throw or be pushed 20 feet away from you and be knocked prone."
+          }
+        ]
+      }
+    ],
+    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/340/420/618/636272677995471928.png"
+  },
+  {
+    "_id": { "$oid": "6514c1704e43791967607e5a" },
+    "glossaryType": "race",
+    "name": "dwarf",
+    "description": "Kingdoms rich in ancient grandeur, halls carved into the roots of mountains, the echoing of picks and hammers in deep mines and blazing forges, a commitment to clan and tradition, and a burning hatred of goblins and orcs – these common threads unite all dwarves.",
+    "subraces": [
+      ["hill", "Hill"],
+      ["mountain", "Mountain"]
+    ],
+    "features": [
+      {
+        "featureName": "Age",
+        "text": "Dwarves mature at the same rate as humans, but they're considered young until they reach the age of 50. On average, they live about 350 years."
+      },
+      {
+        "featureName": "Size",
+        "text": "Dwarves stand between 4 and 5 feet tall and average about 150 pounds. Your size is Medium."
+      },
+      { "featureName": "Speed", "text": "Your base walking speed is 25 feet.", "characterImpact": "speed-base" },
+      { "featureName": "Heavy Armor Training", "text": "Your speed is not reduced by wearing heavy armor." },
+      {
+        "featureName": "Darkvision",
+        "text": "Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+      },
+      {
+        "featureName": "Dwarven Resilience",
+        "text": "You have advantage on saving throws against poison, and you have resistance against poison damage.",
+        "characterImpact": "resistance"
+      },
+      {
+        "featureName": "Dwarven Combat Training",
+        "text": "You have proficiency with the battleaxe, handaxe, lighthammer, and warhammer.",
+        "characterImpact": "proficiency"
+      },
+      {
+        "featureName": "Tool Proficiency",
+        "text": "You gain proficiency with the artisan's tools of your choice:",
+        "type": "list",
+        "characterImpact": "tool",
+        "listOptions": [
+          ["smith-tools", "Smith's Tools"],
+          ["brewer-tools", "Brewer's Tools"],
+          ["mason-tools", "Mason's Tools"]
+        ]
+      },
+      {
+        "featureName": "Stonecunning",
+        "text": "Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus."
+      }
+    ],
+    "subRaceFeatures": [
+      {
+        "featureName": "Dwarven Toughness",
+        "text": "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.",
+        "health": { "ammount": 1, "progression": "eachLevel" },
+        "dependency": "hill"
+      },
+      {
+        "featureName": "Dwarven Armor Training",
+        "text": "You have proficiency with light and medium armor.",
+        "dependency": "mountain"
+      }
+    ],
+    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/254/420/618/636271781394265550.png"
+  },
+  {
+    "_id": { "$oid": "6514c9954e43791967607e5d" },
+    "glossaryType": "race",
+    "name": "elf",
+    "description": "Elves are a magical people of otherworldly grace, living in places of ethereal beauty, in the midst of ancient forests or in silvery spires glittering with faerie light, where soft music drifts through the air and gentle fragrances waft on the breeze. Elves love nature and magic, art and artistry, music and poetry.",
+    "subraces": [
+      ["dark", "Dark"],
+      ["high", "High"],
+      ["wood", "Wood"]
+    ],
+    "features": [
+      {
+        "featureName": "Age",
+        "text": "Although elves reach physical maturity at about the same age as humans, the elven understanding of adulthood goes beyond physical growth to encompass worldly experience. An elf typically claims adulthood and an adult name around the age of 100 and can live to be 750 years old."
+      },
+      {
+        "featureName": "Size",
+        "text": "Elves range from under 5 to over 6 feet tall and have slender builds. Your size is Medium."
+      },
+      { "featureName": "Speed", "text": "Your walking speed is 30 feet.", "characterImpact": "speed-base" },
+      {
+        "featureName": "Darkvision",
+        "text": "Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+      },
+      {
+        "featureName": "Fey Ancestry",
+        "text": "You have advantage on saving throws against being charmed, and magic can't put you to sleep."
+      },
+      {
+        "featureName": "Trance",
+        "text": "Elves do not sleep. Instead they meditate deeply, remaining semi-conscious, for 4 hours a day. The Common word for this meditation is 'trance'. While meditating, you dream after a fashion; such dreams are actually mental exercises that have become reflexive after years of practice. After resting in this way, you gain the same benefit a human would from 8 hours of sleep."
+      },
+      {
+        "featureName": "Keen Senses",
+        "text": "You have proficiency in the Perception skill.",
+        "characterImpact": "skill"
+      }
+    ],
+    "subRaceFeatures": [
+      {
+        "featureName": "Superior Darkvision",
+        "text": "Your darkvision has a range of 120 feet, instead of 60.",
+        "dependency": "dark"
+      },
+      {
+        "featureName": "Drow Magic",
+        "text": "You know the Dancing Lights cantrip. When you reach 3rd level, you can cast the Faerie Fire spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the Darkness spell onceand regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells.",
+        "dependency": "dark",
+        "spells": [
+          { "spell": "dancingLights", "level": 0 },
+          { "spell": "faerieFire", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+          { "spell": "darkness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+        ]
+      },
+      {
+        "featureName": "Drow Weapon Fighting",
+        "text": "You have proficiency with rapiers, shortswords, and hand crossbows.",
+        "dependency": "dark",
+        "characterImpact": "proficiency"
+      },
+      {
+        "featureName": "Cantrip",
+        "text": "You know one cantrip of your choice from the Wizard spell list. Intelligence is your spellcasting ability for it.",
+        "dependency": "high",
+        "characterImpact": "spell-picker"
+      },
+      {
+        "featureName": "Elf Weapon Training",
+        "text": "You have proficiency with the longsword, shortsword, shortbow, and longbow.",
+        "dependency": "high",
+        "characterImpact": "proficiency"
+      },
+      {
+        "featureName": "Extra Language",
+        "text": "You can read, speak, and write one additional language of your choice.",
+        "dependency": "high",
+        "characterImpact": "language",
+        "type": "list",
+        "listOptions": [
+          ["dwarvish", "Dwarvish"],
+          ["giant", "Giant"],
+          ["gnomish", "Gnomish"],
+          ["goblin", "Goblin"],
+          ["halfling", "Halfling"],
+          ["orc", "Orc"],
+          ["abyssal", "Abyssal"],
+          ["celestial", "Celestial"],
+          ["deep-speech", "Deep Speech"],
+          ["infernal", "Infernal"],
+          ["primordial", "Primordial"],
+          ["sylvan", "Sylvan"],
+          ["undercommon", "Undercommon"]
+        ]
+      },
+      {
+        "featureName": "Elf Weapon Training",
+        "text": "You have proficiency with the longsword, shortsword, shortbow, and longbow.",
+        "dependency": "wood",
+        "characterImpact": "proficiency"
+      },
+      {
+        "featureName": "Fleet of Foot",
+        "text": "Your base walking speed increases to 35 feet.",
+        "dependency": "wood",
+        "characterImpact": "speed-base"
+      },
+      {
+        "featureName": "Mask of the Wild",
+        "text": "You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.",
+        "dependency": "wood"
+      }
+    ],
+    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/7/639/420/618/636287075350739045.png"
+  },
+  {
+    "_id": { "$oid": "6514e5894e43791967607e5f" },
+    "glossaryType": "race",
+    "name": "gnome",
+    "description": "A constant hum of busy activity pervades the warrens and neighborhoods where gnomes form their close-knit communities. Louder sounds punctuate the hum: a crunch of grinding gears here, a minor explosion there, a yelp of surprise or triumph, and especially bursts of laughter. Gnomes take delight in life, enjoying every moment of invention, exploration, investigation, creation, and play.",
+    "subraces": [
+      ["forest", "Forest"],
+      ["rock", "Rock"]
+    ],
+    "features": [
+      {
+        "featureName": "Age",
+        "text": "Gnomes mature at the same rate as humans, and most are expected to settle into adult life around the age of 40. They can live to 350 years on average, but it's not too uncommon for them to reach 500 years of age."
+      },
+      {
+        "featureName": "Size",
+        "text": "Gnomes are between 3 and 4 feet tall and weigh around 40 pounds. Your size is Small."
+      },
+      { "featureName": "Speed", "text": "Your base walking speed is 25 feet.", "characterImpact": "speed-base" },
+      {
+        "featureName": "Darkvision",
+        "text": "Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+      },
+      {
+        "featureName": "Gnome Cunning",
+        "text": "You have advantage on all Intelligence, Wisdom, and Charisma saves against magic."
+      }
+    ],
+    "subRaceFeatures": [
+      {
+        "featureName": "Natural Illusionist",
+        "text": "You know the Minor Illusion cantrip. Intelligence is your spellcasting modifier for it.",
+        "spells": [{ "spell": "minorIllusion", "level": 0 }],
+        "dependency": "forest"
+      },
+      {
+        "featureName": "Speak with Small Beasts",
+        "text": "Through sound and gestures, you may communicate simple ideas with Small or smaller beasts.",
+        "dependency": "forest"
+      },
+      {
+        "featureName": "Artificer's Lore",
+        "text": "Whenever you make an Intelligence (History) check related to magical, alchemical, or technological items, you can add twice your proficiency bonus instead of any other proficiency bonus that may apply.",
+        "dependency": "rock"
+      },
+      {
+        "featureName": "Thinker",
+        "text": "You have proficiency with artisan tools (tinker's tools). Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have up to three such devices active at a time. When you create a device, choose one of the following options:",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "Clockwork Toy",
+            "text": "This toy is a clockwork animal, monster, or person, such as a frog, mouse, bird, dragon, or soldier. When placed on the ground, the toy moves 5 feet across the ground on each of your turns in a random direction. It makes noises as appropriate to the creature it represents."
+          },
+          {
+            "featureName": "Fire Starter",
+            "text": "The device produces a miniature flame, which you can use to light a candle, torch, or campfire. Using the device requires your action."
+          },
+          {
+            "featureName": "Music Box",
+            "text": "When opened, this music box plays a single song at a moderate volume. The box stops playing when it reaches the song's end or when it is closed."
+          },
+          {
+            "featureName": "",
+            "text": "At your DM's discretion, you may make other objects with effects similar in power to these. The Prestidigitation cantrip is a good baseline for such effects."
+          }
+        ],
+        "dependency": "rock"
+      }
+    ],
+    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/334/420/618/636272671553055253.png"
+  }
+]
