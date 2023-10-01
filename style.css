@@ -497,6 +497,44 @@ li > ul > li {
 }
 
 /* Class page styles */
+.class-modal {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--modal-color);
+  z-index: 9999;
+  width: 85vw;
+  margin: 5% auto;
+  padding: 15px;
+  border-radius: 5px;
+  min-height: 666px;
+  max-height: 666px;
+  /* position: fixed; */
+  left: 7.5vw;
+  justify-content: space-between;
+}
 .class-selector {
   display: flex;
+  max-height: 590px;
+}
+.class-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  width: 150px;
+  overflow-y: auto;
+}
+.class-list > div {
+  display: flex;
+  width: 150px;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+}
+.class-details {
+  flex: 1;
+  background-color: var(--object-color);
+  border-radius: 5px;
+}
+#selected-class-button {
+  background-color: var(--object-color);
 }
