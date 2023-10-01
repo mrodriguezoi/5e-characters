@@ -1,0 +1,98 @@
+{
+  "name": "wizard",
+  "description": "Wizards are supreme magic-users, defined and united as a class by the spells they cast. Drawing on the subtle weave of magic that permeates the cosmos, wizards cast spells of explosive fire, arcing lightning, subtle deception, brute-force mind control, and much more.",
+
+  "features": [
+    {
+      "featureName": "",
+      "text": "As a wizard, you gain the following class features.",
+      "type": "subfeature",
+      "options": [
+        {
+          "featureName": "Hit Points",
+          "text": "",
+          "type": "subfeature",
+          "characterImpact": "none",
+          "options": [
+            { "featureName": "Hit Dice", "text": "1d6 per Wizard level" },
+            { "featureName": "Hit Points at level 1", "text": "6 + your constitution modifier" },
+            {
+              "featureName": "Hit Points at Higher Levels",
+              "text": "1d6 (or 4) + your Constitution modifier per wizard level after 1st"
+            }
+          ]
+        },
+        {
+          "featureName": "Proficiencies",
+          "text": "",
+          "type": "subfeature",
+          "options": [
+            { "featureName": "Armor", "text": "None", "characterImpact": "proficiency" },
+            {
+              "featureName": "Weapons",
+              "text": "Daggers, darts, slings, quarterstaffs, light crossbows",
+              "characterImpact": "proficiency"
+            },
+            { "featureName": "Tools", "text": "None", "characterImpact": "proficiency" },
+            { "featureName": "Saving Throws", "text": "Intelligence, Wisdom", "characterImpact": "proficiency" },
+
+            {
+              "featureName": "Skills",
+              "text": "Choose two from the following:",
+              "type": "checkbox",
+              "limit": 2,
+              "options": [
+                ["arcana", "Arcana"],
+                ["history", "History"],
+                ["insight", "Insight"],
+                ["investigation", "Investigation"],
+                ["medicine", "Medicine"],
+                ["religion", "Religion"]
+              ]
+            }
+          ]
+        },
+        {
+          "featureName": "Equipment",
+          "text": "You start with the following equipment, in addition to the equipment granted by your background:",
+          "type": "subfeature",
+          "characterImpact": "equipment",
+          "options": [
+            {
+              "featureName": "",
+              "text": "",
+              "type": "radio",
+              "options": [
+                { "featureName": "", "text": "A quarterstaff" },
+                { "featureName": "", "text": "A dagger" }
+              ]
+            },
+            {
+              "featureName": "",
+              "text": "",
+              "type": "radio",
+              "options": [
+                { "featureName": "", "text": "A component pouch" },
+                { "featureName": "", "text": "An arcane focus" }
+              ]
+            },
+            {
+              "featureName": "",
+              "text": "",
+              "type": "radio",
+              "options": [
+                { "featureName": "", "text": "A component pouch" },
+                { "featureName": "", "text": "An arcane focus" }
+              ]
+            },
+            { "featureName": "Hit Points at level 1", "text": "6 + your constitution modifier" },
+            {
+              "featureName": "Hit Points at Higher Levels",
+              "text": "1d6 (or 4) + your Constitution modifier per wizard level after 1st"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

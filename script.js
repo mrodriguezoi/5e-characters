@@ -206,6 +206,8 @@ function createCheckboxSelector(array, limit, featureName) {
   checkboxContainer.appendChild(form);
   return checkboxContainer;
 }
+function createTable()
+// HERE
 function constructLiWithTitle(feature) {
   let li = document.createElement("li");
   let strong = document.createElement("strong");
@@ -232,6 +234,9 @@ function constructLiWithTitle(feature) {
     feature.options.forEach((option) => subfeatureContainer.appendChild(constructLiWithTitle(option)));
     li.appendChild(subfeatureContainer);
   }
+  if (feature.type === "table") {
+    li.appendChild(createTable(feature.table))
+  } 
 
   return li;
 }
@@ -366,7 +371,6 @@ function constructClassDetails(classes) {
   // let raceAsiSidebar = document.querySelector(".race-asi");
   classes.forEach((individualClass) => {
     // Adding Element to the Class List
-    // here
     let classListContainer = document.createElement("div");
     classListContainer.classList.add(`list-${individualClass.name}`);
     let classListButton = document.createElement("button");
@@ -377,28 +381,21 @@ function constructClassDetails(classes) {
 
     // Creating Class Details containers
     let classDetailsContainer = document.createElement("div");
-    let classDetailsContentContainer = document.createElement("div");
-    raceDetailsContainer.classList.add("race-details", raceDetails.name, "hidden");
-    raceDetailsContentContainer.classList.add("race-details-content");
+    // let classDetailsContentContainer = document.createElement("div");
+    classDetailsContainer.classList.add("class-details", raceDetails.name, "hidden" , "fade-off");
+    // classDetailsContentContainer.classList.add("class-details-content");
     // Adding race description
-    let raceDescriptionP = document.createElement("p");
-    let raceDescriptionText = document.createTextNode(raceDetails.description);
-    raceDescriptionP.appendChild(raceDescriptionText);
-    raceDetailsContentContainer.appendChild(raceDescriptionP);
-    // Adding header for features
-    let featuresHeader = document.createElement("header");
-    let featuresHeaderH2 = document.createElement("h2");
-    let featuresHeaderText = document.createTextNode("Features");
-    featuresHeaderH2.appendChild(featuresHeaderText);
-    featuresHeader.appendChild(featuresHeaderH2);
-    raceDetailsContentContainer.appendChild(featuresHeader);
+    let classDescriptionP = document.createElement("p");
+    let classDescriptionText = document.createTextNode(individualClass.description);
+    classDescriptionP.appendChild(classDescriptionText);
+    classDetailsContainer.appendChild(classDescriptionP);
     // Adding container for features
     let featuresList = document.createElement("ul");
-    featuresList.classList.add("race-details-features");
-    // Appending each race-level feature to the list
-    raceDetails.features.forEach((feature) => {
+    featuresList.classList.add("class-features");
+    individualClass.features.forEach((feature) => {
       featuresList.appendChild(constructLiWithTitle(feature));
     });
+    // define table constructor
     // Appending a Sub-race selector to the list
     let capitalizedRaceName = raceDetails.name.charAt(0).toUpperCase() + raceDetails.name.slice(1);
     let subraceObject = {

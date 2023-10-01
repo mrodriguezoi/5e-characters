@@ -547,6 +547,8 @@ li > ul > li {
   flex: 1;
   background-color: var(--object-color);
   border-radius: 5px;
+  overflow-y: scroll;
+  padding: 5px;
 }
 #selected-class-button {
   background-color: var(--object-color);
