@@ -7,6 +7,7 @@
   padding: 0;
   box-sizing: border-box;
   color: rgba(255, 255, 255, 0.576);
+  transition: opacity 0.5s;
 }
 body {
   display: flex;
@@ -339,6 +340,7 @@ strong {
   border: 2px solid var(--object-color);
   border-radius: 5px;
   overflow: hidden;
+  background-color: var(--object-color);
 }
 
 .race-list {
@@ -398,7 +400,8 @@ strong {
   size: 20px;
 }
 .race-asi {
-  margin: auto;
+  flex: 1;
+  justify-content: flex-end;
   min-width: 200px;
   display: flex;
   flex-direction: column;
@@ -408,6 +411,7 @@ strong {
 }
 #selected-race-image {
   width: 100%;
+  /* height: 345px; */
 }
 .race-details-features strong {
   font-size: 16px;
@@ -443,6 +447,7 @@ li > ul > li {
 }
 .race-image > img {
   max-width: 100%;
+  height: 345px;
 }
 .checkbox-form {
   display: flex;
@@ -466,6 +471,7 @@ li > ul > li {
   border-radius: 5px;
   transition: background-color 1s;
   padding: 10px;
+  margin-top: 10px;
 }
 .continue-button-container:hover {
   background-color: var(--object-color);
@@ -473,11 +479,18 @@ li > ul > li {
 .continue-button-container > a {
   text-decoration: none;
 }
+
 /* Default Hidding */
 
 .hidden {
   display: none;
 }
+.fade-off {
+  opacity: 0;
+}
+/* .fade-on{
+  opacity:1
+} */
 
 /* Default Hidding */
 /* End of race selector styling */
