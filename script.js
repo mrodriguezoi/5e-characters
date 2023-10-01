@@ -110,15 +110,29 @@ for (let i = 0; i <= 1; i++) {
 
 // Function to show selected option only on a list
 function showListOptionDetails(listContainer, option, idToSet) {
-  for (let i = 0; i <= listContainer.length - 1; i++) {
-    if (Array.from(listContainer[i].classList).includes(option)) {
-      listContainer[i].classList.remove("hidden");
-      listContainer[i].setAttribute("id", idToSet);
-    } else {
-      listContainer[i].classList.add("hidden");
-      listContainer[i].removeAttribute("id");
+  for (let i = 0; i < listContainer.length; i++) {
+    if (!Array.from(listContainer[i].classList).includes(option)) {
+      listContainer[i].classList.add("fade-off");
     }
   }
+  setTimeout(() => {
+    for (let i = 0; i < listContainer.length; i++) {
+      if (Array.from(listContainer[i].classList).includes(option)) {
+        listContainer[i].classList.remove("hidden");
+        listContainer[i].setAttribute("id", idToSet);
+      } else {
+        listContainer[i].classList.add("hidden");
+        listContainer[i].removeAttribute("id");
+      }
+    }
+  }, 500);
+  setTimeout(() => {
+    for (let i = 0; i < listContainer.length; i++) {
+      if (Array.from(listContainer[i].classList).includes(option)) {
+        listContainer[i].classList.remove("fade-off");
+      }
+    }
+  }, 1000);
 }
 
 // Race Details functions:
@@ -239,7 +253,7 @@ function constructRaceDetails(races) {
     // Creating Race Details containers
     let raceDetailsContainer = document.createElement("div");
     let raceDetailsContentContainer = document.createElement("div");
-    raceDetailsContainer.classList.add("race-details", raceDetails.name, "hidden");
+    raceDetailsContainer.classList.add("race-details", raceDetails.name, "hidden", "fade-off");
     raceDetailsContentContainer.classList.add("race-details-content");
     // Adding race description
     let raceDescriptionP = document.createElement("p");
@@ -294,7 +308,7 @@ function constructRaceDetails(races) {
     raceSelector.appendChild(raceDetailsContainer);
     // Adding image to sidebar
     let raceImage = createImage(raceDetails.imgLink, `${raceDetails.name} portrait`);
-    raceImage.classList.add(raceDetails.name, "hidden");
+    raceImage.classList.add(raceDetails.name, "hidden", "fade-off");
     raceAsiSidebar.prepend(raceImage);
   });
   // Adding Event Listener to Buttons
