@@ -344,3 +344,116 @@ fetch(baseURI + "races.json")
     races = data;
     constructRaceDetails(races);
   });
+
+// CLASS PAGE
+
+function constructClassDetails(classes) {
+  let classList = document.querySelector(".class-list");
+  // let raceAsiSidebar = document.querySelector(".race-asi");
+  classes.forEach((individualClass) => {
+    // Adding Element to the Class List
+    // here
+    let classListContainer = document.createElement("div");
+    classListContainer.classList.add(`list-${individualClass.name}`);
+    let classListButton = document.createElement("button");
+    let classListButtonText = document.createTextNode(individualClass.name);
+    classListButton.appendChild(classListButtonText);
+    classListContainer.appendChild(classListButton);
+    classList.appendChild(raceListContainer);
+
+    // Creating Class Details containers
+    let classDetailsContainer = document.createElement("div");
+    let classDetailsContentContainer = document.createElement("div");
+    raceDetailsContainer.classList.add("race-details", raceDetails.name, "hidden");
+    raceDetailsContentContainer.classList.add("race-details-content");
+    // Adding race description
+    let raceDescriptionP = document.createElement("p");
+    let raceDescriptionText = document.createTextNode(raceDetails.description);
+    raceDescriptionP.appendChild(raceDescriptionText);
+    raceDetailsContentContainer.appendChild(raceDescriptionP);
+    // Adding header for features
+    let featuresHeader = document.createElement("header");
+    let featuresHeaderH2 = document.createElement("h2");
+    let featuresHeaderText = document.createTextNode("Features");
+    featuresHeaderH2.appendChild(featuresHeaderText);
+    featuresHeader.appendChild(featuresHeaderH2);
+    raceDetailsContentContainer.appendChild(featuresHeader);
+    // Adding container for features
+    let featuresList = document.createElement("ul");
+    featuresList.classList.add("race-details-features");
+    // Appending each race-level feature to the list
+    raceDetails.features.forEach((feature) => {
+      featuresList.appendChild(constructLiWithTitle(feature));
+    });
+    // Appending a Sub-race selector to the list
+    let capitalizedRaceName = raceDetails.name.charAt(0).toUpperCase() + raceDetails.name.slice(1);
+    let subraceObject = {
+      featureName: "Sub-races:",
+      text: ` Select a sub-race for your ${capitalizedRaceName}.`,
+      type: "list",
+      listOptions: raceDetails.subraces,
+    };
+    if (raceDetails.subRaceFeatures !== undefined) {
+      let subraceDisplay = constructLiWithTitle(subraceObject);
+      subraceDisplay.classList.add("subclass-select");
+      featuresList.appendChild(subraceDisplay);
+    }
+    // Language selector
+    let languagesFeature = {
+      featureName: "Languages",
+      text: "You can speak, read, and write Common and one other language that you and your DM agree is appropriate for the character.",
+      type: "list",
+      listOptions: languages,
+    };
+    featuresList.appendChild(constructLiWithTitle(languagesFeature));
+    // Construct Sub-race features
+    if (raceDetails.subRaceFeatures !== undefined) {
+      raceDetails.subRaceFeatures.forEach((feature) => {
+        featuresList.appendChild(constructLiWithTitle(feature));
+      });
+    }
+    // Append whole race container to the modal
+    raceDetailsContentContainer.appendChild(featuresList);
+    raceDetailsContainer.appendChild(raceDetailsContentContainer);
+    const raceSelector = document.querySelector(".race-selector");
+    raceSelector.appendChild(raceDetailsContainer);
+    // Adding image to sidebar
+    let raceImage = createImage(raceDetails.imgLink, `${raceDetails.name} portrait`);
+    raceImage.classList.add(raceDetails.name, "hidden");
+    raceAsiSidebar.prepend(raceImage);
+  });
+  // Adding Event Listener to Buttons
+  let raceImages = document.querySelectorAll(".race-asi > img");
+  let raceListItems = document.querySelectorAll(".race-list > div > button");
+  let allRaces = document.querySelectorAll(".race-details");
+  for (let i = 0; i <= raceListItems.length - 1; i++) {
+    raceListItems[i].addEventListener("click", () => {
+      for (let j = 0; j <= raceListItems.length - 1; j++) {
+        raceListItems[j].removeAttribute("id");
+      }
+      event.target.setAttribute("id", "selected-race-button");
+      showListOptionDetails(allRaces, event.target.innerText.toLowerCase(), "selected-race");
+      showListOptionDetails(raceImages, event.target.innerText.toLowerCase(), "selected-race-image");
+    });
+  }
+
+  // Adding event to hide/unhide subclass features
+  let subclassSelectors = document.querySelectorAll(".subclass-select > select");
+  for (let j = 0; j < subclassSelectors.length; j++) {
+    subclassSelectors[j].addEventListener("change", () => {
+      let raceDetailsFeatures = document.querySelector("#selected-race .race-details-features").children;
+      for (let i = 0; i < raceDetailsFeatures.length; i++) {
+        if (
+          raceDetailsFeatures[i].classList.length >= 1 &&
+          !Array.from(raceDetailsFeatures[i].classList).includes("subclass-select")
+        ) {
+          if (Array.from(raceDetailsFeatures[i].classList).includes(event.target.value)) {
+            raceDetailsFeatures[i].classList.remove("hidden");
+          } else {
+            raceDetailsFeatures[i].classList.add("hidden");
+          }
+        }
+      }
+    });
+  }
+}
