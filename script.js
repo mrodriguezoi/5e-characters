@@ -1,4 +1,8 @@
 const baseURI = document.baseURI;
+let languages = [];
+fetch(baseURI + "languages.json")
+  .then((response) => response.json())
+  .then((data) => (languages = data.languages));
 // Create a character:
 
 // Function to create new stats and event to trigger it
@@ -347,10 +351,6 @@ function constructRaceDetails(races) {
   }
 }
 
-let languages = [];
-fetch(baseURI + "languages.json")
-  .then((response) => response.json())
-  .then((data) => (languages = data.languages));
 let races = {};
 fetch(baseURI + "races.json")
   .then((response) => response.json())
