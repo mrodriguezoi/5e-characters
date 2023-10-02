@@ -9,7 +9,7 @@ fetch("languages.json")
 function createNewStats() {
   let stats = [];
   let sum = 0;
-  while (sum < 70) {
+  while (sum <= 70) {
     stats = [];
     for (let i = 0; i <= 5; i++) {
       let roll1 = Math.ceil(Math.random() * 6),
@@ -326,7 +326,7 @@ function addRaceEventListeners() {
   let raceImages = document.querySelectorAll(".race-asi > img");
   let raceListItems = document.querySelectorAll(".race-list > div > button");
   let allRaces = document.querySelectorAll(".race-details");
-  for (let i = 0; i <= raceListItems.length - 1; i++) {
+  for (let i = 0; i < raceListItems.length; i++) {
     raceListItems[i].addEventListener("click", () => {
       for (let j = 0; j <= raceListItems.length - 1; j++) {
         raceListItems[j].removeAttribute("id");
@@ -366,10 +366,10 @@ fetch(baseURI + "races.json")
     constructDetails(races, ".race-list", ".race-selector");
     addRaceEventListeners();
   });
-let classes = [];
-fetch("/classes.json")
-  .then((response) => response.json())
-  .then((data) => {
-    classes = data;
-    constructDetails(classes, ".class-list", ".class-container");
-  });
+// let classes = [];
+// fetch("/classes.json")
+//   .then((response) => response.json())
+//   .then((data) => {
+//     classes = data;
+//     constructDetails(classes, ".class-list", ".class-container");
+//   });
