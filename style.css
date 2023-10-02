@@ -528,6 +528,7 @@ li > ul > li {
 .class-selector {
   display: flex;
   max-height: 590px;
+  flex: 1;
 }
 .class-list {
   display: flex;
@@ -545,11 +546,22 @@ li > ul > li {
 }
 .class-details {
   flex: 1;
-  background-color: var(--object-color);
-  border-radius: 5px;
   overflow-y: scroll;
   padding: 5px;
 }
 #selected-class-button {
   background-color: var(--object-color);
+}
+.subclass-selector {
+  max-width: 150px;
+  min-width: 150px;
+  order: 9999;
+}
+.class-container {
+  display: flex;
+  max-height: 590px;
+  flex: 1;
+  background-color: var(--object-color);
+  border-radius: 5px;
+  padding: 5px;
 }

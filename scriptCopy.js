@@ -1,116 +1,116 @@
 const baseURI = document.baseURI;
-let languages = [];
-fetch("languages.json")
-  .then((response) => response.json())
-  .then((data) => (languages = data.languages));
+// let languages = [];
+// fetch("languages.json")
+//   .then((response) => response.json())
+//   .then((data) => (languages = data.languages));
 // Create a character:
 
 // Function to create new stats and event to trigger it
-function createNewStats() {
-  let stats = [];
-  let sum = 0;
-  while (sum < 70) {
-    stats = [];
-    for (let i = 0; i <= 5; i++) {
-      let roll1 = Math.ceil(Math.random() * 6),
-        roll2 = Math.ceil(Math.random() * 6),
-        roll3 = Math.ceil(Math.random() * 6),
-        roll4 = Math.ceil(Math.random() * 6);
-      stat = roll1 + roll2 + roll3 + roll4 - Math.min(roll1, roll2, roll3, roll4);
-      stats.push(stat);
-    }
-    sum = stats.reduce((accumulator, currentValue) => accumulator + currentValue);
-  }
-  return stats;
-}
-document.querySelector(".reroll-stats-button button").addEventListener("click", () => {
-  let statsPage = document.querySelectorAll(".stats-selector-stat .stat-value p");
-  let newStats = createNewStats();
-  for (let i = 0; i <= 5; i++) {
-    statsPage[i].innerText = newStats[i];
-  }
-});
-document.querySelector(".reroll-stats-button button").click();
+// function createNewStats() {
+//   let stats = [];
+//   let sum = 0;
+//   while (sum < 70) {
+//     stats = [];
+//     for (let i = 0; i <= 5; i++) {
+//       let roll1 = Math.ceil(Math.random() * 6),
+//         roll2 = Math.ceil(Math.random() * 6),
+//         roll3 = Math.ceil(Math.random() * 6),
+//         roll4 = Math.ceil(Math.random() * 6);
+//       stat = roll1 + roll2 + roll3 + roll4 - Math.min(roll1, roll2, roll3, roll4);
+//       stats.push(stat);
+//     }
+//     sum = stats.reduce((accumulator, currentValue) => accumulator + currentValue);
+//   }
+//   return stats;
+// }
+// document.querySelector(".reroll-stats-button button").addEventListener("click", () => {
+//   let statsPage = document.querySelectorAll(".stats-selector-stat .stat-value p");
+//   let newStats = createNewStats();
+//   for (let i = 0; i <= 5; i++) {
+//     statsPage[i].innerText = newStats[i];
+//   }
+// });
+// document.querySelector(".reroll-stats-button button").click();
 
 // Logic for Selecting Stats on the Stat container
-function hideSelectedStatsOptions(containerClass) {
-  let selectedOptions = [];
-  let targetSelects = document.querySelectorAll(containerClass + " select");
-  for (let j = 0; j < targetSelects.length; j++) {
-    selectedOptions.push(targetSelects[j].value);
-  }
-  let optionsStr = document.querySelectorAll(containerClass + " .option-str");
-  let optionsDex = document.querySelectorAll(containerClass + " .option-dex");
-  let optionsCon = document.querySelectorAll(containerClass + " .option-con");
-  let optionsInt = document.querySelectorAll(containerClass + " .option-int");
-  let optionsWis = document.querySelectorAll(containerClass + " .option-wis");
-  let optionsCha = document.querySelectorAll(containerClass + " .option-cha");
-  if (selectedOptions.includes("str")) {
-    for (let i = 0; i < optionsStr.length; i++) {
-      optionsStr[i].classList.add("hidden");
-    }
-  } else {
-    for (let i = 0; i < optionsStr.length; i++) {
-      optionsStr[i].classList.remove("hidden");
-    }
-  }
-  if (selectedOptions.includes("dex")) {
-    for (let i = 0; i < optionsDex.length; i++) {
-      optionsDex[i].classList.add("hidden");
-    }
-  } else {
-    for (let i = 0; i < optionsDex.length; i++) {
-      optionsDex[i].classList.remove("hidden");
-    }
-  }
-  if (selectedOptions.includes("con")) {
-    for (let i = 0; i < optionsCon.length; i++) {
-      optionsCon[i].classList.add("hidden");
-    }
-  } else {
-    for (let i = 0; i < optionsCon.length; i++) {
-      optionsCon[i].classList.remove("hidden");
-    }
-  }
-  if (selectedOptions.includes("int")) {
-    for (let i = 0; i < optionsInt.length; i++) {
-      optionsInt[i].classList.add("hidden");
-    }
-  } else {
-    for (let i = 0; i < optionsInt.length; i++) {
-      optionsInt[i].classList.remove("hidden");
-    }
-  }
-  if (selectedOptions.includes("wis")) {
-    for (let i = 0; i < optionsWis.length; i++) {
-      optionsWis[i].classList.add("hidden");
-    }
-  } else {
-    for (let i = 0; i < optionsWis.length; i++) {
-      optionsWis[i].classList.remove("hidden");
-    }
-  }
-  if (selectedOptions.includes("cha")) {
-    for (let i = 0; i < optionsCha.length; i++) {
-      optionsCha[i].classList.add("hidden");
-    }
-  } else {
-    for (let i = 0; i < optionsCha.length; i++) {
-      optionsCha[i].classList.remove("hidden");
-    }
-  }
-}
-let statAllocators = document.querySelectorAll(".stats-selector-stat select");
-for (let i = 0; i <= 5; i++) {
-  statAllocators[i].addEventListener("change", () => hideSelectedStatsOptions(".stats-selector"));
-}
+// function hideSelectedStatsOptions(containerClass) {
+//   let selectedOptions = [];
+//   let targetSelects = document.querySelectorAll(containerClass + " select");
+//   for (let j = 0; j < targetSelects.length; j++) {
+//     selectedOptions.push(targetSelects[j].value);
+//   }
+//   let optionsStr = document.querySelectorAll(containerClass + " .option-str");
+//   let optionsDex = document.querySelectorAll(containerClass + " .option-dex");
+//   let optionsCon = document.querySelectorAll(containerClass + " .option-con");
+//   let optionsInt = document.querySelectorAll(containerClass + " .option-int");
+//   let optionsWis = document.querySelectorAll(containerClass + " .option-wis");
+//   let optionsCha = document.querySelectorAll(containerClass + " .option-cha");
+//   if (selectedOptions.includes("str")) {
+//     for (let i = 0; i < optionsStr.length; i++) {
+//       optionsStr[i].classList.add("hidden");
+//     }
+//   } else {
+//     for (let i = 0; i < optionsStr.length; i++) {
+//       optionsStr[i].classList.remove("hidden");
+//     }
+//   }
+//   if (selectedOptions.includes("dex")) {
+//     for (let i = 0; i < optionsDex.length; i++) {
+//       optionsDex[i].classList.add("hidden");
+//     }
+//   } else {
+//     for (let i = 0; i < optionsDex.length; i++) {
+//       optionsDex[i].classList.remove("hidden");
+//     }
+//   }
+//   if (selectedOptions.includes("con")) {
+//     for (let i = 0; i < optionsCon.length; i++) {
+//       optionsCon[i].classList.add("hidden");
+//     }
+//   } else {
+//     for (let i = 0; i < optionsCon.length; i++) {
+//       optionsCon[i].classList.remove("hidden");
+//     }
+//   }
+//   if (selectedOptions.includes("int")) {
+//     for (let i = 0; i < optionsInt.length; i++) {
+//       optionsInt[i].classList.add("hidden");
+//     }
+//   } else {
+//     for (let i = 0; i < optionsInt.length; i++) {
+//       optionsInt[i].classList.remove("hidden");
+//     }
+//   }
+//   if (selectedOptions.includes("wis")) {
+//     for (let i = 0; i < optionsWis.length; i++) {
+//       optionsWis[i].classList.add("hidden");
+//     }
+//   } else {
+//     for (let i = 0; i < optionsWis.length; i++) {
+//       optionsWis[i].classList.remove("hidden");
+//     }
+//   }
+//   if (selectedOptions.includes("cha")) {
+//     for (let i = 0; i < optionsCha.length; i++) {
+//       optionsCha[i].classList.add("hidden");
+//     }
+//   } else {
+//     for (let i = 0; i < optionsCha.length; i++) {
+//       optionsCha[i].classList.remove("hidden");
+//     }
+//   }
+// }
+// let statAllocators = document.querySelectorAll(".stats-selector-stat select");
+// for (let i = 0; i <= 5; i++) {
+//   statAllocators[i].addEventListener("change", () => hideSelectedStatsOptions(".stats-selector"));
+// }
 // For Race-asi
-let raceStatAllocators = document.querySelectorAll(".race-asi select");
-for (let i = 0; i <= 1; i++) {
-  raceStatAllocators[i].addEventListener("change", () => {
-    hideSelectedStatsOptions(".race-asi");
-  });
-}
+// let raceStatAllocators = document.querySelectorAll(".race-asi select");
+// for (let i = 0; i <= 1; i++) {
+//   raceStatAllocators[i].addEventListener("change", () => {
+//     hideSelectedStatsOptions(".race-asi");
+//   });
+// }
 
 // Function to show selected option only on a list
 function showListOptionDetails(listContainer, option, idToSet) {
@@ -358,14 +358,14 @@ function addRaceEventListeners() {
   }
 }
 // Trigger construction
-let races = {};
-fetch(baseURI + "races.json")
-  .then((response) => response.json())
-  .then((data) => {
-    races = data;
-    constructDetails(races, ".race-list", ".race-selector");
-    addRaceEventListeners();
-  });
+// let races = {};
+// fetch(baseURI + "races.json")
+//   .then((response) => response.json())
+//   .then((data) => {
+//     races = data;
+//     constructDetails(races, ".race-list", ".race-selector");
+//     addRaceEventListeners();
+//   });
 let classes = [];
 fetch("/classes.json")
   .then((response) => response.json())
