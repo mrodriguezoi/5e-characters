@@ -53,8 +53,8 @@ em {
 }
 .char-info div strong {
   margin-right: 5px;
-  text-transform: capitalize;
   font-size: 16px;
+  text-transform: capitalize;
 }
 .character-name {
   width: 450px;
@@ -102,7 +102,7 @@ em {
 .saving-throws {
   background-color: var(--object-color);
 }
-strong {
+.main-container strong {
   font-size: 8px;
 }
 .main-stats p {
@@ -255,6 +255,10 @@ strong {
 
 /* MODAL STYLES */
 /* Main modal sizing and colors */
+.strong {
+  margin-right: 5px;
+  font-size: 16px;
+}
 .modal-main-container {
   background-color: var(--modal-color);
   z-index: 9999;
