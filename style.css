@@ -3,11 +3,13 @@
   --main-width: 1200px;
   --object-color: #1c212a;
   --modal-color: #4c576a;
+  --secondary-object-color: #2d3645;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   color: rgba(255, 255, 255, 0.576);
-  transition: opacity 0.5s;
+  transition: opacity 0.5s, background-color 0.5s;
+  /* transition: background-color 1.5s; */
 }
 body {
   display: flex;
@@ -474,7 +476,9 @@ li > ul > li {
   border-radius: 5px;
   transition: background-color 1s;
   padding: 10px;
-  margin-top: 10px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }
 .continue-button-container:hover {
   background-color: var(--object-color);
@@ -482,18 +486,6 @@ li > ul > li {
 .continue-button-container > a {
   text-decoration: none;
 }
-
-/* Default Hidding */
-
-.hidden {
-  display: none;
-}
-.fade-off {
-  opacity: 0;
-}
-/* .fade-on{
-  opacity:1
-} */
 
 /* Default Hidding */
 /* End of race selector styling */
@@ -524,7 +516,7 @@ li > ul > li {
   border-radius: 5px;
   min-height: 666px;
   max-height: 666px;
-  /* position: fixed; */
+  position: fixed;
   left: 7.5vw;
   justify-content: space-between;
 }
@@ -552,9 +544,8 @@ li > ul > li {
   font-size: 12px;
   text-align: center;
   border: none;
-  border-top: 2px solid var(--object-color);
   border-bottom: 2px solid var(--object-color);
-  background-color: var(--modal-color);
+  background-color: var(--object-color);
 }
 .class-list > div,
 .subclass-selector > div {
@@ -568,11 +559,16 @@ li > ul > li {
 .subclass-details {
   flex: 1;
   overflow-y: scroll;
-  padding: 5px;
+  padding: 7px;
+  border-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
-#selected-class-button,
-#selected-subclass-button {
+#selected-class-button {
   background-color: var(--object-color);
+}
+#selected-subclass-button {
+  background-color: var(--secondary-object-color);
 }
 .subclass-selector {
   max-width: 150px;
@@ -580,11 +576,11 @@ li > ul > li {
   order: 9999;
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--object-color);
   border-radius: 5px;
   width: 150px;
   overflow-y: auto;
-  background-color: var(--modal-color);
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
 }
 .class-container {
   display: flex;
@@ -602,4 +598,17 @@ li > ul > li {
 }
 li > .radio-ul-container {
   margin-left: 0;
+}
+.subclass-details {
+  background-color: var(--secondary-object-color);
+}
+
+/* Always at bottom */
+/* Default Hidding */
+
+.hidden {
+  display: none;
+}
+.fade-off {
+  opacity: 0;
 }

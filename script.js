@@ -1,8 +1,3 @@
-const baseURI = document.baseURI;
-let languages = [];
-fetch("languages.json")
-  .then((response) => response.json())
-  .then((data) => (languages = data.languages));
 // Create a character:
 
 // Function to create new stats and event to trigger it
@@ -193,10 +188,24 @@ function createListFromOptions(array) {
 function createRadioSelector(array, featureName) {
   let radioUlContainer = document.createElement("ul");
   radioUlContainer.classList.add("radio-ul-container");
+  let i = 0;
+  let transformedFeatureName;
+  if (featureName === "") {
+    transformedFeatureName = i;
+    i++;
+  } else {
+    transformedFeatureName = featureName.replaceAll(" ", "-");
+  }
   array.forEach((option) => {
     let radioLi = constructLiWithTitle(option);
-    let transformedFeatureName = featureName.replaceAll(" ", "-");
-    let transformedOptionName = option.featureName.replaceAll(" ", "-");
+    let transformedOptionName;
+    if (option.featureName !== "") {
+      transformedOptionName = option.featureName.replaceAll(" ", "-");
+    } else {
+      transformedOptionName = option.text.replaceAll(" ", "-");
+      transformedOptionName = transformedOptionName.replaceAll("A-", "");
+      transformedOptionName = transformedOptionName.replaceAll("An-", "");
+    }
     let radioButton = document.createElement("input");
     radioButton.setAttribute("type", "radio");
     radioButton.setAttribute("value", transformedOptionName);
@@ -236,8 +245,31 @@ function createCheckboxSelector(array, limit, featureName) {
   checkboxContainer.appendChild(form);
   return checkboxContainer;
 }
-function createTable() {}
-
+function createTable(tableArray, tableClassesArray) {
+  let table = document.createElement("table");
+  tableClassesArray.forEach((htmlClass) => table.classList.add(htmlClass));
+  let tableBody = document.createElement("tbody");
+  tableArray.forEach((rowArray) => {
+    let tableRow = document.createElement("tr");
+    let rowHtmlElement;
+    rowArray.forEach((rowElement) => {
+      if (rowElement.type === "header") {
+        rowHtmlElement = document.createElement("th");
+      } else {
+        rowHtmlElement = document.createElement("td");
+      }
+      let elementText = document.createTextNode(rowElement.content);
+      if (rowElement.span !== undefined) {
+        rowHtmlElement.setAttribute("colspan", rowElement.span);
+      }
+      rowHtmlElement.appendChild(elementText);
+      tableRow.appendChild(rowHtmlElement);
+    });
+    tableBody.appendChild(tableRow);
+    table.appendChild(tableBody);
+    return table;
+  });
+}
 function createImage(source, altText) {
   let image = document.createElement("img");
   image.setAttribute("src", source);
@@ -314,6 +346,14 @@ function constructDetails(inputArray, listContainerClass, contentContainerClass)
       raceImage.classList.add(input.name, "hidden", "fade-off");
       raceAsiSidebar.prepend(raceImage);
     }
+    let triggerClass = input.name + "-subclass-selector";
+    if (input.glossaryType === "class") {
+      let subclassSelector = document.querySelector(".subclass-selector");
+      let classSubclassSelector = document.createElement("div");
+      classSubclassSelector.classList.add(triggerClass, "hidden", "fade-off");
+      subclassSelector.appendChild(classSubclassSelector);
+      constructDetails(input.subclasses, "." + triggerClass, ".class-container");
+    }
     // Append whole container to the modal
     inputContentContainer.appendChild(featuresList);
     inputContainer.appendChild(inputContentContainer);
@@ -336,7 +376,6 @@ function addRaceEventListeners() {
       showListOptionDetails(raceImages, event.target.innerText.toLowerCase(), "selected-race-image");
     });
   }
-
   // Adding event to hide/unhide subclass features
   let subclassSelectors = document.querySelectorAll(".subclass-select > select");
   for (let j = 0; j < subclassSelectors.length; j++) {
@@ -357,19 +396,60 @@ function addRaceEventListeners() {
     });
   }
 }
-// Trigger construction
-let races = {};
-fetch(baseURI + "races.json")
+function addClassEventListeners() {
+  // Adding Event Listener to Buttons
+  let classListItems = document.querySelectorAll(".class-list > div > button");
+  let allClasses = document.querySelectorAll(".class-details , .subclass-details");
+  let subclassSelector = document.querySelector(".subclass-selector").children;
+  let subclassListItems = document.querySelectorAll(".subclass-selector > div > div");
+  for (let i = 0; i < classListItems.length; i++) {
+    classListItems[i].addEventListener("click", () => {
+      for (let j = 0; j < classListItems.length; j++) {
+        classListItems[j].removeAttribute("id");
+      }
+      for (let j = 0; j < subclassListItems.length; j++) {
+        subclassListItems[j].children[0].removeAttribute("id");
+      }
+      event.target.setAttribute("id", "selected-class-button");
+      showListOptionDetails(allClasses, event.target.innerText.toLowerCase(), "selected-class");
+      // showListOptionDetails(allSubclasses, event.target.innerText.toLowerCase(), "selected-subclass");
+      showListOptionDetails(subclassSelector, event.target.innerText.toLowerCase() + "-subclass-selector", "");
+    });
+  }
+  for (let i = 0; i < subclassListItems.length; i++) {
+    subclassListItems[i].addEventListener("click", (event) => {
+      setTimeout(() => {
+        for (let j = 0; j < subclassListItems.length; j++) {
+          subclassListItems[j].removeAttribute("id");
+        }
+      }, 1000);
+      setTimeout(() => event.target.setAttribute("id", "selected-subclass-button"), 1000);
+      showListOptionDetails(allClasses, event.target.innerText.toLowerCase(), "selected-class");
+    });
+  }
+}
+// event.target.setAttribute("id", "selected-subclass-button"), 2500;
+const baseURI = document.baseURI + "mongoDb/";
+let languages = [];
+let classes = [];
+let races = [];
+fetch(baseURI + "languages.json")
   .then((response) => response.json())
   .then((data) => {
-    races = data;
-    constructDetails(races, ".race-list", ".race-selector");
-    addRaceEventListeners();
+    languages = data.languages;
+    fetch(baseURI + "classes.json")
+      .then((response) => response.json())
+      .then((data) => {
+        classes = data;
+        constructDetails(classes, ".class-list", ".class-container");
+        addClassEventListeners();
+
+        fetch(baseURI + "races.json")
+          .then((response) => response.json())
+          .then((data) => {
+            races = data;
+            constructDetails(races, ".race-list", ".race-selector");
+            addRaceEventListeners();
+          });
+      });
   });
-// let classes = [];
-// fetch("/classes.json")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     classes = data;
-//     constructDetails(classes, ".class-list", ".class-container");
-//   });
