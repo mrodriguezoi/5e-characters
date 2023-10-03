@@ -349,7 +349,6 @@ em {
 
 .race-list {
   display: flex;
-  list-style: none;
   overflow-x: auto;
   border: 1px solid var(--object-color);
   border-radius: 5px;
@@ -537,29 +536,55 @@ li > ul > li {
 .class-list {
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--object-color);
+  border-radius: 5px;
   max-height: 100%;
   width: 150px;
   overflow-y: auto;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
-.class-list > div {
-  display: flex;
+.class-list button,
+.subclass-selector button {
+  width: 150px;
+  padding: 20px 0;
+  text-transform: capitalize;
+  font-size: 12px;
+  text-align: center;
+  border: none;
+  border-top: 2px solid var(--object-color);
+  border-bottom: 2px solid var(--object-color);
+  background-color: var(--modal-color);
+}
+.class-list > div,
+.subclass-selector > div {
+  /* display: flex; */
+  /* If it breaks is here */
   width: 150px;
   justify-content: space-around;
   align-items: center;
-  padding: 20px 0;
 }
-.class-details {
+.class-details,
+.subclass-details {
   flex: 1;
   overflow-y: scroll;
   padding: 5px;
 }
-#selected-class-button {
+#selected-class-button,
+#selected-subclass-button {
   background-color: var(--object-color);
 }
 .subclass-selector {
   max-width: 150px;
   min-width: 150px;
   order: 9999;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--object-color);
+  border-radius: 5px;
+  width: 150px;
+  overflow-y: auto;
+  background-color: var(--modal-color);
 }
 .class-container {
   display: flex;
@@ -568,4 +593,13 @@ li > ul > li {
   background-color: var(--object-color);
   border-radius: 5px;
   padding: 5px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.radio-ul-container > li {
+  display: inline-block;
+  margin-right: 5px;
+}
+li > .radio-ul-container {
+  margin-left: 0;
 }

@@ -79,10 +79,24 @@ function createListFromOptions(array) {
 function createRadioSelector(array, featureName) {
   let radioUlContainer = document.createElement("ul");
   radioUlContainer.classList.add("radio-ul-container");
+  let i = 0;
+  let transformedFeatureName;
+  if (featureName === "") {
+    transformedFeatureName = i;
+    i++;
+  } else {
+    transformedFeatureName = featureName.replaceAll(" ", "-");
+  }
   array.forEach((option) => {
     let radioLi = constructLiWithTitle(option);
-    let transformedFeatureName = featureName.replaceAll(" ", "-");
-    let transformedOptionName = option.featureName.replaceAll(" ", "-");
+    let transformedOptionName;
+    if (option.featureName !== "") {
+      transformedOptionName = option.featureName.replaceAll(" ", "-");
+    } else {
+      transformedOptionName = option.text.replaceAll(" ", "-");
+      transformedOptionName = transformedOptionName.replaceAll("A-", "");
+      transformedOptionName = transformedOptionName.replaceAll("An-", "");
+    }
     let radioButton = document.createElement("input");
     radioButton.setAttribute("type", "radio");
     radioButton.setAttribute("value", transformedOptionName);
@@ -122,8 +136,31 @@ function createCheckboxSelector(array, limit, featureName) {
   checkboxContainer.appendChild(form);
   return checkboxContainer;
 }
-function createTable() {}
-
+function createTable(tableArray, tableClassesArray) {
+  let table = document.createElement("table");
+  tableClassesArray.forEach((htmlClass) => table.classList.add(htmlClass));
+  let tableBody = document.createElement("tbody");
+  tableArray.forEach((rowArray) => {
+    let tableRow = document.createElement("tr");
+    let rowHtmlElement;
+    rowArray.forEach((rowElement) => {
+      if (rowElement.type === "header") {
+        rowHtmlElement = document.createElement("th");
+      } else {
+        rowHtmlElement = document.createElement("td");
+      }
+      let elementText = document.createTextNode(rowElement.content);
+      if (rowElement.span !== undefined) {
+        rowHtmlElement.setAttribute("colspan", rowElement.span);
+      }
+      rowHtmlElement.appendChild(elementText);
+      tableRow.appendChild(rowHtmlElement);
+    });
+    tableBody.appendChild(tableRow);
+    table.appendChild(tableBody);
+    return table;
+  });
+}
 function createImage(source, altText) {
   let image = document.createElement("img");
   image.setAttribute("src", source);
@@ -200,6 +237,14 @@ function constructDetails(inputArray, listContainerClass, contentContainerClass)
       raceImage.classList.add(input.name, "hidden", "fade-off");
       raceAsiSidebar.prepend(raceImage);
     }
+    let triggerClass = input.name + "-subclass-selector";
+    if (input.glossaryType === "class") {
+      let subclassSelector = document.querySelector(".subclass-selector");
+      let classSubclassSelector = document.createElement("div");
+      classSubclassSelector.classList.add(triggerClass, "hidden", "fade-off");
+      subclassSelector.appendChild(classSubclassSelector);
+      constructDetails(input.subclasses, "." + triggerClass, ".class-container");
+    }
     // Append whole container to the modal
     inputContentContainer.appendChild(featuresList);
     inputContainer.appendChild(inputContentContainer);
@@ -242,10 +287,40 @@ function addRaceEventListeners() {
     });
   }
 }
+function addClassEventListeners() {
+  // Adding Event Listener to Buttons
+  let classListItems = document.querySelectorAll(".class-list > div > button");
+  let allClasses = document.querySelectorAll(".class-details");
+  let subclassSelector = document.querySelector(".subclass-selector").children;
+  for (let i = 0; i < classListItems.length; i++) {
+    classListItems[i].addEventListener("click", () => {
+      for (let j = 0; j < classListItems.length; j++) {
+        classListItems[j].removeAttribute("id");
+      }
+      event.target.setAttribute("id", "selected-class-button");
+      showListOptionDetails(allClasses, event.target.innerText.toLowerCase(), "selected-class");
+      showListOptionDetails(allSubclasses, event.target.innerText.toLowerCase(), "selected-class");
+      showListOptionDetails(subclassSelector, event.target.innerText.toLowerCase() + "-subclass-selector", "");
+    });
+  }
+  let subclassListItems = document.querySelectorAll(".subclass-selector > div > div");
+  let allSubclasses = document.querySelectorAll(".subclass-details");
+  for (let i = 0; i < subclassListItems.length; i++) {
+    subclassListItems[i].addEventListener("click", () => {
+      for (let j = 0; j < subclassListItems.length; j++) {
+        subclassListItems[j].removeAttribute("id");
+      }
+      event.target.setAttribute("id", "selected-subclass-button");
+      showListOptionDetails(allClasses, event.target.innerText.toLowerCase(), "selected-class");
+      showListOptionDetails(allSubclasses, event.target.innerText.toLowerCase(), "selected-class");
+    });
+  }
+}
 let classes = [];
-fetch("/classes.json")
+fetch("classes.json")
   .then((response) => response.json())
   .then((data) => {
     classes = data;
     constructDetails(classes, ".class-list", ".class-container");
+    addClassEventListeners();
   });
