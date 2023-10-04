@@ -162,7 +162,7 @@ function constructLiWithTitle(feature) {
     li.appendChild(subfeatureContainer);
   }
   if (feature.type === "table") {
-    li.appendChild(createTable(feature.table));
+    li.appendChild(createTable(feature.table, [feature.featureName.toLowerCase().replaceAll(" ", "-")]));
   }
 
   return li;
@@ -266,9 +266,9 @@ function createTable(tableArray, tableClassesArray) {
       tableRow.appendChild(rowHtmlElement);
     });
     tableBody.appendChild(tableRow);
-    table.appendChild(tableBody);
-    return table;
   });
+  table.appendChild(tableBody);
+  return table;
 }
 function createImage(source, altText) {
   let image = document.createElement("img");

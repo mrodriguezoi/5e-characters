@@ -24,9 +24,6 @@ body {
 ul {
   list-style: none;
 }
-ul > li {
-  margin-bottom: 16px;
-}
 input {
   margin-right: 5px;
 }
@@ -429,9 +426,9 @@ li > ul {
   list-style: circle;
   margin-left: 20px;
 }
-li > ul > li {
+/* li > ul > li {
   margin-bottom: 0;
-}
+} */
 .empty > p {
   margin: auto;
 }
@@ -595,6 +592,7 @@ li > ul > li {
 .radio-ul-container > li {
   display: inline-block;
   margin-right: 5px;
+  margin-bottom: 0;
 }
 li > .radio-ul-container {
   margin-left: 0;
@@ -603,6 +601,24 @@ li > .radio-ul-container {
   background-color: var(--secondary-object-color);
 }
 
+li > strong {
+  margin-top: 10px;
+  display: inline-block;
+}
+li > strong:empty {
+  display: none;
+}
+table {
+  margin: 10px auto;
+  text-align: center;
+}
+th {
+  padding: 2px 5px;
+  background-color: var(--modal-color);
+}
+td {
+  border: 1px solid var(--modal-color);
+}
 /* Always at bottom */
 /* Default Hidding */
 
