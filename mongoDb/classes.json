@@ -332,7 +332,7 @@
       },
       {
         "featureName": "",
-        "text": "As a wizard, you gain the following class features.",
+        "text": "As a Wizard, you gain the following class features.",
         "type": "subfeature",
         "options": [
           {
@@ -360,7 +360,7 @@
                 "text": "Daggers, darts, slings, quarterstaffs, light crossbows",
                 "characterImpact": "proficiency"
               },
-              { "featureName": "Tools", "text": "None", "characterImpact": "proficiency" },
+              { "featureName": "Tools", "text": "None", "characterImpact": "tools" },
               { "featureName": "Saving Throws", "text": "Intelligence, Wisdom", "characterImpact": "proficiency" },
 
               {
@@ -414,108 +414,568 @@
               },
               { "featureName": "", "text": "A spellbook" }
             ]
+          }
+        ]
+      },
+      {
+        "featureName": "Spellcasting",
+        "text": "As a student of arcane magic, you have a spellbook containing spells that show the first glimmerings of your true power.",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "Cantrips",
+            "text": "At 1st level, you know three cantrips of your choice from the wizard spell list. You learn additional wizard cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Wizard table."
           },
           {
-            "featureName": "Spellcasting",
-            "text": "As a student of arcane magic, you have a spellbook containing spells that show the first glimmerings of your true power.",
+            "featureName": "Spellbook",
             "type": "subfeature",
+            "text": "At 1st level, you have a spellbook containing six 1st-level wizard spells of your choice. Your spellbook is the repository of the wizard spells you know, except your cantrips, which are fixed in your mind. The spells that you add to your spellbook as you gain levels reflect the arcane research you conduct on your own, as well as intellectual breakthroughs you have had about the nature of the multiverse. You might find other spells during your adventures. You could discover a spell recorded on a scroll in an evil wizard's chest, for example, or in a dusty tome in an ancient library.",
             "options": [
               {
-                "featureName": "Cantrips",
-                "text": "At 1st level, you know three cantrips of your choice from the wizard spell list. You learn additional wizard cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Wizard table."
+                "featureName": "Copying a Spell into the Book.",
+                "text": "When you find a wizard spell of 1st level or higher, you can add it to your spellbook if it is of a spell level you can prepare and if you can spare the time to decipher and copy it. Copying a spell into your spellbook involves reproducing the basic form of the spell, then deciphering the unique system of notation used by the wizard who wrote it. You must practice the spell until you understand the sounds or gestures required, then transcribe it into your spellbook using your own notation. For each level of the spell, the process takes 2 hours and costs 50 gp. The cost represents material components you expend as you experiment with the spell to master it, as well as the fine inks you need to record it. Once you have spent this time and money, you can prepare the spell just like your other spells."
               },
               {
-                "featureName": "Spellbook",
-                "type": "subfeature",
-                "text": "At 1st level, you have a spellbook containing six 1st-level wizard spells of your choice. Your spellbook is the repository of the wizard spells you know, except your cantrips, which are fixed in your mind. The spells that you add to your spellbook as you gain levels reflect the arcane research you conduct on your own, as well as intellectual breakthroughs you have had about the nature of the multiverse. You might find other spells during your adventures. You could discover a spell recorded on a scroll in an evil wizard's chest, for example, or in a dusty tome in an ancient library.",
-                "options": [
-                  {
-                    "featureName": "Copying a Spell into the Book.",
-                    "text": "When you find a wizard spell of 1st level or higher, you can add it to your spellbook if it is of a spell level you can prepare and if you can spare the time to decipher and copy it. Copying a spell into your spellbook involves reproducing the basic form of the spell, then deciphering the unique system of notation used by the wizard who wrote it. You must practice the spell until you understand the sounds or gestures required, then transcribe it into your spellbook using your own notation. For each level of the spell, the process takes 2 hours and costs 50 gp. The cost represents material components you expend as you experiment with the spell to master it, as well as the fine inks you need to record it. Once you have spent this time and money, you can prepare the spell just like your other spells."
-                  },
-                  {
-                    "featureName": "Replacing the Book.",
-                    "text": "You can copy a spell from your own spellbook into another book-for example, if you want to make a backup copy of your spellbook. This is just like copying a new spell into your spellbook, but faster and easier, since you understand your own notation and already know how to cast the spell. You need spend only 1 hour and 10 gp for each level of the copied spell. If you lose your spellbook, you can use the same procedure to transcribe the spells that you have prepared into a new spellbook. Filling out the remainder of your spellbook requires you to find new spells to do so, as normal. For this reason, many wizards keep backup spellbooks in a safe place."
-                  },
-                  {
-                    "featureName": "The Book's Appearance.",
-                    "text": "Your spellbook is a unique compilation of spells, with its own decorative flourishes and margin notes. It might be a plain, functional leather volume that you received as a gift from your master, a finely bound gilt-edged tome you found in an ancient library or even a loose collection of notes scrounged together after you lost your previous spellbook in a mishap."
-                  }
-                ]
+                "featureName": "Replacing the Book.",
+                "text": "You can copy a spell from your own spellbook into another book-for example, if you want to make a backup copy of your spellbook. This is just like copying a new spell into your spellbook, but faster and easier, since you understand your own notation and already know how to cast the spell. You need spend only 1 hour and 10 gp for each level of the copied spell. If you lose your spellbook, you can use the same procedure to transcribe the spells that you have prepared into a new spellbook. Filling out the remainder of your spellbook requires you to find new spells to do so, as normal. For this reason, many wizards keep backup spellbooks in a safe place."
               },
               {
-                "featureName": "Preparing and Casting Spells",
-                "text": "The Wizard table shows how many spell slots you have to cast your wizard spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest. You prepare the list of wizard spells that are available for you to cast. To do so, choose a number of wizard spells from your spellbook equal to your Intelligence modifier + your wizard level (minimum of one spell). The spells must be of a level for which you have spell slots. For example, if you're a 3rd-level wizard, you have four 1st-level and two 2nd-level spell slots. With an Intelligence of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination, chosen from your spellbook. If you prepare the 1st-level spell magic missile, you can cast it using a 1st-level or a 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells. You can change your list of prepared spells when you finish a long rest. Preparing a new list of wizard spells requires time spent studying your spellbook and memorizing the incantations and gestures you must make to cast the spell: at least 1 minute per spell level for each spell on your list."
-              },
-              {
-                "featureName": "Spellcasting Ability",
-                "text": "Intelligence is your spellcasting ability for your wizard spells, since you learn your spells through dedicated study and memorization. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one. Your Spell Save DC is 8 + your proficiency bonus + your Intelligence modifier. Your Spell Attack bonus is your proficiency bonus + your Intelligence modifier."
-              },
-              {
-                "featureName": "Ritual Casting",
-                "text": "You can cast a wizard spell as a ritual if that spell has the ritual tag and you have the spell in your spellbook. You don't need to have the spell prepared."
-              },
-              {
-                "featureName": "Spellcasting Focus",
-                "text": "You can use an arcane focus as a spellcasting focus for your wizard spells."
-              },
-              {
-                "featureName": "Learning Spells of 1st Level or Higher",
-                "text": "Each time you gain a wizard level, you can add two wizard spells of your choice to your spellbook. Each of these spells must be of a level for which you have spell slots, as shown on the Wizard table. On your adventures, you might find other spells that you can add to your spellbook."
+                "featureName": "The Book's Appearance.",
+                "text": "Your spellbook is a unique compilation of spells, with its own decorative flourishes and margin notes. It might be a plain, functional leather volume that you received as a gift from your master, a finely bound gilt-edged tome you found in an ancient library or even a loose collection of notes scrounged together after you lost your previous spellbook in a mishap."
               }
             ]
           },
           {
-            "featureName": "Arcane Recovery",
-            "text": "You have learned to regain some of your magical energy by studying your spellbook. Once per day when you finish a short rest, you can choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your wizard level (rounded up), and none of the slots can be 6th level or higher. For example, if you're a 4th-level wizard, you can recover up to two levels worth of spell slots. You can recover either a 2nd-level spell slot or two 1st-level spell slots."
+            "featureName": "Preparing and Casting Spells",
+            "text": "The Wizard table shows how many spell slots you have to cast your wizard spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest. You prepare the list of wizard spells that are available for you to cast. To do so, choose a number of wizard spells from your spellbook equal to your Intelligence modifier + your wizard level (minimum of one spell). The spells must be of a level for which you have spell slots. For example, if you're a 3rd-level wizard, you have four 1st-level and two 2nd-level spell slots. With an Intelligence of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination, chosen from your spellbook. If you prepare the 1st-level spell magic missile, you can cast it using a 1st-level or a 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells. You can change your list of prepared spells when you finish a long rest. Preparing a new list of wizard spells requires time spent studying your spellbook and memorizing the incantations and gestures you must make to cast the spell: at least 1 minute per spell level for each spell on your list."
           },
           {
-            "featureName": "Cantrip Formulas (Optional)",
-            "text": "At 3rd level, you have scribed a set of arcane formulas in your spellbook that you can use to formulate a cantrip in your mind. Whenever you finish a long rest and consult those formulas in your spellbook, you can replace one wizard cantrip you know with another cantrip from the wizard spell list."
+            "featureName": "Spellcasting Ability",
+            "text": "Intelligence is your spellcasting ability for your wizard spells, since you learn your spells through dedicated study and memorization. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one. Your Spell Save DC is 8 + your proficiency bonus + your Intelligence modifier. Your Spell Attack bonus is your proficiency bonus + your Intelligence modifier."
           },
           {
-            "featureName": "Ability Score Improvement",
-            "text": "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+            "featureName": "Ritual Casting",
+            "text": "You can cast a wizard spell as a ritual if that spell has the ritual tag and you have the spell in your spellbook. You don't need to have the spell prepared."
           },
           {
-            "featureName": "Spell Mastery",
-            "text": "At 18th level, you have achieved such mastery over certain spells that you can cast them at will. Choose a 1st-level wizard spell and a 2nd-level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal. By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels."
+            "featureName": "Spellcasting Focus",
+            "text": "You can use an arcane focus as a spellcasting focus for your wizard spells."
           },
           {
-            "featureName": "Signature Spells",
-            "text": "When you reach 20th level, you gain mastery over two powerful spells and can cast them with little effort. Choose two 3rd-level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don't count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can't do so again until you finish a short or long rest. If you want to cast either spell at a higher level, you must expend a spell slot as normal."
+            "featureName": "Learning Spells of 1st Level or Higher",
+            "text": "Each time you gain a wizard level, you can add two wizard spells of your choice to your spellbook. Each of these spells must be of a level for which you have spell slots, as shown on the Wizard table. On your adventures, you might find other spells that you can add to your spellbook."
           }
         ]
+      },
+      {
+        "featureName": "Arcane Recovery",
+        "text": "You have learned to regain some of your magical energy by studying your spellbook. Once per day when you finish a short rest, you can choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your wizard level (rounded up), and none of the slots can be 6th level or higher. For example, if you're a 4th-level wizard, you can recover up to two levels worth of spell slots. You can recover either a 2nd-level spell slot or two 1st-level spell slots."
+      },
+      {
+        "featureName": "Arcane Tradition",
+        "text": "When you reach 2nd level, you choose an arcane tradition, shaping your practice of magic through one of the following schools. Your choice grants you features at 2nd level and again at 6th, 10th, and 14th level. Select your Arcane Tradition from the list on the right."
+      },
+      {
+        "featureName": "Cantrip Formulas (Optional)",
+        "level": [3],
+        "text": "At 3rd level, you have scribed a set of arcane formulas in your spellbook that you can use to formulate a cantrip in your mind. Whenever you finish a long rest and consult those formulas in your spellbook, you can replace one wizard cantrip you know with another cantrip from the wizard spell list."
+      },
+      {
+        "featureName": "Ability Score Improvement",
+        "level": [4, 8, 12, 16, 19],
+        "text": "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+      },
+      {
+        "featureName": "Spell Mastery",
+        "level": [18],
+        "text": "At 18th level, you have achieved such mastery over certain spells that you can cast them at will. Choose a 1st-level wizard spell and a 2nd-level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal. By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels."
+      },
+      {
+        "featureName": "Signature Spells",
+        "level": [20],
+        "text": "When you reach 20th level, you gain mastery over two powerful spells and can cast them with little effort. Choose two 3rd-level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don't count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can't do so again until you finish a short or long rest. If you want to cast either spell at a higher level, you must expend a spell slot as normal."
       }
     ],
-    "subclasses": [
+    "subclasses": []
+  },
+  {
+    "name": "artificer",
+    "description": "Masters of invention, artificers use ingenuity and magic to unlock extraordinary capabilities in objects. They see magic as a complex system waiting to be decoded and then harnessed in their spells and inventions. You can find everything you need to play one of these inventors in the next few sections. Artificers use a variety of tools to channel their arcane power. To cast a spell, an artificer might use alchemist's supplies to create a potent elixir, calligrapher's supplies to inscribe a sigil of power, or tinker's tools to craft a temporary charm. The magic of artificers is tied to their tools and their talents, and few other characters can produce the right tool for a job as well as an artificer.",
+    "glossaryType": "class",
+    "features": [
       {
-        "name": "abjuration",
-        "glossaryType": "subclass",
-        "description": "The School of Abjuration emphasizes magic that blocks, banishes, or protects. Detractors of this school say that its tradition is about denial, negation rather than positive assertion. You understand, however, that ending harmful effects, protecting the weak, and banishing evil influences is anything but a philosophical void. It is a proud and respected vocation. Called abjurers, members of this school are sought when baleful spirits require exorcism, when important locations must be guarded against magical spying, and when portals to other planes of existence must be closed.",
-        "features": [
+        "featureName": "Wizard Progression Table",
+        "text": "",
+        "type": "table",
+        "table": [
+          [
+            { "content": "The Artificer", "span": 5, "type": "header" },
+            { "content": "Spell Slots per Spell Level", "span": 6, "type": "header" }
+          ],
+          [
+            { "content": "Level", "type": "header" },
+            { "content": "Proficiency Bonus", "type": "header" },
+            { "content": "Features", "type": "header" },
+            { "content": "Infusions Known", "type": "header" },
+            { "content": "Infused Items", "type": "header" },
+            { "content": "Cantrips Known", "type": "header" },
+            { "content": "1st", "type": "header" },
+            { "content": "2nd", "type": "header" },
+            { "content": "3rd", "type": "header" },
+            { "content": "4th", "type": "header" },
+            { "content": "5th", "type": "header" }
+          ],
+          [
+            { "content": "1st" },
+            { "content": "+2" },
+            { "content": "Magical Thinkering, Spellcasting" },
+            { "content": "-" },
+            { "content": "-" },
+            { "content": "2" },
+            { "content": "2" },
+            { "content": "-" },
+            { "content": "-" },
+            { "content": "-" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "2nd" },
+            { "content": "+2" },
+            { "content": "Infuse Item" },
+            { "content": "4" },
+            { "content": "2" },
+            { "content": "2" },
+            { "content": "2" },
+            { "content": "-" },
+            { "content": "-" },
+            { "content": "-" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "3rd" },
+            { "content": "+2" },
+            { "content": "Artificer Specialist, The Right Tool for the Job" },
+            { "content": "4" },
+            { "content": "2" },
+            { "content": "2" },
+            { "content": "3" },
+            { "content": "-" },
+            { "content": "-" },
+            { "content": "-" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "4th" },
+            { "content": "+2" },
+            { "content": "Ability Score Improvement" },
+            { "content": "4" },
+            { "content": "2" },
+            { "content": "2" },
+            { "content": "3" },
+            { "content": "-" },
+            { "content": "-" },
+            { "content": "-" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "5th" },
+            { "content": "+3" },
+            { "content": "Artificer Specialist feature" },
+            { "content": "4" },
+            { "content": "2" },
+            { "content": "2" },
+            { "content": "4" },
+            { "content": "2" },
+            { "content": "-" },
+            { "content": "-" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "6th" },
+            { "content": "+3" },
+            { "content": "Tool Expertise" },
+            { "content": "6" },
+            { "content": "3" },
+            { "content": "2" },
+            { "content": "4" },
+            { "content": "2" },
+            { "content": "-" },
+            { "content": "-" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "7th" },
+            { "content": "+3" },
+            { "content": "Flash of Genius" },
+            { "content": "6" },
+            { "content": "3" },
+            { "content": "2" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "-" },
+            { "content": "-" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "8th" },
+            { "content": "+3" },
+            { "content": "Ability Score Improvement" },
+            { "content": "6" },
+            { "content": "3" },
+            { "content": "2" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "-" },
+            { "content": "-" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "9th" },
+            { "content": "+4" },
+            { "content": "Artificer Specialist feature" },
+            { "content": "6" },
+            { "content": "3" },
+            { "content": "2" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "2" },
+            { "content": "-" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "10th" },
+            { "content": "+4" },
+            { "content": "Magic Item Adept" },
+            { "content": "8" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "2" },
+            { "content": "-" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "11th" },
+            { "content": "+4" },
+            { "content": "Spell-Storing Item" },
+            { "content": "8" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "-" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "12th" },
+            { "content": "+4" },
+            { "content": "Ability Score Improvement" },
+            { "content": "8" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "-" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "13th" },
+            { "content": "+5" },
+            { "content": "" },
+            { "content": "8" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "1" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "14th" },
+            { "content": "+5" },
+            { "content": "Magic Item Savant" },
+            { "content": "10" },
+            { "content": "5" },
+            { "content": "4" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "1" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "15th" },
+            { "content": "+5" },
+            { "content": "Artificer Specialist feature" },
+            { "content": "10" },
+            { "content": "5" },
+            { "content": "4" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "2" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "16th" },
+            { "content": "+5" },
+            { "content": "Ability Score Improvement" },
+            { "content": "10" },
+            { "content": "5" },
+            { "content": "4" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "2" },
+            { "content": "-" }
+          ],
+          [
+            { "content": "17th" },
+            { "content": "+6" },
+            { "content": "" },
+            { "content": "10" },
+            { "content": "5" },
+            { "content": "4" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "1" }
+          ],
+          [
+            { "content": "18th" },
+            { "content": "+6" },
+            { "content": "Magic Item Master" },
+            { "content": "12" },
+            { "content": "6" },
+            { "content": "4" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "1" }
+          ],
+          [
+            { "content": "19th" },
+            { "content": "+6" },
+            { "content": "Ability Score Improvement" },
+            { "content": "12" },
+            { "content": "6" },
+            { "content": "4" },
+            { "content": "4" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "2" }
+          ],
+          [
+            { "content": "20th" },
+            { "content": "+6" },
+            { "content": "Soul of Artifice" },
+            { "content": "12" },
+            { "content": "6" },
+            { "content": "4" },
+            { "content": "5" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "3" },
+            { "content": "2" }
+          ]
+        ]
+      },
+      {
+        "featureName": "",
+        "text": "As an Artificer, you gain the following class features.",
+        "type": "subfeature",
+        "options": [
           {
-            "featureName": "Abjuration Savant",
-            "text": "Beginning when you select this school at 2nd level, the gold and time you must spend to copy a abjuration spell into your spellbook is halved."
+            "featureName": "Hit Points",
+            "text": "",
+            "type": "subfeature",
+            "characterImpact": "none",
+            "options": [
+              { "featureName": "Hit Dice", "text": "1d8 per Artificer level" },
+              { "featureName": "Hit Points at level 1", "text": "8 + your constitution modifier" },
+              {
+                "featureName": "Hit Points at Higher Levels",
+                "text": "1d8 (or 5) + your Constitution modifier per Artificer level after 1st"
+              }
+            ]
           },
           {
-            "featureName": "Arcane Ward",
-            "text": "Starting at 2nd level, you can weave magic around yourself for protection. When you cast an abjuration spell of 1st level or higher, you can simultaneously use a strand of the spell's magic to create a magical ward on yourself that lasts until you finish a long rest. The ward has hit points equal to twice your wizard level + your Intelligence modifier. Whenever you take damage, the ward takes the damage instead. If this damage reduces the ward to 0 hit points, you take any remaining damage. While the ward has 0 hit points, it can't absorb damage, but its magic remains. Whenever you cast an abjuration spell of 1st level or higher, the ward regains a number of hit points equal to twice the level of the spell. Once you create the ward, you can't create it again until you finish a long rest."
+            "featureName": "Proficiencies",
+            "text": "",
+            "type": "subfeature",
+            "options": [
+              {
+                "featureName": "Armor",
+                "text": "Light Armor, Medium Armor, Shields",
+                "characterImpact": "proficiency"
+              },
+              {
+                "featureName": "Weapons",
+                "text": "Simple Weapons",
+                "characterImpact": "proficiency"
+              },
+              {
+                "featureName": "Tools",
+                "text": "Thieves' Tools, Thinker's Tools, one type of artisan's tools of your choice: ",
+                "characterImpact": "tools",
+                "type": "list",
+                "listOptions": [
+                  ["alchemists-supplies", "Alchemist's Supplies"],
+                  ["brewers-supplies", "Brewer's Supplies"],
+                  ["calligraphers-supplies", "Calligrapher's Supplies"],
+                  ["carpenters-tools", "Carpenter's Tools"],
+                  ["cartographers-tools", "Cartographer's Tools"],
+                  ["cobblers-tools", "Cobbler's Tools"],
+                  ["cooks-utensils", "Cook's Utensils"],
+                  ["glassblowers-tools", "Glassblower's Tools"],
+                  ["jewelers-tools", "Jeweler's Tools"],
+                  ["leatherworkers-tools", "Leatherworker's Tools"],
+                  ["masons-tools", "Mason's Tools"],
+                  ["painters-supplies", "Painter's Supplies"],
+                  ["potters-tools", "Potter's Tools"],
+                  ["smiths-tools", "Smith's Tools"],
+                  ["tinkers-tools", "Tinker's Tools"],
+                  ["weavers-tools", "Weaver's Tools"],
+                  ["woodcarvers-tools", "Woodcarver's Tools"]
+                ]
+              },
+              {
+                "featureName": "Saving Throws",
+                "text": "Constitution, Intelligence",
+                "characterImpact": "proficiency"
+              },
+
+              {
+                "featureName": "Skills",
+                "text": "Choose two from the following:",
+                "type": "checkbox",
+                "limit": 2,
+                "options": [
+                  ["arcana", "Arcana"],
+                  ["history", "History"],
+                  ["investigation", "Investigation"],
+                  ["medicine", "Medicine"],
+                  ["nature", "Nature"],
+                  ["perception", "Perception"],
+                  ["sleight-of-hand", "Sleight of Hand"]
+                ]
+              }
+            ]
           },
           {
-            "featureName": "Projected Ward",
-            "text": "Starting at 6th level, when a creature that you can see within 30 feet of you takes damage, you can use your reaction to cause your Arcane Ward to absorb that damage. If this damage reduces the ward to 0 hit points, the warded creature takes any remaining damage."
-          },
-          {
-            "featureName": "Improved Abjuration",
-            "text": "Beginning at 10th level, when you cast an abjuration spell that requires you to make an ability check as a part of casting that spell (as in Counterspell and Dispel Magic), you add your proficiency bonus to that ability check."
-          },
-          {
-            "featureName": "Spell Resistance",
-            "text": "Starting at 14th level, you have advantage on saving throws against spells. Furthermore, you have resistance against the damage of spells."
+            "featureName": "Equipment",
+            "text": "You start with the following equipment, in addition to the equipment granted by your background:",
+            "type": "subfeature",
+            "characterImpact": "equipment",
+            "options": [
+              {
+                "featureName": "",
+                "text": "Any two simple weapons."
+              },
+              {
+                "featureName": "",
+                "text": "A light crossbow and 20 bolts",
+                "characterImpact": "ammunition"
+              },
+              {
+                "featureName": "",
+                "text": "",
+                "type": "radio",
+                "options": [
+                  { "featureName": "", "text": "Studded Leather Armor" },
+                  { "featureName": "", "text": "Scale Mail" }
+                ]
+              },
+              { "featureName": "", "text": "Thieves' Tools and a Dungeoneer's Pack" }
+            ]
           }
         ]
+      },
+      {
+        "featureName": "Spellcasting",
+        "text": "You've studied the workings of magic and how to cast spells, channeling the magic through objects. To observers, you don't appear to be casting spells in a conventional way; you appear to produce wonders from mundane items and outlandish inventions.",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "Tools Required",
+            "text": "You produce your artificer spell effects through your tools. You must have a spellcasting focus - specifically thieves' tools or some kind of artisan's tool - in hand when you cast any spell with this Spellcasting feature (meaning the spell has an 'M' component when you cast it). You must be proficient with the tool to use it in this way. See the equipment chapter in the Player's Handbook for descriptions of these tools. After you gain the Infuse Item feature at 2nd level, you can also use any item bearing one of your infusions as a spellcasting focus."
+          },
+          {
+            "featureName": "Cantrips",
+            "text": "At 1st level, you know two cantrips of your choice from the artificer spell list. At higher levels, you learn additional artificer cantrips of your choice, as shown in the Cantrips Known column of the Artificer table. When you gain a level in this class, you can replace one of the artificer cantrips you know with another cantrip from the artificer spell list."
+          },
+          {
+            "featureName": "Preparing and Casting Spells",
+            "text": "The Artificer table shows how many spell slots you have to cast your artificer spells. To cast one of your artificer spells of 1st level or higher, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest. You prepare the list of artificer spells that are available for you to cast, choosing from the artificer spell list. When you do so, choose a number of artificer spells equal to your Intelligence modifier + half your artificer level, rounded down (minimum of one spell). The spells must be of a level for which you have spell slots. For example, if you are a 5th-level artificer, you have four 1st-level and two 2nd-level spell slots. With an Intelligence of 14, your list of prepared spells can include four spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell Cure Wounds, you can cast it using a lst-level or a 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells. You can change your list of prepared spells when you finish a long rest. Preparing a new list of artificer spells requires time spent tinkering with your spellcasting focuses: at least 1 minute per spell level for each spell on your list."
+          },
+          {
+            "featureName": "Spellcasting Ability",
+            "text": "Intelligence is your spellcasting ability for your artificer spells; your understanding of the theory behind magic allows you to wield these spells with superior skill. You use your Intelligence whenever an artificer spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for an artificer spell you cast and when making an attack roll with one. Your Spell Save DC is 8 + your proficiency bonus + your Intelligence modifier. Your Spell Attack bonus is your proficiency bonus + your Intelligence modifier."
+          },
+          {
+            "featureName": "Ritual Casting",
+            "text": "You can cast an artificer spell as a ritual if that spell has the ritual tag and you have the spell prepared."
+          }
+        ]
+      },
+      {
+        "featureName": "Magical Thinkering",
+        "text": "At 1st level, you've learned how to invest a spark of magic into mundane objects. To use this ability, you must have thieves' tools or artisan's tools in hand. The chosen property lasts indefinitely. As an action, you can touch the object and end the property early.You can bestow magic on multiple objects, touching one object each time you use this feature, though a single object can only bear one property at a time. The maximum number of objects you can affect with this feature at one time is equal to your Intelligence modifier (minimum of one object). If you try to exceed your maximum, the oldest property immediately ends, and then the new property applies. You then touch a Tiny nonmagical object as an action and give it one of the following magical properties of your choice:",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "",
+            "text": "The object sheds bright light in a 5-foot radius and dim light for an additional 5 feet."
+          },
+          {
+            "featureName": "",
+            "text": "Whenever tapped by a creature, the object emits a recorded message that can be heard up to 10 feet away. You utter the message when you bestow this property on the object, and the recording can be no more than 6 seconds long."
+          },
+          {
+            "featureName": "",
+            "text": "The object continuously emits your choice of an odor or a nonverbal sound (wind, waves, chirping, or the like). The chosen phenomenon is perceivable up to 10 feet away."
+          },
+          {
+            "featureName": "",
+            "text": "A static visual effect appears on one of the object's surfaces. This effect can be a picture, up to 25 words of text, lines and shapes, or a mixture of these elements, as you like."
+          }
+        ]
+      },
+      {
+        "featureName": "Infuse Item",
+        "text": "At 2nd level, you've gained the ability to imbue mundane items with certain magical infusions, turning those objects into magic items.",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "Infusions Known",
+            "text": "When you gain this feature, pick four artificer infusions to learn. You learn additional infusions of your choice when you reach certain levels in this class, as shown in the Infusions Known column of the Artificer table. Whenever you gain a level in this class, you can replace one of the artificer infusions you learned with a new one."
+          },
+          {
+            "featureName": "Infusing an Item",
+            "text": "Whenever you finish a long rest, you can touch a nonmagical object and imbue it with one of your artificer infusions, turning it into a magic item. An infusion works on only certain kinds of objects, as specified in the infusion's description. If the item requires attunement, you can attune yourself to it the instant you infuse the item. If you decide to attune to the item later, you must do so using the normal process for attunement (see the attunement rules in the Dungeon Master's Guide). Your infusion remains in an item indefinitely, but when you die, the infusion vanishes after a number of days equal to your Intelligence modifier (minimum of 1 day). The infusion also vanishes if you replace your knowledge of the infusion. You can infuse more than one nonmagical object at the end of a long rest; the maximum number of objects appears in the Infused Items column of the Artificer table. You must touch each of the objects, and each of your infusions can be in only one object at a time. Moreover, no object can bear more than one of your infusions at a time. If you try to exceed your maximum number of infusions, the oldest infusion ends, and then the new infusion applies. If an infusion ends on an item that contains other things, like a bag of holding, its contents harmlessly appear in and around its space."
+          }
+        ]
+      },
+      {
+        "featureName": "Ability Score Improvement",
+        "text": "When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."
+      },
+      {
+        "featureName": "Spell Mastery",
+        "text": "At 18th level, you have achieved such mastery over certain spells that you can cast them at will. Choose a 1st-level wizard spell and a 2nd-level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal. By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels."
+      },
+      {
+        "featureName": "Signature Spells",
+        "text": "When you reach 20th level, you gain mastery over two powerful spells and can cast them with little effort. Choose two 3rd-level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don't count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can't do so again until you finish a short or long rest. If you want to cast either spell at a higher level, you must expend a spell slot as normal."
       }
-    ]
+    ],
+    "subclasses": []
   }
 ]

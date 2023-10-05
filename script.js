@@ -291,7 +291,12 @@ function constructDetails(inputArray, listContainerClass, contentContainerClass)
     // Creating Details containers
     let inputContainer = document.createElement("div");
     let inputContentContainer = document.createElement("div");
-    inputContainer.classList.add(input.glossaryType + "-details", input.name, "hidden", "fade-off");
+    inputContainer.classList.add(
+      input.glossaryType + "-details",
+      input.name.toLowerCase().replaceAll(" ", "-"),
+      "hidden",
+      "fade-off"
+    );
     inputContentContainer.classList.add(input.glossaryType + "-details-content");
     // Adding Input Description
     let inputDescriptionP = document.createElement("p");
@@ -372,8 +377,12 @@ function addRaceEventListeners() {
         raceListItems[j].removeAttribute("id");
       }
       event.target.setAttribute("id", "selected-race-button");
-      showListOptionDetails(allRaces, event.target.innerText.toLowerCase(), "selected-race");
-      showListOptionDetails(raceImages, event.target.innerText.toLowerCase(), "selected-race-image");
+      showListOptionDetails(allRaces, event.target.innerText.toLowerCase().replaceAll(" ", "-"), "selected-race");
+      showListOptionDetails(
+        raceImages,
+        event.target.innerText.replaceAll(" ", "-").toLowerCase(),
+        "selected-race-image"
+      );
     });
   }
   // Adding event to hide/unhide subclass features
@@ -411,45 +420,53 @@ function addClassEventListeners() {
         subclassListItems[j].children[0].removeAttribute("id");
       }
       event.target.setAttribute("id", "selected-class-button");
-      showListOptionDetails(allClasses, event.target.innerText.toLowerCase(), "selected-class");
+      showListOptionDetails(allClasses, event.target.innerText.toLowerCase().replaceAll(" ", "-"), "selected-class");
       // showListOptionDetails(allSubclasses, event.target.innerText.toLowerCase(), "selected-subclass");
-      showListOptionDetails(subclassSelector, event.target.innerText.toLowerCase() + "-subclass-selector", "");
+      showListOptionDetails(
+        subclassSelector,
+        event.target.innerText.toLowerCase().replaceAll(" ", "-") + "-subclass-selector",
+        ""
+      );
     });
   }
   for (let i = 0; i < subclassListItems.length; i++) {
     subclassListItems[i].addEventListener("click", (event) => {
-      setTimeout(() => {
-        for (let j = 0; j < subclassListItems.length; j++) {
-          subclassListItems[j].removeAttribute("id");
-        }
-      }, 1000);
+      for (let j = 0; j < subclassListItems.length; j++) {
+        subclassListItems[j].firstElementChild.removeAttribute("id");
+      }
       setTimeout(() => event.target.setAttribute("id", "selected-subclass-button"), 1000);
-      showListOptionDetails(allClasses, event.target.innerText.toLowerCase(), "selected-class");
+      showListOptionDetails(allClasses, event.target.innerText.toLowerCase().replaceAll(" ", "-"), "selected-class");
     });
   }
 }
-// event.target.setAttribute("id", "selected-subclass-button"), 2500;
 const baseURI = document.baseURI + "mongoDb/";
 let languages = [];
 let classes = [];
 let races = [];
-fetch(baseURI + "languages.json")
-  .then((response) => response.json())
-  .then((data) => {
-    languages = data.languages;
-    fetch(baseURI + "classes.json")
-      .then((response) => response.json())
-      .then((data) => {
-        classes = data;
-        constructDetails(classes, ".class-list", ".class-container");
-        addClassEventListeners();
+let subclasses = [];
 
-        fetch(baseURI + "races.json")
-          .then((response) => response.json())
-          .then((data) => {
-            races = data;
-            constructDetails(races, ".race-list", ".race-selector");
-            addRaceEventListeners();
-          });
-      });
+const fetchLanguages = fetch(baseURI + "languages.json").then((response) => response.json());
+const fetchRaces = fetch(baseURI + "races.json").then((response) => response.json());
+const fetchClasses = fetch(baseURI + "classes.json")
+  .then((response) => response.json())
+  .then((classData) => {
+    const fetchSubclasses = classData.map((individualClass) => {
+      return fetch(baseURI + individualClass.name + "-subclasses.json").then((response) => response.json());
+    });
+    return Promise.all(fetchSubclasses).then((subclassLists) => {
+      for (let i = 0; i < classData.length; i++) {
+        classData[i].subclasses = subclassLists[i];
+      }
+      return classData;
+    });
   });
+
+Promise.all([fetchLanguages, fetchRaces, fetchClasses]).then(([languagesData, racesData, classesData]) => {
+  languages = languagesData;
+  races = racesData;
+  classes = classesData;
+  constructDetails(classes, ".class-list", ".class-container");
+  addClassEventListeners();
+  constructDetails(races, ".race-list", ".race-selector");
+  addRaceEventListeners();
+});

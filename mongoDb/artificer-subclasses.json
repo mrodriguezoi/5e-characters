@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Alchemist",
+    "glossaryType": "subclass",
+    "description": "An Alchemist is an expert at combining reagents to produce mystical effects. Alchemists use their creations to give life and to leech it away. Alchemy is the oldest of artificer traditions, and it's versatility has long been valued during times of war and peace.",
+    "features": [
+      {
+        "featureName": "Tool Proficiency",
+        "text": "When you adopt this specialization at 3rd level, you gain proficiency with alchemist's supplies. If you already have this proficiency, you gain proficiency with one other type of artisan's tools of your choice: ",
+        "characterImpact": "tools",
+        "type": "list",
+        "listOptions": [
+          ["alchemists-supplies", "Alchemist's Supplies"],
+          ["brewers-supplies", "Brewer's Supplies"],
+          ["calligraphers-supplies", "Calligrapher's Supplies"],
+          ["carpenters-tools", "Carpenter's Tools"],
+          ["cartographers-tools", "Cartographer's Tools"],
+          ["cobblers-tools", "Cobbler's Tools"],
+          ["cooks-utensils", "Cook's Utensils"],
+          ["glassblowers-tools", "Glassblower's Tools"],
+          ["jewelers-tools", "Jeweler's Tools"],
+          ["leatherworkers-tools", "Leatherworker's Tools"],
+          ["masons-tools", "Mason's Tools"],
+          ["painters-supplies", "Painter's Supplies"],
+          ["potters-tools", "Potter's Tools"],
+          ["smiths-tools", "Smith's Tools"],
+          ["tinkers-tools", "Tinker's Tools"],
+          ["weavers-tools", "Weaver's Tools"],
+          ["woodcarvers-tools", "Woodcarver's Tools"]
+        ]
+      },
+      {
+        "featureName": "Alchemist Spells",
+        "text": "Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Alchemist Spells table. These spells count as artificer spells for you, but they don’t count against the number of artificer spells you prepare.",
+        "type": "subfeature",
+        "spells": [
+          { "spell": "healingWord", "level": 3 },
+          { "spell": "rayOfSickness", "level": 3 },
+          { "spell": "flamingSphere", "level": 5 },
+          { "spell": "acidArrow", "level": 5 },
+          { "spell": "gaseousForm", "level": 9 },
+          { "spell": "massHealingWord", "level": 9 },
+          { "spell": "blight", "level": 13 },
+          { "spell": "deathWard", "level": 13 },
+          { "spell": "cloudKill", "level": 17 },
+          { "spell": "raiseDead", "level": 17 }
+        ],
+        "options": [
+          {
+            "featureName": "3rd Artificer Level",
+            "text": "Healing Word, Ray of Sickness"
+          },
+          {
+            "featureName": "5th Artificer Level",
+            "text": "Starting at 6th level, when a creature that you can see within 30 feet of you takes damage, you can use your reaction to cause your Arcane Ward to absorb that damage. If this damage reduces the ward to 0 hit points, the warded creature takes any remaining damage."
+          },
+          {
+            "featureName": "9th Artificer Level",
+            "text": "Starting at 6th level, when a creature that you can see within 30 feet of you takes damage, you can use your reaction to cause your Arcane Ward to absorb that damage. If this damage reduces the ward to 0 hit points, the warded creature takes any remaining damage."
+          },
+          {
+            "featureName": "13th Artificer Level",
+            "text": "Starting at 6th level, when a creature that you can see within 30 feet of you takes damage, you can use your reaction to cause your Arcane Ward to absorb that damage. If this damage reduces the ward to 0 hit points, the warded creature takes any remaining damage."
+          },
+          {
+            "featureName": "17th Artificer Level",
+            "text": "Starting at 6th level, when a creature that you can see within 30 feet of you takes damage, you can use your reaction to cause your Arcane Ward to absorb that damage. If this damage reduces the ward to 0 hit points, the warded creature takes any remaining damage."
+          }
+        ]
+      },
+      {
+        "featureName": "Experimental Elixir",
+        "text": "Beginning at 3rd level, whenever you finish a long rest, you can magically produce an experimental elixir in an empty flask you touch. Roll on the Experimental Elixir table for the elixir's effect, which is triggered when someone drinks the elixir. As an action, a creature can drink the elixir or administer it to an incapacitated creature. You can create additional experimental elixirs by expending a spell slot of 1st level or higher for each one. When you do so, you use your action to create the elixir in an empty flask you touch, and you choose the elixir's effect from the Experimental Elixir table. Creating an experimental elixir requires you to have alchemist supplies on your person, and any elixir you create with this feature lasts until it is drunk or until the end of your next long rest. When you reach certain levels in this class, you can make more elixirs at the end of a long rest: two at 6th level and three at 15th level. Roll for each elixir's effect separately. Each elixir requires its own flask.",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "1. Healing ",
+            "text": "The drinker regains a number of hit points equal to 2d4 + your Intelligence Modifier."
+          },
+          {
+            "featureName": "2. Swiftness ",
+            "text": "The drinker's walking speed increases by 10 feet for 1 hour."
+          },
+          {
+            "featureName": "3. Resilience ",
+            "text": "The drinker gains a +1 bonus to AC for 10 minutes."
+          },
+          {
+            "featureName": "4. Boldness ",
+            "text": "The drinker can roll a d4 and add the number rolled to every attack roll and saving throw they make for the next minute."
+          },
+          {
+            "featureName": "5. Flight ",
+            "text": "The drinker gains a flying speed of 10 feet for 10 minutes."
+          },
+          {
+            "featureName": "6. Transformation ",
+            "text": "The drinker's body is transformed as if by the Alter Self spell. The drinker determines the transformation caused by the spell, the effects of which last for 10 minutes."
+          }
+        ]
+      },
+      {
+        "featureName": "Alchemical Savant",
+        "text": "At 5th level, you've developed masterful command of magical chemicals, enhancing the healing and damage you create through them. Whenever you cast a spell using your alchemist's supplies as the spellcasting focus, you gain a bonus to one roll of the spell. That roll must restore hit points or be a damage roll that deals acid, fire, necrotic, or poison damage, and the bonus equals your Intelligence modifier (minimum of +1)."
+      },
+      {
+        "featureName": "Spell Resistance",
+        "text": "Starting at 14th level, you have advantage on saving throws against spells. Furthermore, you have resistance against the damage of spells."
+      },
+      {
+        "featureName": "Restorative Reagents",
+        "text": "Starting at 9th level, you can incorporate restorative reagents into some of your works:",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "",
+            "text": "Whenever a creature drinks an experimental elixir you created, the creature gains temporary hit points equal to 2d6 + your Intelligence modifier (minimum of 1 temporary hit point)."
+          },
+          {
+            "featureName": "",
+            "text": "You can cast Lesser Restoration without expending a spell slot and without preparing the spell, provided you use alchemist's supplies as the spellcasting focus. You can do so a number of times equal to your Intelligence modifier (minimum of once), and you regain all expended uses when you finish a long rest."
+          }
+        ]
+      },
+      {
+        "featureName": "Chemical Mastery",
+        "text": "By 15th level, you have been exposed to so many chemicals that they pose little risk to you, and you can use them to quickly end certain ailments:",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "",
+            "text": "You gain resistance to acid damage and poison damage, and you are now immune to the poisoned condition."
+          },
+          {
+            "featureName": "",
+            "text": "You can cast Greater Restoration and Heal without expending a spell slot, without preparing the spell, and without providing the material component, provided you use alchemist’s supplies as the spellcasting focus. Once you cast either spell with this feature, you can't cast that spell with it again until you finish a long rest."
+          }
+        ]
+      }
+    ]
+  }
+]
