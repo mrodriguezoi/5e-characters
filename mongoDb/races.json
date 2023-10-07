@@ -130,7 +130,7 @@
         ]
       }
     ],
-    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/340/420/618/636272677995471928.png"
+    "imgLink": "images/dragonborn-img.png"
   },
   {
     "_id": { "$oid": "6514c1704e43791967607e5a" },
@@ -309,7 +309,7 @@
         "dependency": "wood"
       }
     ],
-    "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/7/639/420/618/636287075350739045.png"
+    "imgLink": "images/elf-img.png"
   },
   {
     "_id": { "$oid": "6514e5894e43791967607e5f" },

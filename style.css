@@ -8,8 +8,7 @@
   padding: 0;
   box-sizing: border-box;
   color: rgba(255, 255, 255, 0.576);
-  transition: opacity 0.5s, background-color 0.5s;
-  /* transition: background-color 1.5s; */
+  transition: opacity 1s, background-color 0.5s;
 }
 body {
   display: flex;
@@ -254,6 +253,9 @@ em {
 
 /* MODAL STYLES */
 /* Main modal sizing and colors */
+.modal-background {
+  content: "";
+}
 .strong {
   margin-right: 5px;
   font-size: 16px;
@@ -371,6 +373,9 @@ em {
   padding: 10px;
   display: flex;
   gap: 5px;
+  position: absolute;
+  width: 970px;
+  height: 420px;
 }
 .race-list button {
   text-transform: capitalize;
@@ -416,10 +421,6 @@ em {
   gap: 5px;
   padding: 0 20px;
 }
-#selected-race-image {
-  width: 100%;
-  /* height: 345px; */
-}
 .race-details-features strong {
   font-size: 16px;
   font-weight: bold;
@@ -431,9 +432,6 @@ li > ul {
   list-style: circle;
   margin-left: 20px;
 }
-/* li > ul > li {
-  margin-bottom: 0;
-} */
 .empty > p {
   margin: auto;
 }
@@ -452,9 +450,11 @@ li > ul {
   margin-bottom: 5px;
   margin-right: 5px;
 }
-.race-image > img {
-  max-width: 100%;
-  height: 345px;
+.race-asi > img {
+  position: absolute;
+  object-fit: contain;
+  max-width: 240px;
+  bottom: 180px;
 }
 .checkbox-form {
   display: flex;
@@ -478,9 +478,9 @@ li > ul {
   border: 1px solid var(--modal-color);
   border-radius: 5px;
   transition: background-color 1s;
-  padding: 10px;
   position: absolute;
   width: 200px;
+  height: 40px;
   text-align: center;
 }
 .continue-button-container > button > i,
@@ -504,6 +504,8 @@ li > ul {
 .previous-button-container > button {
   background-color: transparent;
   border: none;
+  width: 100%;
+  height: 100%;
 }
 
 /* Default Hidding */
@@ -558,11 +560,11 @@ li > ul {
 }
 .class-list > div,
 .subclass-selector > div {
-  /* display: flex; */
-  /* If it breaks is here */
   width: 150px;
-  justify-content: space-around;
-  align-items: center;
+}
+.subclass-selector > div {
+  position: absolute;
+  top: 0;
 }
 .class-details,
 .subclass-details {
@@ -572,6 +574,10 @@ li > ul {
   border-radius: 5px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  left: 0;
+  position: absolute;
+  width: 915px;
+  height: 580px;
 }
 #selected-class-button {
   background-color: var(--object-color);
@@ -590,6 +596,7 @@ li > ul {
   overflow-y: auto;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
+  position: relative;
 }
 .class-container {
   display: flex;
@@ -600,6 +607,8 @@ li > ul {
   padding: 5px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  justify-content: flex-end;
+  position: relative;
 }
 .radio-ul-container > li {
   display: inline-block;

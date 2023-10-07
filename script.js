@@ -112,26 +112,13 @@ function showListOptionDetails(listContainer, option, idToSet) {
   for (let i = 0; i < listContainer.length; i++) {
     if (!Array.from(listContainer[i].classList).includes(option)) {
       listContainer[i].classList.add("fade-off");
+      listContainer[i].removeAttribute("id");
+    }
+    if (Array.from(listContainer[i].classList).includes(option)) {
+      listContainer[i].classList.remove("fade-off");
+      listContainer[i].setAttribute("id", idToSet);
     }
   }
-  setTimeout(() => {
-    for (let i = 0; i < listContainer.length; i++) {
-      if (Array.from(listContainer[i].classList).includes(option)) {
-        listContainer[i].classList.remove("hidden");
-        listContainer[i].setAttribute("id", idToSet);
-      } else {
-        listContainer[i].classList.add("hidden");
-        listContainer[i].removeAttribute("id");
-      }
-    }
-  }, 500);
-  setTimeout(() => {
-    for (let i = 0; i < listContainer.length; i++) {
-      if (Array.from(listContainer[i].classList).includes(option)) {
-        listContainer[i].classList.remove("fade-off");
-      }
-    }
-  }, 1000);
 }
 //Details functions:
 // Auxiliary functions to create content
@@ -294,7 +281,6 @@ function constructDetails(inputArray, listContainerClass, contentContainerClass)
     inputContainer.classList.add(
       input.glossaryType + "-details",
       input.name.toLowerCase().replaceAll(" ", "-"),
-      "hidden",
       "fade-off"
     );
     inputContentContainer.classList.add(input.glossaryType + "-details-content");
@@ -348,14 +334,14 @@ function constructDetails(inputArray, listContainerClass, contentContainerClass)
       }
       // Adding image to sidebar
       let raceImage = createImage(input.imgLink, `${input.name} portrait`);
-      raceImage.classList.add(input.name, "hidden", "fade-off");
+      raceImage.classList.add(input.name, "fade-off");
       raceAsiSidebar.prepend(raceImage);
     }
     let triggerClass = input.name + "-subclass-selector";
     if (input.glossaryType === "class") {
       let subclassSelector = document.querySelector(".subclass-selector");
       let classSubclassSelector = document.createElement("div");
-      classSubclassSelector.classList.add(triggerClass, "hidden", "fade-off");
+      classSubclassSelector.classList.add(triggerClass, "fade-off");
       subclassSelector.appendChild(classSubclassSelector);
       constructDetails(input.subclasses, "." + triggerClass, ".class-container");
     }
@@ -433,12 +419,11 @@ function addClassEventListeners() {
       for (let j = 0; j < subclassListItems.length; j++) {
         subclassListItems[j].firstElementChild.removeAttribute("id");
       }
-      setTimeout(() => event.target.setAttribute("id", "selected-subclass-button"), 1000);
+      event.target.setAttribute("id", "selected-subclass-button");
       showListOptionDetails(allClasses, event.target.innerText.toLowerCase().replaceAll(" ", "-"), "selected-class");
     });
   }
 }
-// Add timeouts for fade
 let modalForwardButtons = document.querySelectorAll(".continue-button-container > button");
 for (let i = 0; i < modalForwardButtons.length; i++) {
   modalForwardButtons[i].addEventListener("click", () => {
