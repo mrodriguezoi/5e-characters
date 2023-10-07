@@ -444,13 +444,7 @@ for (let i = 0; i < modalForwardButtons.length; i++) {
   modalForwardButtons[i].addEventListener("click", () => {
     let modal = event.target.parentElement.parentElement;
     modal.classList.add("fade-off");
-    setTimeout(() => {
-      modal.classList.add("hidden");
-      modal.nextElementSibling.classList.remove("hidden");
-    }, 500);
-    setTimeout(() => {
-      modal.nextElementSibling.classList.remove("fade-off");
-    }, 1000);
+    modal.nextElementSibling.classList.remove("fade-off");
   });
 }
 let modalBackwardButtons = document.querySelectorAll(".previous-button-container > button");
@@ -458,13 +452,7 @@ for (let i = 0; i < modalBackwardButtons.length; i++) {
   modalBackwardButtons[i].addEventListener("click", () => {
     let modal = event.target.parentElement.parentElement;
     modal.classList.add("fade-off");
-    setTimeout(() => {
-      modal.classList.add("hidden");
-      modal.previousElementSibling.classList.remove("hidden");
-    }, 400);
-    setTimeout(() => {
-      modal.previousElementSibling.classList.remove("fade-off");
-    }, 800);
+    modal.previousElementSibling.classList.remove("fade-off");
   });
 }
 const baseURI = document.baseURI + "mongoDb/";

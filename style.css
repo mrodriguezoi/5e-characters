@@ -271,7 +271,12 @@ em {
   max-height: 666px;
   position: fixed;
   left: 7.5vw;
+  transition: opacity 1s;
 }
+.class-modal {
+  flex-direction: column;
+}
+
 .modal-main-container header {
   display: inline-block;
   text-align: center;
@@ -519,21 +524,7 @@ li > ul {
 }
 
 /* Class page styles */
-.class-modal {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--modal-color);
-  z-index: 9999;
-  width: 85vw;
-  margin: 5% auto;
-  padding: 15px;
-  border-radius: 5px;
-  min-height: 666px;
-  max-height: 666px;
-  position: fixed;
-  left: 7.5vw;
-  justify-content: space-between;
-}
+
 .class-selector {
   display: flex;
   max-height: 590px;
@@ -663,4 +654,5 @@ td {
 }
 .fade-off {
   opacity: 0;
+  z-index: -1;
 }
