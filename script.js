@@ -421,7 +421,6 @@ function addClassEventListeners() {
       }
       event.target.setAttribute("id", "selected-class-button");
       showListOptionDetails(allClasses, event.target.innerText.toLowerCase().replaceAll(" ", "-"), "selected-class");
-      // showListOptionDetails(allSubclasses, event.target.innerText.toLowerCase(), "selected-subclass");
       showListOptionDetails(
         subclassSelector,
         event.target.innerText.toLowerCase().replaceAll(" ", "-") + "-subclass-selector",
@@ -444,16 +443,28 @@ let modalForwardButtons = document.querySelectorAll(".continue-button-container 
 for (let i = 0; i < modalForwardButtons.length; i++) {
   modalForwardButtons[i].addEventListener("click", () => {
     let modal = event.target.parentElement.parentElement;
-    modal.classList.add("hidden");
-    modal.nextElementSibling.classList.remove("hidden");
+    modal.classList.add("fade-off");
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      modal.nextElementSibling.classList.remove("hidden");
+    }, 500);
+    setTimeout(() => {
+      modal.nextElementSibling.classList.remove("fade-off");
+    }, 1000);
   });
 }
 let modalBackwardButtons = document.querySelectorAll(".previous-button-container > button");
 for (let i = 0; i < modalBackwardButtons.length; i++) {
   modalBackwardButtons[i].addEventListener("click", () => {
     let modal = event.target.parentElement.parentElement;
-    modal.classList.add("hidden");
-    modal.previousElementSibling.classList.remove("hidden");
+    modal.classList.add("fade-off");
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      modal.previousElementSibling.classList.remove("hidden");
+    }, 400);
+    setTimeout(() => {
+      modal.previousElementSibling.classList.remove("fade-off");
+    }, 800);
   });
 }
 const baseURI = document.baseURI + "mongoDb/";
