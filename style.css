@@ -356,7 +356,7 @@ em {
   border-left-width: 2px;
   overflow-y: hidden;
 }
-.race-list::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
@@ -467,21 +467,38 @@ li > ul {
   justify-content: space-between;
   align-items: center;
 }
-.continue-button-container {
+.continue-button-container,
+.previous-button-container {
   background-color: var(--modal-color);
   border: 1px solid var(--modal-color);
   border-radius: 5px;
   transition: background-color 1s;
   padding: 10px;
   position: absolute;
+  width: 200px;
+  text-align: center;
+}
+.continue-button-container > button > i,
+.previous-button-container > button > i {
+  margin: 0 5px;
+  display: inline-block;
+}
+.continue-button-container {
   right: 5px;
   top: 5px;
 }
-.continue-button-container:hover {
+.previous-button-container {
+  left: 5px;
+  top: 5px;
+}
+.continue-button-container:hover,
+.previous-button-container:hover {
   background-color: var(--object-color);
 }
-.continue-button-container > a {
-  text-decoration: none;
+.continue-button-container > button,
+.previous-button-container > button {
+  background-color: transparent;
+  border: none;
 }
 
 /* Default Hidding */
@@ -525,13 +542,14 @@ li > ul {
 .class-list {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--object-color);
   border-radius: 5px;
   max-height: 100%;
   width: 150px;
   overflow-y: auto;
+  border-radius: 5px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  border: 4px solid var(--object-color);
 }
 .class-list button,
 .subclass-selector button {
@@ -542,6 +560,9 @@ li > ul {
   text-align: center;
   border: none;
   border-bottom: 2px solid var(--object-color);
+  background-color: var(--modal-color);
+}
+.subclass-selector button {
   background-color: var(--object-color);
 }
 .class-list > div,
@@ -611,6 +632,7 @@ li > strong:empty {
 table {
   margin: 10px auto;
   text-align: center;
+  border: 1px solid var(--modal-color);
 }
 th {
   padding: 2px 5px;
@@ -618,6 +640,20 @@ th {
 }
 td {
   border: 1px solid var(--modal-color);
+}
+.subclass-details select {
+  background-color: var(--secondary-object-color);
+  border: 1px solid var(--modal-color);
+  border-radius: 5px;
+  padding: 2px;
+  size: 20px;
+}
+.class-details select {
+  background-color: var(--object-color);
+  border: 1px solid var(--modal-color);
+  border-radius: 5px;
+  padding: 2px;
+  size: 20px;
 }
 /* Always at bottom */
 /* Default Hidding */

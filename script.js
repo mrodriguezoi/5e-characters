@@ -439,6 +439,23 @@ function addClassEventListeners() {
     });
   }
 }
+// Add timeouts for fade
+let modalForwardButtons = document.querySelectorAll(".continue-button-container > button");
+for (let i = 0; i < modalForwardButtons.length; i++) {
+  modalForwardButtons[i].addEventListener("click", () => {
+    let modal = event.target.parentElement.parentElement;
+    modal.classList.add("hidden");
+    modal.nextElementSibling.classList.remove("hidden");
+  });
+}
+let modalBackwardButtons = document.querySelectorAll(".previous-button-container > button");
+for (let i = 0; i < modalBackwardButtons.length; i++) {
+  modalBackwardButtons[i].addEventListener("click", () => {
+    let modal = event.target.parentElement.parentElement;
+    modal.classList.add("hidden");
+    modal.previousElementSibling.classList.remove("hidden");
+  });
+}
 const baseURI = document.baseURI + "mongoDb/";
 let languages = [];
 let classes = [];
@@ -462,9 +479,12 @@ const fetchClasses = fetch(baseURI + "classes.json")
   });
 
 Promise.all([fetchLanguages, fetchRaces, fetchClasses]).then(([languagesData, racesData, classesData]) => {
-  languages = languagesData;
+  languages = languagesData.languages;
   races = racesData;
-  classes = classesData;
+  classes = classesData.sort((a, b) => {
+    return a.name.localeCompare(b.name);
+  });
+
   constructDetails(classes, ".class-list", ".class-container");
   addClassEventListeners();
   constructDetails(races, ".race-list", ".race-selector");

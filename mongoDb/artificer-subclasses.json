@@ -6,6 +6,7 @@
     "features": [
       {
         "featureName": "Tool Proficiency",
+        "level": [3],
         "text": "When you adopt this specialization at 3rd level, you gain proficiency with alchemist's supplies. If you already have this proficiency, you gain proficiency with one other type of artisan's tools of your choice: ",
         "characterImpact": "tools",
         "type": "list",
@@ -31,6 +32,7 @@
       },
       {
         "featureName": "Alchemist Spells",
+        "level": [3],
         "text": "Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Alchemist Spells table. These spells count as artificer spells for you, but they don’t count against the number of artificer spells you prepare.",
         "type": "subfeature",
         "spells": [
@@ -52,24 +54,25 @@
           },
           {
             "featureName": "5th Artificer Level",
-            "text": "Starting at 6th level, when a creature that you can see within 30 feet of you takes damage, you can use your reaction to cause your Arcane Ward to absorb that damage. If this damage reduces the ward to 0 hit points, the warded creature takes any remaining damage."
+            "text": "Flaming Sphere, Acid Arrow"
           },
           {
             "featureName": "9th Artificer Level",
-            "text": "Starting at 6th level, when a creature that you can see within 30 feet of you takes damage, you can use your reaction to cause your Arcane Ward to absorb that damage. If this damage reduces the ward to 0 hit points, the warded creature takes any remaining damage."
+            "text": "Gaseous Form, Mass Healing Word"
           },
           {
             "featureName": "13th Artificer Level",
-            "text": "Starting at 6th level, when a creature that you can see within 30 feet of you takes damage, you can use your reaction to cause your Arcane Ward to absorb that damage. If this damage reduces the ward to 0 hit points, the warded creature takes any remaining damage."
+            "text": "Blight, Death Ward"
           },
           {
             "featureName": "17th Artificer Level",
-            "text": "Starting at 6th level, when a creature that you can see within 30 feet of you takes damage, you can use your reaction to cause your Arcane Ward to absorb that damage. If this damage reduces the ward to 0 hit points, the warded creature takes any remaining damage."
+            "text": "Cloud Kill, Raise Dead"
           }
         ]
       },
       {
         "featureName": "Experimental Elixir",
+        "level": [3],
         "text": "Beginning at 3rd level, whenever you finish a long rest, you can magically produce an experimental elixir in an empty flask you touch. Roll on the Experimental Elixir table for the elixir's effect, which is triggered when someone drinks the elixir. As an action, a creature can drink the elixir or administer it to an incapacitated creature. You can create additional experimental elixirs by expending a spell slot of 1st level or higher for each one. When you do so, you use your action to create the elixir in an empty flask you touch, and you choose the elixir's effect from the Experimental Elixir table. Creating an experimental elixir requires you to have alchemist supplies on your person, and any elixir you create with this feature lasts until it is drunk or until the end of your next long rest. When you reach certain levels in this class, you can make more elixirs at the end of a long rest: two at 6th level and three at 15th level. Roll for each elixir's effect separately. Each elixir requires its own flask.",
         "type": "subfeature",
         "options": [
@@ -101,14 +104,12 @@
       },
       {
         "featureName": "Alchemical Savant",
+        "level": [5],
         "text": "At 5th level, you've developed masterful command of magical chemicals, enhancing the healing and damage you create through them. Whenever you cast a spell using your alchemist's supplies as the spellcasting focus, you gain a bonus to one roll of the spell. That roll must restore hit points or be a damage roll that deals acid, fire, necrotic, or poison damage, and the bonus equals your Intelligence modifier (minimum of +1)."
       },
       {
-        "featureName": "Spell Resistance",
-        "text": "Starting at 14th level, you have advantage on saving throws against spells. Furthermore, you have resistance against the damage of spells."
-      },
-      {
         "featureName": "Restorative Reagents",
+        "level": [9],
         "text": "Starting at 9th level, you can incorporate restorative reagents into some of your works:",
         "type": "subfeature",
         "options": [
@@ -124,6 +125,7 @@
       },
       {
         "featureName": "Chemical Mastery",
+        "level": [15],
         "text": "By 15th level, you have been exposed to so many chemicals that they pose little risk to you, and you can use them to quickly end certain ailments:",
         "type": "subfeature",
         "options": [
@@ -134,6 +136,489 @@
           {
             "featureName": "",
             "text": "You can cast Greater Restoration and Heal without expending a spell slot, without preparing the spell, and without providing the material component, provided you use alchemist’s supplies as the spellcasting focus. Once you cast either spell with this feature, you can't cast that spell with it again until you finish a long rest."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Armorer",
+    "glossaryType": "subclass",
+    "description": "An artificer who specializes as an Armorer modifies armor to function almost like a second skin. The armor is enhanced to hone the artificer's magic, unleash potent attacks, and generate a formidable defense. The artificer bonds with this armor, becoming one with it even as they experiment with it and refine its magical capabilities.",
+    "features": [
+      {
+        "featureName": "Tool Proficiency",
+        "level": [3],
+        "text": "When you adopt this specialization at 3rd level, you gain proficiency with heavy armor. You also gain proficiency with smith's tools. If you already have this tool proficiency, you gain proficiency with one other type of artisan's tools of your choice.",
+        "characterImpact": ["tools", "proficiency"],
+        "type": "list",
+        "listOptions": [
+          ["alchemists-supplies", "Alchemist's Supplies"],
+          ["brewers-supplies", "Brewer's Supplies"],
+          ["calligraphers-supplies", "Calligrapher's Supplies"],
+          ["carpenters-tools", "Carpenter's Tools"],
+          ["cartographers-tools", "Cartographer's Tools"],
+          ["cobblers-tools", "Cobbler's Tools"],
+          ["cooks-utensils", "Cook's Utensils"],
+          ["glassblowers-tools", "Glassblower's Tools"],
+          ["jewelers-tools", "Jeweler's Tools"],
+          ["leatherworkers-tools", "Leatherworker's Tools"],
+          ["masons-tools", "Mason's Tools"],
+          ["painters-supplies", "Painter's Supplies"],
+          ["potters-tools", "Potter's Tools"],
+          ["smiths-tools", "Smith's Tools"],
+          ["tinkers-tools", "Tinker's Tools"],
+          ["weavers-tools", "Weaver's Tools"],
+          ["woodcarvers-tools", "Woodcarver's Tools"]
+        ]
+      },
+      {
+        "featureName": "Armorer Spells",
+        "level": [3],
+        "text": "Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Armorer Spells table. These spells count as artificer spells for you, but they don't count against the number of artificer spells you prepare.",
+        "type": "subfeature",
+        "spells": [
+          { "spell": "magicMissile", "level": 3 },
+          { "spell": "thunderwave", "level": 3 },
+          { "spell": "mirrorImage", "level": 5 },
+          { "spell": "shatter", "level": 5 },
+          { "spell": "hypnoticPattern", "level": 9 },
+          { "spell": "lightningBolt", "level": 9 },
+          { "spell": "fireShield", "level": 13 },
+          { "spell": "greaterInvisibility", "level": 13 },
+          { "spell": "passwall", "level": 17 },
+          { "spell": "wallOfForce", "level": 17 }
+        ],
+        "options": [
+          {
+            "featureName": "3rd Artificer Level",
+            "text": "Magic Missile, Thunderwave"
+          },
+          {
+            "featureName": "5th Artificer Level",
+            "text": "Mirror Image, Shatter"
+          },
+          {
+            "featureName": "9th Artificer Level",
+            "text": "Hypnotic Pattern, Lightning Bolt"
+          },
+          {
+            "featureName": "13th Artificer Level",
+            "text": "Fire Shield, Greater Invisibility"
+          },
+          {
+            "featureName": "17th Artificer Level",
+            "text": "Passwall, Wall of Force"
+          }
+        ]
+      },
+      {
+        "featureName": "Arcane Armor",
+        "level": [3],
+        "text": "Beginning at 3rd level, your metallurgical pursuits have led to you making armor a conduit for your magic. As an action, you can turn a suit of armor you are wearing into Arcane Armor, provided you have smith's tools in hand. The armor continues to be Arcane Armor until you don another suit of armor or you die. You gain the following benefits while wearing this armor:",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "",
+            "text": "If the armor normally has a Strength requirement, the arcane armor lacks this requirement for you."
+          },
+          {
+            "featureName": "",
+            "text": "You can use the arcane armor as a spellcasting focus for your artificer spells."
+          },
+          {
+            "featureName": "",
+            "text": "The armor attaches to you and can’t be removed against your will. It also expands to cover your entire body, although you can retract or deploy the helmet as a bonus action. The armor replaces any missing limbs, functioning identically to a body part it is replacing."
+          },
+          {
+            "featureName": "",
+            "text": "You can doff or don the armor as an action."
+          }
+        ]
+      },
+      {
+        "featureName": "Armor Model",
+        "text": "Beginning at 3rd level, you can customize your Arcane Armor. When you do so, choose one of the following armor models: Guardian or Infiltrator. The model you choose gives you special benefits while you wear it. Each model includes a special weapon. When you attack with that weapon, you can add your Intelligence modifier, instead of Strength or Dexterity, to the attack and damage rolls. You can change the armor's model whenever you finish a short or long rest, provided you have smith's tools in hand.",
+        "type": "subfeature",
+        "level": [3],
+        "options": [
+          {
+            "featureName": "Guardian",
+            "text": "You design your armor to be in the front line of conflict. It has the following features:",
+            "type": "subfeature",
+            "options": [
+              {
+                "featureName": "Thunder Gauntlets",
+                "text": "Each of the armor's gauntlets counts as a simple melee weapon while you aren't holding anything in it, and it deals 1d8 thunder damage on a hit. A creature hit by the gauntlet has disadvantage on attack rolls against targets other than you until the start of your next turn, as the armor magically emits a distracting pulse when the creature attacks someone else."
+              },
+              {
+                "featureName": "Defensive Field",
+                "text": "As a bonus action, you can gain temporary hit points equal to your level in this class, replacing any temporary hit points you already have. You lose these temporary hit points if you doff the armor. You can use this bonus action a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+              }
+            ]
+          },
+          {
+            "featureName": "Infiltrator",
+            "text": "You customize your armor for subtle undertakings. It has the following features:",
+            "type": "subfeature",
+            "options": [
+              {
+                "featureName": "Lightning Launcher",
+                "text": "A gemlike node appears on one of your armored fists or on the chest (your choice). It counts as a simple ranged weapon, with a normal range of 90 feet and a long range of 300 feet, and it deals 1d6 lightning damage on a hit. Once on each of your turns when you hit a creature with it, you can deal an extra 1d6 lightning damage to that target."
+              },
+              {
+                "featureName": "Powered Steps",
+                "text": "Your walking speed increases by 5 feet."
+              },
+              {
+                "featureName": "Dampening Field",
+                "text": "You have advantage on Dexterity (Stealth) checks. If the armor normally imposes disadvantage on such checks, the advantage and disadvantage cancel each other, as normal."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "featureName": "Extra Attack",
+        "level": [5],
+        "text": "Starting at 5th level, you can attack twice, rather than once, whenever you take the Attack action on your turn."
+      },
+      {
+        "featureName": "Armor Modifications",
+        "text": "At 9th level, you learn how to use your artificer infusions to specially modify your Arcane Armor. That armor now counts as separate items for the purposes of your Infuse Items feature: armor (the chest piece), boots, helmet, and the armor's special weapon. Each of those items can bear one of your infusions, and the infusions transfer over if you change your armor's model with the Armor Model feature. In addition, the maximum number of items you can infuse at once increases by 2, but those extra items must be part of your Arcane Armor.",
+        "level": [9]
+      },
+      {
+        "featureName": "Perfected Armor",
+        "text": "At 15th level, your Arcane Armor gains additional benefits based on its model, as shown below.",
+        "type": "subfeature",
+        "level": [15],
+        "options": [
+          {
+            "featureName": "Guardian",
+            "text": "When a Huge or smaller creature you can see ends its turn within 30 feet of you, you can use your reaction to magically force the creature to make a Strength saving throw against your spell save DC, pulling the creature up to 30 feet toward you to an unoccupied space. If you pull the target to a space within 5 feet of you, you can make a melee weapon attack against it as part of this reaction. You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses of it when you finish a long rest."
+          },
+          {
+            "featureName": "Infiltrator",
+            "text": "Any creature that takes lightning damage from your Lightning Launcher glimmers with magical light until the start of your next turn. The glimmering creature sheds dim light in a 5-foot radius, and it has disadvantage on attack rolls against you, as the light jolts it if it attacks you. In addition, the next attack roll against it has advantage, and if that attack hits, the target takes an extra 1d6 lightning damage."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Artillerist",
+    "glossaryType": "subclass",
+    "description": "An Artillerist specializes in using magic to hurl energy, projectiles, and explosions on a battlefield. This destructive power is valued by armies in the wars on many different worlds. And when war passes, some members of this specialization seek to build a more peaceful world by using their powers to fight the resurgence of strife. The world-hopping gnome artificer Vi has been especially vocal about making things right: 'It's about time we fixed things instead of blowing them all to hell.'",
+    "features": [
+      {
+        "featureName": "Tool Proficiency",
+        "level": [3],
+        "text": "When you adopt this specialization at 3rd level, you gain proficiency with woodcarver's tools. If you already have this proficiency, you gain proficiency with one other type of artisan's tools of your choice.",
+        "characterImpact": "tools",
+        "type": "list",
+        "listOptions": [
+          ["alchemists-supplies", "Alchemist's Supplies"],
+          ["brewers-supplies", "Brewer's Supplies"],
+          ["calligraphers-supplies", "Calligrapher's Supplies"],
+          ["carpenters-tools", "Carpenter's Tools"],
+          ["cartographers-tools", "Cartographer's Tools"],
+          ["cobblers-tools", "Cobbler's Tools"],
+          ["cooks-utensils", "Cook's Utensils"],
+          ["glassblowers-tools", "Glassblower's Tools"],
+          ["jewelers-tools", "Jeweler's Tools"],
+          ["leatherworkers-tools", "Leatherworker's Tools"],
+          ["masons-tools", "Mason's Tools"],
+          ["painters-supplies", "Painter's Supplies"],
+          ["potters-tools", "Potter's Tools"],
+          ["smiths-tools", "Smith's Tools"],
+          ["tinkers-tools", "Tinker's Tools"],
+          ["weavers-tools", "Weaver's Tools"],
+          ["woodcarvers-tools", "Woodcarver's Tools"]
+        ]
+      },
+      {
+        "featureName": "Artillerist Spells",
+        "level": [3],
+        "text": "Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Artillerist Spells table. These spells count as artificer spells for you, but they don’t count against the number of artificer spells you prepare.",
+        "type": "subfeature",
+        "spells": [
+          { "spell": "shield", "level": 3 },
+          { "spell": "thunderwave", "level": 3 },
+          { "spell": "scorchingRay", "level": 5 },
+          { "spell": "shatter", "level": 5 },
+          { "spell": "fireball", "level": 9 },
+          { "spell": "windWall", "level": 9 },
+          { "spell": "iceStorm", "level": 13 },
+          { "spell": "wallOfFire", "level": 13 },
+          { "spell": "coneOfCold", "level": 17 },
+          { "spell": "wallOfForce", "level": 17 }
+        ],
+        "options": [
+          {
+            "featureName": "3rd Artificer Level",
+            "text": "Shield, Thunderwave"
+          },
+          {
+            "featureName": "5th Artificer Level",
+            "text": "Scorching Ray, Shatter"
+          },
+          {
+            "featureName": "9th Artificer Level",
+            "text": "Fireball, Wind Wall"
+          },
+          {
+            "featureName": "13th Artificer Level",
+            "text": "Ice Storm, Wall of Fire"
+          },
+          {
+            "featureName": "17th Artificer Level",
+            "text": "Cone of Cold, Wall of Force"
+          }
+        ]
+      },
+      {
+        "featureName": "Eldritch Cannon",
+        "level": [3],
+        "text": "Also at 3rd level, you've learned how to create a magical cannon. Using woodcarver's tools or smith's tools, you can take an action to magically create a Small or Tiny eldritch cannon in an unoccupied space on a horizontal surface within 5 feet of you. A Small eldritch cannon occupies its space, and a Tiny one can be held in one hand. Once you create a cannon, you can't do so again until you finish a long rest or until you expend a spell slot to create one. You can have only one cannon at a time and can't create one while your cannon is present. The cannon is a magical object. Regardless of size, the cannon has an AC of 18 and a number of hit points equal to five times your artificer level. It is immune to poison damage and psychic damage. If it is forced to make an ability check or a saving throw, treat all its ability scores as 10 (+0). If the mending spell is cast on it, it regains 2d6 hit points. It disappears if it is reduced to 0 hit points or after 1 hour. You can dismiss it early as an action. When you create the cannon, you determine its appearance and whether it has legs. You also decide which type it is, choosing from the options on the Eldritch Cannons table. On each of your turns, you can take a bonus action to cause the cannon to activate if you are within 60 feet of it. As part of the same bonus action, you can direct the cannon to walk or climb up to 15 feet to an unoccupied space, provided it has legs.",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "Flamethrower",
+            "text": "The cannon exhales fire in an adjacent 15-foot cone that you designate. Each creature in that area must make a Dexterity saving throw against your spell save DC, taking 2d8 fire damage on a failed save or half as much damage on a successful one. The fire ignites any flammable objects in the area that aren't being worn or carried."
+          },
+          {
+            "featureName": "Force Ballista",
+            "text": "Make a ranged spell attack, originating from the cannon, at one creature or object within 120 feet of it. On a hit, the target takes 2d8 force damage, and if the target is a creature, it is pushed up to 5 feet away from the cannon."
+          },
+          {
+            "featureName": "Protector",
+            "text": "The cannon emits a burst of positive energy that grants itself and each creature of your choice within 10 feet of it a number of temporary hit points equal to 1d8 + your Intelligence modifier (minimum of +1)."
+          }
+        ]
+      },
+      {
+        "featureName": "Arcane Firearm",
+        "level": [5],
+        "text": "At 5th level, You know how to turn a wand, staff, or rod into an arcane firearm, a conduit for your destructive spells. When you finish a long rest, you can use woodcarver's tools to carve special sigils into a wand, staff, or rod and thereby turn it into your arcane firearm. The sigils disappear from the object if you later carve them on a different item. The sigils otherwise last indefinitely. You can use your arcane firearm as a spellcasting focus for your artificer spells. When you cast an artificer spell through the firearm, roll a d8, and you gain a bonus to one of the spell's damage rolls equal to the number rolled."
+      },
+      {
+        "featureName": "Explosive Cannon",
+        "level": [9],
+        "text": "Starting at 9th level, every eldritch cannon you create is more destructive:",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "",
+            "text": "The cannon's damage rolls all increase by 1d8."
+          },
+          {
+            "featureName": "",
+            "text": "As an action, you can command the cannon to detonate if you are within 60 feet of it. Doing so destroys the cannon and forces each creature within 20 feet of it to make a Dexterity saving throw against your spell save DC, taking 3d8 force damage on a failed save or half as much damage on a successful one."
+          }
+        ]
+      },
+      {
+        "featureName": "Fortified Position",
+        "text": "By 15th level, you’re a master at forming well-defended emplacements using Eldritch Cannon:",
+        "level": [15],
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "",
+            "text": "You and your allies have half cover while within 10 feet of a cannon you create with Eldritch Cannon, as a result of a shimmering field of magical protection that the cannon emits."
+          },
+          {
+            "featureName": "",
+            "text": "You can now have two cannons at the same time. You can create two with the same action (but not the same spell slot), and you can activate both of them with the same bonus action. You determine whether the cannons are identical to each other or different. You can't create a third cannon while you have two."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Battle Smith",
+    "glossaryType": "subclass",
+    "description": "Armies require protection, and someone has to put things back together if defenses fail. A combination of protector and medic, a Battle Smith is an expert at defending others and repairing both materiel and personnel. To aid in their work, Battle Smiths are accompanied by a steel defender, a protective companion of their own creation. Many soldiers tell stories of nearly dying before being saved by a Battle Smith and a steel defender. In the world of Eberron, Battle Smiths played a key role in House Cannith's work on battle constructs and the original warforged, and after the Last War, these artificers led efforts to aid those who were injured in the war's horrific battles.",
+    "features": [
+      {
+        "featureName": "Tool Proficiency",
+        "level": [3],
+        "text": "When you adopt this specialization at 3rd level, you gain proficiency with smith's tools. If you already have this proficiency, you gain proficiency with one other type of artisan's tools of your choice.",
+        "characterImpact": "tools",
+        "type": "list",
+        "listOptions": [
+          ["alchemists-supplies", "Alchemist's Supplies"],
+          ["brewers-supplies", "Brewer's Supplies"],
+          ["calligraphers-supplies", "Calligrapher's Supplies"],
+          ["carpenters-tools", "Carpenter's Tools"],
+          ["cartographers-tools", "Cartographer's Tools"],
+          ["cobblers-tools", "Cobbler's Tools"],
+          ["cooks-utensils", "Cook's Utensils"],
+          ["glassblowers-tools", "Glassblower's Tools"],
+          ["jewelers-tools", "Jeweler's Tools"],
+          ["leatherworkers-tools", "Leatherworker's Tools"],
+          ["masons-tools", "Mason's Tools"],
+          ["painters-supplies", "Painter's Supplies"],
+          ["potters-tools", "Potter's Tools"],
+          ["smiths-tools", "Smith's Tools"],
+          ["tinkers-tools", "Tinker's Tools"],
+          ["weavers-tools", "Weaver's Tools"],
+          ["woodcarvers-tools", "Woodcarver's Tools"]
+        ]
+      },
+      {
+        "featureName": "Battle Smith Spells",
+        "level": [3],
+        "text": "Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Artillerist Spells table. These spells count as artificer spells for you, but they don’t count against the number of artificer spells you prepare.",
+        "type": "subfeature",
+        "spells": [
+          { "spell": "shield", "level": 3 },
+          { "spell": "heroism", "level": 3 },
+          { "spell": "brandingSmite", "level": 5 },
+          { "spell": "wardingBond", "level": 5 },
+          { "spell": "auraOfVitality", "level": 9 },
+          { "spell": "conjureBarrage", "level": 9 },
+          { "spell": "auraOfPurity", "level": 13 },
+          { "spell": "fireShield", "level": 13 },
+          { "spell": "banishingSmite", "level": 17 },
+          { "spell": "massCureWounds", "level": 17 }
+        ],
+        "options": [
+          {
+            "featureName": "3rd Artificer Level",
+            "text": "Shield, Heroism"
+          },
+          {
+            "featureName": "5th Artificer Level",
+            "text": "Branding Smite, Warding Bond"
+          },
+          {
+            "featureName": "9th Artificer Level",
+            "text": "Aura of Vitality, Conjure Barrage"
+          },
+          {
+            "featureName": "13th Artificer Level",
+            "text": "Aura of Purity, Fire Shield"
+          },
+          {
+            "featureName": "17th Artificer Level",
+            "text": "Banishing Smite, Mass Cure Wounds"
+          }
+        ]
+      },
+      {
+        "featureName": "Battle Ready",
+        "level": [3],
+        "text": "When you reach 3rd level, your combat training and your experiments with magic have paid off in two ways:",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "",
+            "text": "You gain proficiency with martial weapons."
+          },
+          {
+            "featureName": "",
+            "text": "When you attack with a magic weapon, you can use your Intelligence modifier, instead of Strength or Dexterity modifier, for the attack and damage rolls."
+          }
+        ]
+      },
+      {
+        "featureName": "Steel Defender",
+        "level": [3],
+        "text": "By 3rd level, your tinkering has borne you a faithful companion, a steel defender. It's friendly to you and your companions, and it obeys your commands. See its game statistics in the Steel Defender stat block, which uses your proficiency bonus (PB) in several places. You determine the creature's appearance and whether it has two legs or four; your choice has no effect on its game statistics. In combat, the defender shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the Dodge action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. If you are incapacitated, the defender can take any action of its choice, not just Dodge. If the Mending spell is cast on it, it regains 2d6 hit points. If it has died within the last hour, you can use your smith's tools as an action to revive it, provided you are within 5 feet of it and you expend a spell slot of 1st level or higher. The steel defender returns to life after 1 minute with all its hit points restored. At the end of a long rest, you can create a new steel defender if you have smith's tools with you. If you already have a defender from this feature, the first one immediately perishes. The defender also perishes if you die.",
+        "type": "table",
+        "table": [
+          [{ "content": "Steel Defender", "span": 6, "type": "header" }],
+          [{ "content": "Medium construct", "span": 6 }],
+          [{ "content": "Armor Class: 15 (natural armor)", "span": 6 }],
+          [{ "content": "Hit Points: 2 + your Intelligence modifier + 5 times your artificer level", "span": 6 }],
+          [{ "content": "Speed: 40 ft", "span": 6 }],
+          [
+            { "content": "STR", "type": "header" },
+            { "content": "DEX", "type": "header" },
+            { "content": "CON", "type": "header" },
+            { "content": "INT", "type": "header" },
+            { "content": "WIS", "type": "header" },
+            { "content": "CHA", "type": "header" }
+          ],
+          [
+            { "content": "14 (+2)" },
+            { "content": "12 (+1)" },
+            { "content": "14 (+2)" },
+            { "content": "4 (-3)" },
+            { "content": "10 (+0)" },
+            { "content": "6 (-2)" }
+          ],
+          [{ "content": "Saving Throws: DEX +1 +PB, CON +0 +PB", "span": 6 }],
+          [{ "content": "Skills: Athletics +2 +PB , Perception +0 + (PBx2)", "span": 6 }],
+          [{ "content": "Damage Immunities: Poison", "span": 6 }],
+          [{ "content": "Condition Immunities: Charmed, Exhaustion, Poisoned", "span": 6 }],
+          [{ "content": "Senses: darkvision 60ft. , passive Perception 10 + (PB x 2)", "span": 6 }],
+          [{ "content": "Languages: understands the languages you speak", "span": 6 }],
+          [{ "content": "Challenge: -", "span": 6 }],
+          [{ "content": "Proficiency Bonus (PB): equals your bonus", "span": 6 }],
+          [{ "content": "Vigilant: The defender can't be surprised", "span": 6 }],
+          [{ "content": "Actions", "span": 6, "type": "header" }],
+          [
+            {
+              "content": "Force-Empowered Rend: Melee Weapon Attack: your spell attack modifier, reach 5ft , one target you can see. Hit: 1d8 + PB force damage",
+              "span": 6
+            }
+          ],
+          [
+            {
+              "content": "Repair (3/day): The magical mechanisms inside the defender restore 2d8 + PB hit points to itself or to one construct or object within 5 feet of it",
+              "span": 6
+            }
+          ],
+          [{ "content": "Reactions", "span": 6, "type": "header" }],
+          [
+            {
+              "content": "Deflect Attack: The defender imposes disadvantage on the attack roll of one creature it can see that is within 5 feet of it, provided the attack roll is against a creature other than the defender.",
+              "span": 6
+            }
+          ]
+        ]
+      },
+      {
+        "featureName": "Extra Attack",
+        "level": [5],
+        "text": "Starting at 5th level, you can attack twice, rather than once, whenever you take the Attack action on your turn."
+      },
+      {
+        "featureName": "Arcane Jolt",
+        "level": [9],
+        "text": "At 9th level, you've learn new ways to channel arcane energy to harm or heal. You can use this energy a number of times equal to your Intelligence modifier (minimum of once), but you can do so no more than once on a turn. You regain all expended uses when you finish a long rest. When either you hit a target with a magic weapon attack or your steel defender hits a target, you can channel magical energy through the strike to create one of the following effects: ",
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "",
+            "text": "The target takes an extra 2d6 force damage."
+          },
+          {
+            "featureName": "",
+            "text": "Choose one creature or object you can see within 30 feet of the target. Healing energy flows into the chosen recipient, restoring 2d6 hit points to it."
+          }
+        ]
+      },
+      {
+        "featureName": "Improved Defender",
+        "text": "At 15th level, your Arcane Jolt and steel defender become more powerful:",
+        "level": [15],
+        "type": "subfeature",
+        "options": [
+          {
+            "featureName": "",
+            "text": "The extra damage and the healing of your Arcane Jolt both increase to 4d6."
+          },
+          {
+            "featureName": "",
+            "text": "Your steel defender gains a +2 bonus to Armor Class."
+          },
+          {
+            "featureName": "",
+            "text": "Whenever your steel defender uses its Deflect Attack, the attacker takes force damage equal to 1d4 + your Intelligence modifier."
           }
         ]
       }
