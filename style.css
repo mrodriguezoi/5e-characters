@@ -275,7 +275,8 @@ em {
   left: 7.5vw;
   transition: opacity 1s;
 }
-.class-modal {
+.class-modal,
+.background-modal {
   flex-direction: column;
 }
 
@@ -435,6 +436,9 @@ li > ul {
 .empty > p {
   margin: auto;
 }
+.empty {
+  display: flex;
+}
 #selected-race-button {
   background-color: var(--object-color);
 }
@@ -490,11 +494,11 @@ li > ul {
 }
 .continue-button-container {
   right: 5px;
-  top: 5px;
+  top: 10px;
 }
 .previous-button-container {
   left: 5px;
-  top: 5px;
+  top: 10px;
 }
 .continue-button-container:hover,
 .previous-button-container:hover {
@@ -527,7 +531,8 @@ li > ul {
 
 /* Class page styles */
 
-.class-selector {
+.class-selector,
+.background-selector {
   display: flex;
   max-height: 590px;
   flex: 1;
@@ -545,7 +550,8 @@ li > ul {
   border: 4px solid var(--object-color);
 }
 .class-list button,
-.subclass-selector button {
+.subclass-selector button,
+.background-list button {
   width: 150px;
   padding: 20px 0;
   text-transform: capitalize;
@@ -559,7 +565,8 @@ li > ul {
   background-color: var(--object-color);
 }
 .class-list > div,
-.subclass-selector > div {
+.subclass-selector > div,
+.background-list > div {
   width: 150px;
 }
 .subclass-selector > div {
@@ -567,7 +574,8 @@ li > ul {
   top: 0;
 }
 .class-details,
-.subclass-details {
+.subclass-details,
+.background-details {
   flex: 1;
   overflow-y: scroll;
   padding: 7px;
@@ -579,13 +587,18 @@ li > ul {
   width: 915px;
   height: 580px;
 }
-#selected-class-button {
+.background-details {
+  width: 1050px;
+}
+#selected-class-button,
+#selected-background-button {
   background-color: var(--object-color);
 }
 #selected-subclass-button {
   background-color: var(--secondary-object-color);
 }
-.subclass-selector {
+.subclass-selector,
+.background-list {
   max-width: 150px;
   min-width: 150px;
   order: 9999;
@@ -598,7 +611,11 @@ li > ul {
   border-top-left-radius: 0;
   position: relative;
 }
-.class-container {
+.background-list {
+  background-color: var(--modal-color);
+}
+.class-container,
+.background-container {
   display: flex;
   max-height: 590px;
   flex: 1;

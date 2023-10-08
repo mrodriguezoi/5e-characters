@@ -1,1 +1,19 @@
-{ "glossaryType" : "lang", "languages" : [ [ "dwarvish", "Dwarvish" ], [ "elvish", "Elvish" ], [ "giant", "Giant" ], [ "gnomish", "Gnomish" ], [ "goblin", "Goblin" ], [ "halfling", "Halfling" ], [ "orc", "Orc" ], [ "abyssal", "Abyssal" ], [ "celestial", "Celestial" ], [ "deep-speech", "Deep Speech" ], [ "infernal", "Infernal" ], [ "primordial", "Primordial" ], [ "sylvan", "Sylvan" ], [ "undercommon", "Undercommon" ] ] }
+{
+  "glossaryType": "lang",
+  "languages": [
+    ["dwarvish", "Dwarvish"],
+    ["elvish", "Elvish"],
+    ["giant", "Giant"],
+    ["gnomish", "Gnomish"],
+    ["goblin", "Goblin"],
+    ["halfling", "Halfling"],
+    ["orc", "Orc"],
+    ["abyssal", "Abyssal"],
+    ["celestial", "Celestial"],
+    ["deep-speech", "Deep Speech"],
+    ["infernal", "Infernal"],
+    ["primordial", "Primordial"],
+    ["sylvan", "Sylvan"],
+    ["undercommon", "Undercommon"]
+  ]
+}

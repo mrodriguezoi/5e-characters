@@ -424,6 +424,43 @@ function addClassEventListeners() {
     });
   }
 }
+function addBackgroundEventListeners() {
+  // Adding Event Listener to Buttons
+  let backgroundListItems = document.querySelectorAll(".background-list > div > button");
+  let allBackgrounds = document.querySelectorAll(".background-details");
+  for (let i = 0; i < backgroundListItems.length; i++) {
+    backgroundListItems[i].addEventListener("click", () => {
+      for (let j = 0; j <= backgroundListItems.length - 1; j++) {
+        backgroundListItems[j].removeAttribute("id");
+      }
+      event.target.setAttribute("id", "selected-background-button");
+      showListOptionDetails(
+        allBackgrounds,
+        event.target.innerText.toLowerCase().replaceAll(" ", "-"),
+        "selected-background"
+      );
+    });
+  }
+  // Adding event to hide/unhide subclass features
+  let subclassSelectors = document.querySelectorAll(".subclass-select > select");
+  for (let j = 0; j < subclassSelectors.length; j++) {
+    subclassSelectors[j].addEventListener("change", () => {
+      let raceDetailsFeatures = document.querySelector("#selected-race .race-details-features").children;
+      for (let i = 0; i < raceDetailsFeatures.length; i++) {
+        if (
+          raceDetailsFeatures[i].classList.length >= 1 &&
+          !Array.from(raceDetailsFeatures[i].classList).includes("subclass-select")
+        ) {
+          if (Array.from(raceDetailsFeatures[i].classList).includes(event.target.value)) {
+            raceDetailsFeatures[i].classList.remove("hidden");
+          } else {
+            raceDetailsFeatures[i].classList.add("hidden");
+          }
+        }
+      }
+    });
+  }
+}
 let modalForwardButtons = document.querySelectorAll(".continue-button-container > button");
 for (let i = 0; i < modalForwardButtons.length; i++) {
   modalForwardButtons[i].addEventListener("click", () => {
@@ -445,9 +482,11 @@ let languages = [];
 let classes = [];
 let races = [];
 let subclasses = [];
+let backgrounds = [];
 
 const fetchLanguages = fetch(baseURI + "languages.json").then((response) => response.json());
 const fetchRaces = fetch(baseURI + "races.json").then((response) => response.json());
+const fetchBackgrounds = fetch(baseURI + "backgrounds.json").then((response) => response.json());
 const fetchClasses = fetch(baseURI + "classes.json")
   .then((response) => response.json())
   .then((classData) => {
@@ -462,15 +501,57 @@ const fetchClasses = fetch(baseURI + "classes.json")
     });
   });
 
-Promise.all([fetchLanguages, fetchRaces, fetchClasses]).then(([languagesData, racesData, classesData]) => {
-  languages = languagesData.languages;
-  races = racesData;
-  classes = classesData.sort((a, b) => {
-    return a.name.localeCompare(b.name);
-  });
+Promise.all([fetchLanguages, fetchRaces, fetchClasses, fetchBackgrounds]).then(
+  ([languagesData, racesData, classesData, backgroundsData]) => {
+    languages = languagesData.languages;
+    races = racesData;
+    classes = classesData.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
+    backgrounds = backgroundsData.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
 
-  constructDetails(classes, ".class-list", ".class-container");
-  addClassEventListeners();
-  constructDetails(races, ".race-list", ".race-selector");
-  addRaceEventListeners();
-});
+    constructDetails(classes, ".class-list", ".class-container");
+    addClassEventListeners();
+    constructDetails(races, ".race-list", ".race-selector");
+    addRaceEventListeners();
+    constructDetails(backgrounds, ".background-list", ".background-container");
+    addBackgroundEventListeners();
+  }
+);
+
+let character = {
+  name: "Placeholder",
+  stats: [],
+  savingThrows: [],
+  skills: [],
+  health: { max: 10, current: 5, temporary: 2 },
+  classFeatures: [],
+  raceFeatures: [],
+};
+function createrCharacter() {
+  // Checking that all required options were selected
+  const selectedClassName = "";
+  const selectedSubclassName = "";
+  const selectedRaceName = "";
+  const selectedBackgroundName = "";
+  try {
+    const selectedClassName = document.querySelector("#selected-class-button").innerText.toLowerCase();
+    const selectedSubclassName = document.querySelector("#selected-subclass-button").innerText.toLowerCase();
+    const selectedRaceName = document.querySelector("#selected-race-button").innerText.toLowerCase();
+    const selectedBackgroundName = document.querySelector("#selected-race-button").innerText.toLowerCase();
+  } catch {
+    throw new Error("Not all required elements were selected");
+  }
+  // filtrar cada una, quedarse con la seleccionada
+  const selectedClass = classes.filter((individualClass) => (individualClass.name = selectedClassName));
+  const selectedSubclass = classes.subclasses.filter((subclass) => (subclass.name = selectedSubclassName));
+  const selectedRace = races.filter((race) => (race.name = selectedRaceName));
+  const selectedBackground = backgrounds.filter((background) => (background.name = selectedBackgroundName));
+  //
+
+  // si alguna feature es un list, checkbox o radio leer la feature en el html y quedarme con eso
+  // Para lidiar con niveles (por ejemplo skill versatility, es un radio que tiene un checkbox) llamo a la funcion denuevo
+  // para la subrazas chequear si estan hidden (if dependency => filter hidden)
+}

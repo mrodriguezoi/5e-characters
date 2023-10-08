@@ -212,7 +212,7 @@
       <div class="class-selector">
         <div class="class-list"></div>
         <div class="class-container">
-          <div class="class-details empty">Choose a class to learn more</div>
+          <div class="class-details empty"><p>Choose a class to learn more</p></div>
           <div class="subclass-selector"></div>
         </div>
       </div>
@@ -234,7 +234,7 @@
               <p>16</p>
             </div>
             <label for="stat-1">Where do you want to allocate this score?</label>
-            <select name="selected-stat" id="stat-1">
+            <select required name="selected-stat" id="stat-1">
               <option value="" selected>Choose a score</option>
               <option class="option-str" value="str">Strength</option>
               <option class="option-dex" value="dex">Dexterity</option>
@@ -353,9 +353,24 @@
       <div class="previous-button-container">
         <button><i class="fa-solid fa-backward"></i>Change your class</button>
       </div>
-      <!-- <div class="continue-button-container">
+      <div class="continue-button-container">
         <button href="">Choose your background <i class="fa-solid fa-forward"></i></button>
-      </div> -->
+      </div>
+    </div>
+    <div class="modal-main-container background-modal fade-off">
+      <header><h2>Choose your background</h2></header>
+      <div class="background-selector">
+        <div class="background-container">
+          <div class="background-details empty"><p>Choose a background to learn more</p></div>
+          <div class="background-list"></div>
+        </div>
+      </div>
+      <div class="previous-button-container">
+        <button><i class="fa-solid fa-backward"></i>Change your race</button>
+      </div>
+      <div class="continue-button-container" id="test-button">
+        <button type="submit" href="">Choose your background <i class="fa-solid fa-forward"></i></button>
+      </div>
     </div>
     <footer class="navigation">
       <div class="navigation-container">
