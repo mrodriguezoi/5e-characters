@@ -131,17 +131,20 @@ function constructLiWithTitle(feature) {
   li.appendChild(strong);
   li.appendChild(featureDescription);
   if (feature.dependency !== undefined) {
-    li.classList.add(feature.dependency, "hidden");
+    li.classList.add(feature.dependency, "hidden", "subrace-feature");
   }
   if (feature.type === "list") {
     li.appendChild(createListFromOptions(feature.listOptions));
+    li.classList.add("ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", "-"));
   }
   if (feature.type === "radio") {
     li.appendChild(createRadioSelector(feature.options, feature.featureName));
+    li.classList.add("ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", "-"));
   }
 
   if (feature.type === "checkbox") {
     li.appendChild(createCheckboxSelector(feature.options, feature.limit, feature.featureName));
+    li.classList.add("ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", "-"));
   }
   if (feature.type === "subfeature") {
     let subfeatureContainer = document.createElement("ul");
@@ -377,16 +380,18 @@ function addRaceEventListeners() {
     subclassSelectors[j].addEventListener("change", () => {
       let raceDetailsFeatures = document.querySelector("#selected-race .race-details-features").children;
       for (let i = 0; i < raceDetailsFeatures.length; i++) {
-        if (
-          raceDetailsFeatures[i].classList.length >= 1 &&
-          !Array.from(raceDetailsFeatures[i].classList).includes("subclass-select")
-        ) {
+        if (Array.from(raceDetailsFeatures[i].classList).filter((cls) => !cls.includes("ui-input")).length >= 1) {
           if (Array.from(raceDetailsFeatures[i].classList).includes(event.target.value)) {
             raceDetailsFeatures[i].classList.remove("hidden");
           } else {
             raceDetailsFeatures[i].classList.add("hidden");
           }
         }
+      }
+      let nonHideableLi = document.querySelectorAll(".subclass-select , .ui-input-languages");
+      console.log(nonHideableLi);
+      for (let i = 0; i < nonHideableLi.length; i++) {
+        nonHideableLi[i].classList.remove("hidden");
       }
     });
   }
@@ -439,25 +444,6 @@ function addBackgroundEventListeners() {
         event.target.innerText.toLowerCase().replaceAll(" ", "-"),
         "selected-background"
       );
-    });
-  }
-  // Adding event to hide/unhide subclass features
-  let subclassSelectors = document.querySelectorAll(".subclass-select > select");
-  for (let j = 0; j < subclassSelectors.length; j++) {
-    subclassSelectors[j].addEventListener("change", () => {
-      let raceDetailsFeatures = document.querySelector("#selected-race .race-details-features").children;
-      for (let i = 0; i < raceDetailsFeatures.length; i++) {
-        if (
-          raceDetailsFeatures[i].classList.length >= 1 &&
-          !Array.from(raceDetailsFeatures[i].classList).includes("subclass-select")
-        ) {
-          if (Array.from(raceDetailsFeatures[i].classList).includes(event.target.value)) {
-            raceDetailsFeatures[i].classList.remove("hidden");
-          } else {
-            raceDetailsFeatures[i].classList.add("hidden");
-          }
-        }
-      }
     });
   }
 }
@@ -530,26 +516,42 @@ let character = {
   classFeatures: [],
   raceFeatures: [],
 };
-function createrCharacter() {
+function createCharacter() {
   // Checking that all required options were selected
-  const selectedClassName = "";
-  const selectedSubclassName = "";
-  const selectedRaceName = "";
-  const selectedBackgroundName = "";
-  try {
-    const selectedClassName = document.querySelector("#selected-class-button").innerText.toLowerCase();
-    const selectedSubclassName = document.querySelector("#selected-subclass-button").innerText.toLowerCase();
-    const selectedRaceName = document.querySelector("#selected-race-button").innerText.toLowerCase();
-    const selectedBackgroundName = document.querySelector("#selected-race-button").innerText.toLowerCase();
-  } catch {
-    throw new Error("Not all required elements were selected");
+  let selectedClassName = "";
+  let selectedSubclassName = "";
+  let selectedRaceName = "";
+  let selectedBackgroundName = "";
+  if (document.querySelector("#selected-class-button") !== null) {
+    selectedClassName = document.querySelector("#selected-class-button").innerText.toLowerCase();
+  } else {
+    throw new Error("Please Select a Class");
   }
-  // filtrar cada una, quedarse con la seleccionada
-  const selectedClass = classes.filter((individualClass) => (individualClass.name = selectedClassName));
-  const selectedSubclass = classes.subclasses.filter((subclass) => (subclass.name = selectedSubclassName));
-  const selectedRace = races.filter((race) => (race.name = selectedRaceName));
-  const selectedBackground = backgrounds.filter((background) => (background.name = selectedBackgroundName));
+  if (document.querySelector("#selected-subclass-button") !== null) {
+    selectedSubclassName = document.querySelector("#selected-subclass-button").innerText;
+  } else {
+    throw new Error("Please Select a Subclass");
+  }
+  if (document.querySelector("#selected-race-button") !== null) {
+    selectedRaceName = document.querySelector("#selected-race-button").innerText.toLowerCase();
+  } else {
+    throw new Error("Please Select a Race");
+  }
+  if (document.querySelector("#selected-background-button") !== null) {
+    selectedBackgroundName = document.querySelector("#selected-background-button").innerText.toLowerCase();
+  } else {
+    throw new Error("Please Select a Background");
+  }
+  // Filter each array to keep the selected data
+  const selectedClass = classes.filter((individualClass) => individualClass.name === selectedClassName);
+  const selectedSubclass = selectedClass[0].subclasses.filter((subclass) => subclass.name === selectedSubclassName);
+  const selectedRace = races.filter((race) => race.name === selectedRaceName);
+  const selectedBackground = backgrounds.filter((background) => background.name === selectedBackgroundName);
   //
+  selectedClass[0].features.forEach((feature) => {
+    if (feature.type === "radio" || feature.type === "checkbox" || feature.type === "list") {
+    }
+  });
 
   // si alguna feature es un list, checkbox o radio leer la feature en el html y quedarme con eso
   // Para lidiar con niveles (por ejemplo skill versatility, es un radio que tiene un checkbox) llamo a la funcion denuevo
