@@ -389,7 +389,6 @@ function addRaceEventListeners() {
         }
       }
       let nonHideableLi = document.querySelectorAll(".subclass-select , .ui-input-languages");
-      console.log(nonHideableLi);
       for (let i = 0; i < nonHideableLi.length; i++) {
         nonHideableLi[i].classList.remove("hidden");
       }
@@ -509,14 +508,62 @@ Promise.all([fetchLanguages, fetchRaces, fetchClasses, fetchBackgrounds]).then(
 
 let character = {
   name: "Placeholder",
+  progression: [{ class: "wizard" }],
+  classes: [
+    { class: "wizard", subclass: "school of abjuration", level: 3 },
+    { class: "wizard", subclass: "school of abjuration", level: 3 },
+  ],
   stats: [],
   savingThrows: [],
   skills: [],
   health: { max: 10, current: 5, temporary: 2 },
   classFeatures: [],
   raceFeatures: [],
+  subclassFeatures: [],
+  backgroundFeatures: [],
 };
+function addSelectedFeature(feature) {
+  if (feature.type === undefined || feature.type === "table") {
+    return feature;
+  }
+  if (feature.type === "list") {
+    feature.selectedValue = document.querySelector(
+      ".ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", "-") + " select"
+    ).value;
+    return feature;
+  }
+  if (feature.type === "subfeature") {
+    feature.options.forEach((option) => addSelectedFeature(option));
+    return feature;
+  }
+  if (feature.type === "radio") {
+    document
+      .querySelectorAll(".ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", "-") + " input")
+      .forEach((input) => {
+        if (input.checked) {
+          feature.selectedValue = input.value;
+          addSelectedFeature(
+            feature.options.filter((option) => option.featureName.replaceAll(" ", "-") === feature.selectedValue)
+          );
+        }
+      });
+    feature.options.forEach((option) => addSelectedFeature(option));
+    return feature;
+  }
+  if (feature.type === "checkbox") {
+    feature.selectedValue = [];
+    document
+      .querySelectorAll(".checkbox-form." + feature.featureName.replaceAll(" ", "-") + " input")
+      .forEach((input) => {
+        if (input.checked) {
+          feature.selectedValue.push(input.value);
+        }
+      });
+    return feature;
+  }
+}
 function createCharacter() {
+  let errorArray = [];
   // Checking that all required options were selected
   let selectedClassName = "";
   let selectedSubclassName = "";
@@ -525,35 +572,54 @@ function createCharacter() {
   if (document.querySelector("#selected-class-button") !== null) {
     selectedClassName = document.querySelector("#selected-class-button").innerText.toLowerCase();
   } else {
-    throw new Error("Please Select a Class");
+    errorArray.push("Class");
   }
   if (document.querySelector("#selected-subclass-button") !== null) {
     selectedSubclassName = document.querySelector("#selected-subclass-button").innerText;
   } else {
-    throw new Error("Please Select a Subclass");
+    errorArray.push("Subclass");
   }
   if (document.querySelector("#selected-race-button") !== null) {
     selectedRaceName = document.querySelector("#selected-race-button").innerText.toLowerCase();
   } else {
-    throw new Error("Please Select a Race");
+    errorArray.push("Race");
   }
   if (document.querySelector("#selected-background-button") !== null) {
     selectedBackgroundName = document.querySelector("#selected-background-button").innerText.toLowerCase();
   } else {
-    throw new Error("Please Select a Background");
+    errorArray.push("Background");
+  }
+  if (errorArray.length) {
+    let errorArrayResult = "Please select your ";
+    errorArray.forEach((err, index) => {
+      if (index === errorArray.length - 1 && errorArray.length === 1) {
+        errorArrayResult = errorArrayResult + err + ".";
+      } else if (index === errorArray.length - 1) {
+        errorArrayResult = errorArrayResult + "and " + err + ".";
+      } else {
+        errorArrayResult = errorArrayResult + err + ", ";
+      }
+    });
+    return errorArrayResult;
   }
   // Filter each array to keep the selected data
   const selectedClass = classes.filter((individualClass) => individualClass.name === selectedClassName);
   const selectedSubclass = selectedClass[0].subclasses.filter((subclass) => subclass.name === selectedSubclassName);
   const selectedRace = races.filter((race) => race.name === selectedRaceName);
   const selectedBackground = backgrounds.filter((background) => background.name === selectedBackgroundName);
+  // Adding the features to the character object
+  selectedClass[0].features.forEach((feature) => character.classFeatures.push(addSelectedFeature(feature)));
+  selectedSubclass[0].features.forEach((feature) => character.subclassFeatures.push(addSelectedFeature(feature)));
+  selectedRace[0].features.forEach((feature) => character.raceFeatures.push(addSelectedFeature(feature)));
+  selectedBackground[0].features.forEach((feature) => character.backgroundFeatures.push(addSelectedFeature(feature)));
   //
-  selectedClass[0].features.forEach((feature) => {
-    if (feature.type === "radio" || feature.type === "checkbox" || feature.type === "list") {
-    }
-  });
-
-  // si alguna feature es un list, checkbox o radio leer la feature en el html y quedarme con eso
-  // Para lidiar con niveles (por ejemplo skill versatility, es un radio que tiene un checkbox) llamo a la funcion denuevo
-  // para la subrazas chequear si estan hidden (if dependency => filter hidden)
+  // Showing the character details on the main page
+  document.querySelector(".character-name p").textContent = character.name;
+  let levelText = `${character.classes[0].subclass} ${character.classes[0].class} (${character.classes[0].level})`;
+  if (character.classes.length > 1) {
+    let additionalClasses = character.classes;
+    additionalClasses.shift();
+    additionalClasses.forEach((cls) => (levelText = levelText + `, ${cls.subclass} ${cls.class} (${cls.level})`));
+  }
+  document.querySelector(".level p").textContent = levelText;
 }

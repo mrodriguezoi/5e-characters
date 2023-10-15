@@ -18,14 +18,18 @@
         "featureName": "Size",
         "text": "Dragonborn are taller and heavier than humans, standing well over 6 feet tall and averaging almost 250 pounds. Your size is Medium."
       },
-      { "featureName": "Speed", "text": "Your walking speed is 30 feet.", "characterImpact": "speed-base" }
+      {
+        "featureName": "Speed",
+        "text": "Your walking speed is 30 feet.",
+        "characterImpact": { "type": "speedBase", "speedBase": 30 }
+      }
     ],
     "subRaceFeatures": [
       {
         "featureName": "Chromatic Ancestry",
         "text": "You trace your ancestry to a chromatic dragon, granting you a special magical affinity. Choose one type of dragon from the Chromatic Ancestry table. This determines the damage type for your other traits as shown in the table.",
         "type": "list",
-        "characterImpact": "resistance",
+        "characterImpact": { "type": "resistance", "resistance": ["$feature.selectedValue"] },
         "listOptions": [
           ["acid", "Black (Acid)"],
           ["lightning", "Blue (Lightning)"],
@@ -39,7 +43,7 @@
         "featureName": "Breath Weapon",
         "text": "When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in a 30-foot line that is 5 feet wide. Each creature in that area must make a Dexterity saving throw (DC = 8 + your Constitution modifier + your proficiency bonus). On a failed save, the creature takes 1d10 damage of the type associated with your Chromatic Ancestry. On a successful save, it takes half as much damage. This damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10). You can use your Breath Weapon a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
         "dependency": "chromatic",
-        "attack": { "damage": "d10", "save": "dex", "ability": "con", "progression": "cantrip" }
+        "characterImpact": { "attack": { "damage": "d10", "save": "dex", "ability": "con", "progression": "cantrip" } }
       },
       {
         "featureName": "Draconic Resistance",
@@ -55,7 +59,7 @@
         "featureName": "Gem Ancestry",
         "text": "You trace your ancestry to a Gem dragon, granting you a special magical affinity. Choose one type of dragon from the Gem Ancestry table. This determines the damage type for your other traits as shown in the table.",
         "type": "list",
-        "characterImpact": "resistance",
+        "characterImpact": { "type": "resistance", "resistance": ["$feature.selectedValue"] },
         "listOptions": [
           ["force", "Amethyst (Force)"],
           ["radiant", "Crystal (Radiant)"],
@@ -69,7 +73,7 @@
         "featureName": "Breath Weapon",
         "text": "When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in a 15-foot cone. Each creature in that area must make a Dexterity saving throw (DC = 8 + your Constitution modifier + your proficiency bonus). On a failed save, the creature takes 1d10 damage of the type associated with your Gem Ancestry. On a successful save, it takes half as much damage. This damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10). You can use your Breath Weapon a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
         "dependency": "gem",
-        "attack": { "damage": "d10", "save": "dex", "ability": "con", "progression": "cantrip" }
+        "characterImpact": { "attack": { "damage": "d10", "save": "dex", "ability": "con", "progression": "cantrip" } }
       },
       {
         "featureName": "Draconic Resistance",
@@ -90,7 +94,7 @@
         "featureName": "Metallic Ancestry",
         "text": "You trace your ancestry to a metallic dragon, granting you a special magical affinity. Choose one type of dragon from the Metallic Ancestry table. This determines the damage type for your other traits as shown in the table.",
         "type": "list",
-        "characterImpact": "resistance",
+        "characterImpact": { "type": "resistance", "resistance": ["$feature.selectedValue"] },
         "listOptions": [
           ["fire", "Brass (Fire)"],
           ["lightning", "Bronze (Lightning)"],
@@ -104,7 +108,7 @@
         "featureName": "Breath Weapon",
         "text": "When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in a 15-foot cone. Each creature in that area must make a Dexterity saving throw (DC = 8 + your Constitution modifier + your proficiency bonus). On a failed save, the creature takes 1d10 damage of the type associated with your Metallic Ancestry. On a successful save, it takes half as much damage. This damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10). You can use your Breath Weapon a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
         "dependency": "metallic",
-        "attack": { "damage": "d10", "save": "dex", "ability": "con", "progression": "cantrip" }
+        "characterImpact": { "attack": { "damage": "d10", "save": "dex", "ability": "con", "progression": "cantrip" } }
       },
       {
         "featureName": "Draconic Resistance",
@@ -119,12 +123,12 @@
         "options": [
           {
             "featureName": "Enervating Breath",
-            "attack": { "save": "con", "ability": "con" },
+            "characterImpact": { "attack": { "save": "con", "ability": "con" } },
             "text": "Each creature in the cone must succeed on a Constitution saving throw or become incapacitated until the start of your next turn."
           },
           {
             "featureName": "Repulsion Breath",
-            "attack": { "save": "con", "ability": "con" },
+            "characterImpact": { "attack": { "save": "con", "ability": "con" } },
             "text": "Each creature in the cone must succeed on a Strength saving throw or be pushed 20 feet away from you and be knocked prone."
           }
         ]
