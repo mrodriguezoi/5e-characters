@@ -21,7 +21,7 @@
       {
         "featureName": "Speed",
         "text": "Your walking speed is 30 feet.",
-        "characterImpact": { "type": "speedBase", "speedBase": 30 }
+        "characterImpact": { "speedBase": 30 }
       }
     ],
     "subRaceFeatures": [
@@ -29,7 +29,7 @@
         "featureName": "Chromatic Ancestry",
         "text": "You trace your ancestry to a chromatic dragon, granting you a special magical affinity. Choose one type of dragon from the Chromatic Ancestry table. This determines the damage type for your other traits as shown in the table.",
         "type": "list",
-        "characterImpact": { "type": "resistance", "resistance": ["$feature.selectedValue"] },
+        "characterImpact": { "resistance": "$feature.selectedValue" },
         "listOptions": [
           ["acid", "Black (Acid)"],
           ["lightning", "Blue (Lightning)"],
@@ -59,7 +59,7 @@
         "featureName": "Gem Ancestry",
         "text": "You trace your ancestry to a Gem dragon, granting you a special magical affinity. Choose one type of dragon from the Gem Ancestry table. This determines the damage type for your other traits as shown in the table.",
         "type": "list",
-        "characterImpact": { "type": "resistance", "resistance": ["$feature.selectedValue"] },
+        "characterImpact": { "resistance": "$feature.selectedValue" },
         "listOptions": [
           ["force", "Amethyst (Force)"],
           ["radiant", "Crystal (Radiant)"],
@@ -94,7 +94,7 @@
         "featureName": "Metallic Ancestry",
         "text": "You trace your ancestry to a metallic dragon, granting you a special magical affinity. Choose one type of dragon from the Metallic Ancestry table. This determines the damage type for your other traits as shown in the table.",
         "type": "list",
-        "characterImpact": { "type": "resistance", "resistance": ["$feature.selectedValue"] },
+        "characterImpact": { "resistance": "$feature.selectedValue" },
         "listOptions": [
           ["fire", "Brass (Fire)"],
           ["lightning", "Bronze (Lightning)"],
@@ -154,7 +154,7 @@
         "featureName": "Size",
         "text": "Dwarves stand between 4 and 5 feet tall and average about 150 pounds. Your size is Medium."
       },
-      { "featureName": "Speed", "text": "Your base walking speed is 25 feet.", "characterImpact": "speed-base" },
+      { "featureName": "Speed", "text": "Your base walking speed is 25 feet.", "characterImpact": { "speedBase": 25 } },
       { "featureName": "Heavy Armor Training", "text": "Your speed is not reduced by wearing heavy armor." },
       {
         "featureName": "Darkvision",
@@ -163,18 +163,18 @@
       {
         "featureName": "Dwarven Resilience",
         "text": "You have advantage on saving throws against poison, and you have resistance against poison damage.",
-        "characterImpact": "resistance"
+        "characterImpact": { "resistance": ["poison"] }
       },
       {
         "featureName": "Dwarven Combat Training",
         "text": "You have proficiency with the battleaxe, handaxe, lighthammer, and warhammer.",
-        "characterImpact": "proficiency"
+        "characterImpact": { "proficiency": ["battleaxe", "handaxe", "lighthammer", "warhammer"] }
       },
       {
         "featureName": "Tool Proficiency",
         "text": "You gain proficiency with the artisan's tools of your choice:",
         "type": "list",
-        "characterImpact": "tool",
+        "characterImpact": { "tool": "$feature.selectedValue" },
         "listOptions": [
           ["smith-tools", "Smith's Tools"],
           ["brewer-tools", "Brewer's Tools"],
@@ -190,12 +190,13 @@
       {
         "featureName": "Dwarven Toughness",
         "text": "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.",
-        "health": { "ammount": 1, "progression": "eachLevel" },
+        "characterImpact": { "health": { "increment": 1 } },
         "dependency": "hill"
       },
       {
         "featureName": "Dwarven Armor Training",
         "text": "You have proficiency with light and medium armor.",
+        "characterImpact": { "proficiency": ["light-armor", "medium-armor"] },
         "dependency": "mountain"
       }
     ],
@@ -220,7 +221,7 @@
         "featureName": "Size",
         "text": "Elves range from under 5 to over 6 feet tall and have slender builds. Your size is Medium."
       },
-      { "featureName": "Speed", "text": "Your walking speed is 30 feet.", "characterImpact": "speed-base" },
+      { "featureName": "Speed", "text": "Your walking speed is 30 feet.", "characterImpact": { "speedBase": 30 } },
       {
         "featureName": "Darkvision",
         "text": "Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
@@ -236,7 +237,7 @@
       {
         "featureName": "Keen Senses",
         "text": "You have proficiency in the Perception skill.",
-        "characterImpact": "skill"
+        "characterImpact": { "skill": "perception" }
       }
     ],
     "subRaceFeatures": [
@@ -249,35 +250,37 @@
         "featureName": "Drow Magic",
         "text": "You know the Dancing Lights cantrip. When you reach 3rd level, you can cast the Faerie Fire spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the Darkness spell onceand regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells.",
         "dependency": "dark",
-        "spells": [
-          { "spell": "dancingLights", "level": 0 },
-          { "spell": "faerieFire", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
-          { "spell": "darkness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
-        ]
+        "characterImpact": {
+          "spells": [
+            { "spell": "dancingLights", "level": 0 },
+            { "spell": "faerieFire", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+            { "spell": "darkness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+          ]
+        }
       },
       {
         "featureName": "Drow Weapon Fighting",
         "text": "You have proficiency with rapiers, shortswords, and hand crossbows.",
         "dependency": "dark",
-        "characterImpact": "proficiency"
+        "characterImpact": { "proficiency": ["rapier", "shortsword", "hand-crossbow"] }
       },
       {
         "featureName": "Cantrip",
         "text": "You know one cantrip of your choice from the Wizard spell list. Intelligence is your spellcasting ability for it.",
         "dependency": "high",
-        "characterImpact": "spell-picker"
+        "characterImpact": { "spellPicker": { "level": 0, "list": "wizard", "ammount": 1 } }
       },
       {
         "featureName": "Elf Weapon Training",
         "text": "You have proficiency with the longsword, shortsword, shortbow, and longbow.",
         "dependency": "high",
-        "characterImpact": "proficiency"
+        "characterImpact": { "proficiency": ["longsword", "shortsword", "shortbow", "longbow"] }
       },
       {
         "featureName": "Extra Language",
         "text": "You can read, speak, and write one additional language of your choice.",
         "dependency": "high",
-        "characterImpact": "language",
+        "characterImpact": { "language": "$feature.selectedValue" },
         "type": "list",
         "listOptions": [
           ["dwarvish", "Dwarvish"],
@@ -288,7 +291,7 @@
           ["orc", "Orc"],
           ["abyssal", "Abyssal"],
           ["celestial", "Celestial"],
-          ["deep-speech", "Deep Speech"],
+          ["deepSpeech", "Deep Speech"],
           ["infernal", "Infernal"],
           ["primordial", "Primordial"],
           ["sylvan", "Sylvan"],
@@ -299,13 +302,13 @@
         "featureName": "Elf Weapon Training",
         "text": "You have proficiency with the longsword, shortsword, shortbow, and longbow.",
         "dependency": "wood",
-        "characterImpact": "proficiency"
+        "characterImpact": { "proficiency": ["longsword", "shortsword", "shortbow", "longbow"] }
       },
       {
         "featureName": "Fleet of Foot",
         "text": "Your base walking speed increases to 35 feet.",
         "dependency": "wood",
-        "characterImpact": "speed-base"
+        "characterImpact": { "speedBase": 35 }
       },
       {
         "featureName": "Mask of the Wild",
@@ -333,7 +336,7 @@
         "featureName": "Size",
         "text": "Gnomes are between 3 and 4 feet tall and weigh around 40 pounds. Your size is Small."
       },
-      { "featureName": "Speed", "text": "Your base walking speed is 25 feet.", "characterImpact": "speed-base" },
+      { "featureName": "Speed", "text": "Your base walking speed is 25 feet.", "characterImpact": { "speedBase": 25 } },
       {
         "featureName": "Darkvision",
         "text": "Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
@@ -347,7 +350,7 @@
       {
         "featureName": "Natural Illusionist",
         "text": "You know the Minor Illusion cantrip. Intelligence is your spellcasting modifier for it.",
-        "spells": [{ "spell": "minorIllusion", "level": 0 }],
+        "characterImpact": { "spells": [{ "spell": "minorIllusion", "level": 0 }] },
         "dependency": "forest"
       },
       {
@@ -364,6 +367,7 @@
         "featureName": "Thinker",
         "text": "You have proficiency with artisan tools (tinker's tools). Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have up to three such devices active at a time. When you create a device, choose one of the following options:",
         "type": "subfeature",
+        "characterImpact": { "tool": "thinker-tools" },
         "options": [
           {
             "featureName": "Clockwork Toy",
@@ -402,7 +406,7 @@
         "featureName": "Size",
         "text": "Half-elves are more or less the same size as humans, ranging from 5 to 6 feet tall. Your size is Medium."
       },
-      { "featureName": "Speed", "text": "Your base walking speed is 30 feet.", "characterImpact": "speed-base" },
+      { "featureName": "Speed", "text": "Your base walking speed is 30 feet.", "characterImpact": { "speedBase": 30 } },
       {
         "featureName": "Darkvision",
         "text": "Thanks to your elven heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
@@ -411,7 +415,11 @@
         "featureName": "Fey Ancestry",
         "text": "You have advantage on saving throws against being charmed, and magic can't put you to sleep."
       },
-      { "featureName": "Languages", "text": "You can read, speak, and write Elven.", "characterImpact": "language" },
+      {
+        "featureName": "Languages",
+        "text": "You can read, speak, and write Elven.",
+        "characterImpact": { "language": "elven" }
+      },
       {
         "featureName": "Half-Elf Versatility",
         "text": "Choose one of the following traits:",
@@ -422,6 +430,7 @@
             "text": "You gain proficiency in two skills of your choice:",
             "type": "checkbox",
             "limit": 2,
+            "characterImpact": { "skill": "$feature.selectedValue" },
             "options": [
               ["acrobatics", "Acrobatics"],
               ["animal-handling", "Animal Handling"],
@@ -444,17 +453,18 @@
           },
           {
             "featureName": "Elf Weapon Training",
-            "text": "You have proficiency with the longsword, shortsword, shortbow, and longbow."
+            "text": "You have proficiency with the longsword, shortsword, shortbow, and longbow.",
+            "characterImpact": { "proficiency": ["longsword", "shortsword", "shortbow", "longbow"] }
           },
           {
             "featureName": "Cantrip",
             "text": "You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it.",
-            "characterImpact": "spell-picker"
+            "characterImpact": { "spellPicker": { "ammount": 1, "list": "wizard", "level": 0 } }
           },
           {
             "featureName": "Fleet of Foot",
             "text": "Your base walking speed increases to 35 feet.",
-            "characterImpact": "speed-base"
+            "characterImpact": { "speedBase": 35 }
           },
           {
             "featureName": "Mask of the Wild",
@@ -463,11 +473,13 @@
           {
             "featureName": "Drow Magic",
             "text": "You know the Dancing Lights cantrip. When you reach 3rd level, you can cast Faerie Fire once, and it recharges after a long rest. When you reach 5th level, you can cast Darkness once, and it recharges after a long rest. Charisma is your spellcasting ability for these spells.",
-            "spells": [
-              { "spell": "dancingLights", "level": 0 },
-              { "spell": "faerieFire", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
-              { "spell": "darkness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
-            ]
+            "characterImpact": {
+              "spells": [
+                { "spell": "dancingLights", "level": 0 },
+                { "spell": "faerieFire", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+                { "spell": "darkness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+              ]
+            }
           }
         ]
       }
@@ -489,7 +501,11 @@
         "featureName": "Size",
         "text": "Half-orcs are somewhat larger and bulkier than humans, and they range from 5 to well over 6 feet tall. Your size is Medium."
       },
-      { "featureName": "Speed", "text": "Your base walking speed is 30 feet.", "characterImpact": "speed-base" },
+      {
+        "featureName": "Speed",
+        "text": "Your base walking speed is 30 feet.",
+        "characterImpact": { "speedBase": 30 }
+      },
       {
         "featureName": "Darkvision",
         "text": "Thanks to your orc blood, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
@@ -497,7 +513,7 @@
       {
         "featureName": "Menacing",
         "text": "You gain proficiency in the Intimidation skill.",
-        "characterImpact": "skill"
+        "characterImpact": { "skill": ["intimidation"] }
       },
       {
         "featureName": "Relentless Endurance",
@@ -528,7 +544,11 @@
         "featureName": "Size",
         "text": "Halflings average about 3 feet tall and weigh about 40 pounds. Your size is small."
       },
-      { "featureName": "Speed", "text": "Your base walking speed is 25 feet.", "characterImpact": "speed-base" },
+      {
+        "featureName": "Speed",
+        "text": "Your base walking speed is 25 feet.",
+        "characterImpact": { "speedBase": 25 }
+      },
       {
         "featureName": "Lucky",
         "text": "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die. You must use the new result, even if it is a 1."
@@ -548,6 +568,7 @@
       {
         "featureName": "Stout Resilience",
         "text": "You have advantage on saving throws against poison, and you have resistance to poison damage.",
+        "characterImpact": { "resistance": ["poison"] },
         "dependency": "stout"
       }
     ],
@@ -565,7 +586,7 @@
         "featureName": "Size",
         "text": "Humans vary widely in height and build, from barely 5 feet to well over 6 feet tall. Regardless of your position in that range, your size is Medium."
       },
-      { "featureName": "Speed", "text": "Your base walking speed is 30 feet.", "characterImpact": "speed-base" }
+      { "featureName": "Speed", "text": "Your base walking speed is 30 feet.", "characterImpact": { "speedBase": 30 } }
     ],
     "imgLink": "https://www.dndbeyond.com/avatars/thumbnails/6/258/420/618/636271801914013762.png"
   },
@@ -588,7 +609,7 @@
     "features": [
       { "featureName": "Age", "text": "Tieflings mature at the same rate as humans but live a few years longer." },
       { "featureName": "Size", "text": "Tieflings are about the same size and build as humans. Your size is Medium." },
-      { "featureName": "Speed", "text": "Your walking speed is 30 feet.", "characterImpact": "speed-base" },
+      { "featureName": "Speed", "text": "Your walking speed is 30 feet.", "characterImpact": { "speedBase": 30 } },
       {
         "featureName": "Darkvision",
         "text": "Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray."
@@ -603,91 +624,109 @@
       {
         "featureName": "Legacy of Nessus",
         "text": "You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Hellish Rebuke spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Darkness spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
-        "spells": [
-          { "spell": "thaumaturgy", "level": 0 },
-          { "spell": "hellishRebuke", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
-          { "spell": "darkness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
-        ],
+        "characterImpact": {
+          "spells": [
+            { "spell": "thaumaturgy", "level": 0 },
+            { "spell": "hellishRebuke", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+            { "spell": "darkness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+          ]
+        },
         "dependency": "asmodeus"
       },
       {
         "featureName": "Legacy of Maladomini",
         "text": "You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Ray of Sickness spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Crown of Madness spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
-        "spells": [
-          { "spell": "thaumaturgy", "level": 0 },
-          { "spell": "rayOfSickness", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
-          { "spell": "crownOfMadness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
-        ],
+        "characterImpact": {
+          "spells": [
+            { "spell": "thaumaturgy", "level": 0 },
+            { "spell": "rayOfSickness", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+            { "spell": "crownOfMadness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+          ]
+        },
         "dependency": "baalzebul"
       },
       {
         "featureName": "Legacy of Dis",
         "text": "You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Disguise Self spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Detect Thoughts spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
-        "spells": [
-          { "spell": "thaumaturgy", "level": 0 },
-          { "spell": "disguiseSelf", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
-          { "spell": "detectThoughts", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
-        ],
+        "characterImpact": {
+          "spells": [
+            { "spell": "thaumaturgy", "level": 0 },
+            { "spell": "disguiseSelf", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+            { "spell": "detectThoughts", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+          ]
+        },
         "dependency": "dispater"
       },
       {
         "featureName": "Legacy of Phlegethos",
         "text": "You know the Friends cantrip. Once you reach 3rd level, you can cast the Charm Person spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Suggestion spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
-        "spells": [
-          { "spell": "friends", "level": 0 },
-          { "spell": "charmPerson", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
-          { "spell": "suggestion", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
-        ],
+        "characterImpact": {
+          "spells": [
+            { "spell": "friends", "level": 0 },
+            { "spell": "charmPerson", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+            { "spell": "suggestion", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+          ]
+        },
         "dependency": "fierna"
       },
       {
         "featureName": "Legacy of Malbolge",
         "text": "You know the Minor Illusion cantrip. Once you reach 3rd level, you can cast the Disguise Self spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Invisibility spell once as a 2nd-level spell. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
-        "spells": [
-          { "spell": "minorIllusion", "level": 0 },
-          { "spell": "disguiseSelf", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
-          { "spell": "invisibility", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
-        ],
+        "characterImpact": {
+          "spells": [
+            { "spell": "minorIllusion", "level": 0 },
+            { "spell": "disguiseSelf", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+            { "spell": "invisibility", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+          ]
+        },
         "dependency": "glasya"
       },
       {
         "featureName": "Legacy of Stygia",
         "text": "You know the Ray of Frost cantrip. Once you reach 3rd level, you can cast the Armor of Agathys spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Darkness spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
-        "spells": [
-          { "spell": "rayOfFrost", "level": 0 },
-          { "spell": "armorOfAgathys", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
-          { "spell": "darkness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
-        ],
+        "characterImpact": {
+          "spells": [
+            { "spell": "rayOfFrost", "level": 0 },
+            { "spell": "armorOfAgathys", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+            { "spell": "darkness", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+          ]
+        },
         "dependency": "levistus"
       },
       {
         "featureName": "Legacy of Minauros",
         "text": "You know the Mage Hand cantrip. Once you reach 3rd level, you can cast the Tenser's Floating Disk spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Arcane Lock spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
-        "spells": [
-          { "spell": "mageHand", "level": 0 },
-          { "spell": "floatingDisk", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
-          { "spell": "arcaneLock", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
-        ],
+        "characterImpact": {
+          "spells": [
+            { "spell": "mageHand", "level": 0 },
+            { "spell": "floatingDisk", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+            { "spell": "arcaneLock", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+          ]
+        },
         "dependency": "mammon"
       },
       {
         "featureName": "Legacy of Cania",
         "text": "You know the Mage Hand cantrip. Once you reach 3rd level, you can cast the Burning Hands spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Flame Blade spell once as a 3rd-level spell. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
-        "spells": [
-          { "spell": "mageHand", "level": 0 },
-          { "spell": "burningHands", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
-          { "spell": "flameBlade", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
-        ],
+        "characterImpact": {
+          "spells": [
+            { "spell": "mageHand", "level": 0 },
+            { "spell": "burningHands", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+            { "spell": "flameBlade", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+          ]
+        },
         "dependency": "mephistopheles"
       },
       {
         "featureName": "Legacy of Avernus",
         "text": "You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Searing Smite spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Branding Smite spell once as a 3rd-level spell. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.",
-        "spells": [
-          { "spell": "thaumaturgy", "level": 0 },
-          { "spell": "searingSmite", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
-          { "spell": "brandingSmite", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
-        ],
+        "characterImpact": {
+          "spells": [
+            { "spell": "thaumaturgy", "level": 0 },
+            { "spell": "searingSmite", "level": 3, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" },
+            { "spell": "brandingSmite", "level": 5, "innateAmmount": 1, "innateRecharge": "long", "ability": "cha" }
+          ]
+        },
         "dependency": "zariel"
       }
     ],

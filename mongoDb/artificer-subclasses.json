@@ -8,7 +8,7 @@
         "featureName": "Tool Proficiency",
         "level": [3],
         "text": "When you adopt this specialization at 3rd level, you gain proficiency with alchemist's supplies. If you already have this proficiency, you gain proficiency with one other type of artisan's tools of your choice: ",
-        "characterImpact": "tools",
+        "characterImpact": { "tool": "$feature.selectedValue" },
         "type": "list",
         "listOptions": [
           ["alchemists-supplies", "Alchemist's Supplies"],
@@ -35,18 +35,20 @@
         "level": [3],
         "text": "Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Alchemist Spells table. These spells count as artificer spells for you, but they don’t count against the number of artificer spells you prepare.",
         "type": "subfeature",
-        "spells": [
-          { "spell": "healingWord", "level": 3 },
-          { "spell": "rayOfSickness", "level": 3 },
-          { "spell": "flamingSphere", "level": 5 },
-          { "spell": "acidArrow", "level": 5 },
-          { "spell": "gaseousForm", "level": 9 },
-          { "spell": "massHealingWord", "level": 9 },
-          { "spell": "blight", "level": 13 },
-          { "spell": "deathWard", "level": 13 },
-          { "spell": "cloudKill", "level": 17 },
-          { "spell": "raiseDead", "level": 17 }
-        ],
+        "characterImpact": {
+          "spells": [
+            { "spell": "healingWord", "level": 3 },
+            { "spell": "rayOfSickness", "level": 3 },
+            { "spell": "flamingSphere", "level": 5 },
+            { "spell": "acidArrow", "level": 5 },
+            { "spell": "gaseousForm", "level": 9 },
+            { "spell": "massHealingWord", "level": 9 },
+            { "spell": "blight", "level": 13 },
+            { "spell": "deathWard", "level": 13 },
+            { "spell": "cloudKill", "level": 17 },
+            { "spell": "raiseDead", "level": 17 }
+          ]
+        },
         "options": [
           {
             "featureName": "3rd Artificer Level",
@@ -119,6 +121,9 @@
           },
           {
             "featureName": "",
+            "characterImpact": {
+              "spells": [{ "spell": "lesserRestoration", "innateAmmount": "$int", "innateRecharge": "long" }]
+            },
             "text": "You can cast Lesser Restoration without expending a spell slot and without preparing the spell, provided you use alchemist's supplies as the spellcasting focus. You can do so a number of times equal to your Intelligence modifier (minimum of once), and you regain all expended uses when you finish a long rest."
           }
         ]
@@ -131,10 +136,17 @@
         "options": [
           {
             "featureName": "",
-            "text": "You gain resistance to acid damage and poison damage, and you are now immune to the poisoned condition."
+            "text": "You gain resistance to acid damage and poison damage, and you are now immune to the poisoned condition.",
+            "characterImpact": { "resistance": ["acid", "poison"] }
           },
           {
             "featureName": "",
+            "characterImpact": {
+              "spells": [
+                { "spell": "heal", "innateAmmount": 1, "innateRecharge": "long" },
+                { "spell": "greaterRestoration", "innateAmmount": 1, "innateRecharge": "long" }
+              ]
+            },
             "text": "You can cast Greater Restoration and Heal without expending a spell slot, without preparing the spell, and without providing the material component, provided you use alchemist’s supplies as the spellcasting focus. Once you cast either spell with this feature, you can't cast that spell with it again until you finish a long rest."
           }
         ]
@@ -150,7 +162,7 @@
         "featureName": "Tool Proficiency",
         "level": [3],
         "text": "When you adopt this specialization at 3rd level, you gain proficiency with heavy armor. You also gain proficiency with smith's tools. If you already have this tool proficiency, you gain proficiency with one other type of artisan's tools of your choice.",
-        "characterImpact": ["tools", "proficiency"],
+        "characterImpact": { "tool": "$feature.selectedValue" },
         "type": "list",
         "listOptions": [
           ["alchemists-supplies", "Alchemist's Supplies"],
@@ -173,22 +185,30 @@
         ]
       },
       {
+        "featureName": "",
+        "level": [3],
+        "text": "",
+        "characterImpact": { "proficiency": "heavy-armor" }
+      },
+      {
         "featureName": "Armorer Spells",
         "level": [3],
         "text": "Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Armorer Spells table. These spells count as artificer spells for you, but they don't count against the number of artificer spells you prepare.",
         "type": "subfeature",
-        "spells": [
-          { "spell": "magicMissile", "level": 3 },
-          { "spell": "thunderwave", "level": 3 },
-          { "spell": "mirrorImage", "level": 5 },
-          { "spell": "shatter", "level": 5 },
-          { "spell": "hypnoticPattern", "level": 9 },
-          { "spell": "lightningBolt", "level": 9 },
-          { "spell": "fireShield", "level": 13 },
-          { "spell": "greaterInvisibility", "level": 13 },
-          { "spell": "passwall", "level": 17 },
-          { "spell": "wallOfForce", "level": 17 }
-        ],
+        "characterImpact": {
+          "spells": [
+            { "spell": "magicMissile", "level": 3 },
+            { "spell": "thunderwave", "level": 3 },
+            { "spell": "mirrorImage", "level": 5 },
+            { "spell": "shatter", "level": 5 },
+            { "spell": "hypnoticPattern", "level": 9 },
+            { "spell": "lightningBolt", "level": 9 },
+            { "spell": "fireShield", "level": 13 },
+            { "spell": "greaterInvisibility", "level": 13 },
+            { "spell": "passwall", "level": 17 },
+            { "spell": "wallOfForce", "level": 17 }
+          ]
+        },
         "options": [
           {
             "featureName": "3rd Artificer Level",
@@ -315,7 +335,7 @@
         "featureName": "Tool Proficiency",
         "level": [3],
         "text": "When you adopt this specialization at 3rd level, you gain proficiency with woodcarver's tools. If you already have this proficiency, you gain proficiency with one other type of artisan's tools of your choice.",
-        "characterImpact": "tools",
+        "characterImpact": { "tool": "$feature.selectedValue" },
         "type": "list",
         "listOptions": [
           ["alchemists-supplies", "Alchemist's Supplies"],
@@ -342,18 +362,20 @@
         "level": [3],
         "text": "Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Artillerist Spells table. These spells count as artificer spells for you, but they don’t count against the number of artificer spells you prepare.",
         "type": "subfeature",
-        "spells": [
-          { "spell": "shield", "level": 3 },
-          { "spell": "thunderwave", "level": 3 },
-          { "spell": "scorchingRay", "level": 5 },
-          { "spell": "shatter", "level": 5 },
-          { "spell": "fireball", "level": 9 },
-          { "spell": "windWall", "level": 9 },
-          { "spell": "iceStorm", "level": 13 },
-          { "spell": "wallOfFire", "level": 13 },
-          { "spell": "coneOfCold", "level": 17 },
-          { "spell": "wallOfForce", "level": 17 }
-        ],
+        "characterImpact": {
+          "spells": [
+            { "spell": "shield", "level": 3 },
+            { "spell": "thunderwave", "level": 3 },
+            { "spell": "scorchingRay", "level": 5 },
+            { "spell": "shatter", "level": 5 },
+            { "spell": "fireball", "level": 9 },
+            { "spell": "windWall", "level": 9 },
+            { "spell": "iceStorm", "level": 13 },
+            { "spell": "wallOfFire", "level": 13 },
+            { "spell": "coneOfCold", "level": 17 },
+            { "spell": "wallOfForce", "level": 17 }
+          ]
+        },
         "options": [
           {
             "featureName": "3rd Artificer Level",
@@ -445,7 +467,7 @@
         "featureName": "Tool Proficiency",
         "level": [3],
         "text": "When you adopt this specialization at 3rd level, you gain proficiency with smith's tools. If you already have this proficiency, you gain proficiency with one other type of artisan's tools of your choice.",
-        "characterImpact": "tools",
+        "characterImpact": { "tool": "$feature.selectedValue" },
         "type": "list",
         "listOptions": [
           ["alchemists-supplies", "Alchemist's Supplies"],
@@ -472,18 +494,20 @@
         "level": [3],
         "text": "Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Artillerist Spells table. These spells count as artificer spells for you, but they don’t count against the number of artificer spells you prepare.",
         "type": "subfeature",
-        "spells": [
-          { "spell": "shield", "level": 3 },
-          { "spell": "heroism", "level": 3 },
-          { "spell": "brandingSmite", "level": 5 },
-          { "spell": "wardingBond", "level": 5 },
-          { "spell": "auraOfVitality", "level": 9 },
-          { "spell": "conjureBarrage", "level": 9 },
-          { "spell": "auraOfPurity", "level": 13 },
-          { "spell": "fireShield", "level": 13 },
-          { "spell": "banishingSmite", "level": 17 },
-          { "spell": "massCureWounds", "level": 17 }
-        ],
+        "characterImpact": {
+          "spells": [
+            { "spell": "shield", "level": 3 },
+            { "spell": "heroism", "level": 3 },
+            { "spell": "brandingSmite", "level": 5 },
+            { "spell": "wardingBond", "level": 5 },
+            { "spell": "auraOfVitality", "level": 9 },
+            { "spell": "conjureBarrage", "level": 9 },
+            { "spell": "auraOfPurity", "level": 13 },
+            { "spell": "fireShield", "level": 13 },
+            { "spell": "banishingSmite", "level": 17 },
+            { "spell": "massCureWounds", "level": 17 }
+          ]
+        },
         "options": [
           {
             "featureName": "3rd Artificer Level",
@@ -515,7 +539,8 @@
         "options": [
           {
             "featureName": "",
-            "text": "You gain proficiency with martial weapons."
+            "text": "You gain proficiency with martial weapons.",
+            "characterImpact": { "proficiency": "martial-weapons" }
           },
           {
             "featureName": "",

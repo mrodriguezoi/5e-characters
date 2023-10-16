@@ -7,18 +7,18 @@
       {
         "featureName": "Skill Proficiencies",
         "text": "Insight, Religion",
-        "charecterImpact": "skill"
+        "characterImpact": { "skill": ["insight", "religion"] }
       },
       {
         "featureName": "Tool Proficiencies",
-        "text": "None",
-        "charecterImpact": "none"
+        "text": "None"
       },
       {
         "featureName": "Languages",
         "text": "Two of your choice:",
-        "charecterImpact": "language",
+        "characterImpact": { "language": "$feature.selectedValue" },
         "type": "checkbox",
+        "limit": 2,
         "options": [
           ["dwarvish", "Dwarvish"],
           ["elvish", "Elvish"],
@@ -38,7 +38,17 @@
       },
       {
         "featureName": "Equipment",
-        "text": "A holy symbol (a gift to you when you entered the priesthood), a prayer book or prayer wheel, 5 sticks of incense, vestments, a set of common clothes and a pouch containing 15gp"
+        "text": "A holy symbol (a gift to you when you entered the priesthood), a prayer book or prayer wheel, 5 sticks of incense, vestments, a set of common clothes and a pouch containing 15gp",
+        "characterImpact": {
+          "equipment": ["holy-symbol", "A prayer book", "incense", "vestments", "common-clothes"]
+        }
+      },
+      {
+        "featureName": "",
+        "text": "",
+        "characterImpact": {
+          "gold": { "gp": 15 }
+        }
       },
       {
         "featureName": "Shelter of the Faithful",

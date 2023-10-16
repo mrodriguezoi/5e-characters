@@ -339,9 +339,12 @@
             "featureName": "Hit Points",
             "text": "",
             "type": "subfeature",
-            "characterImpact": "none",
             "options": [
-              { "featureName": "Hit Dice", "text": "1d6 per Wizard level" },
+              {
+                "featureName": "Hit Dice",
+                "text": "1d6 per Wizard level",
+                "characterImpact": { "health": { "hitDice": 6 } }
+              },
               { "featureName": "Hit Points at level 1", "text": "6 + your constitution modifier" },
               {
                 "featureName": "Hit Points at Higher Levels",
@@ -354,20 +357,24 @@
             "text": "",
             "type": "subfeature",
             "options": [
-              { "featureName": "Armor", "text": "None", "characterImpact": "proficiency" },
+              { "featureName": "Armor", "text": "None" },
               {
                 "featureName": "Weapons",
                 "text": "Daggers, darts, slings, quarterstaffs, light crossbows",
-                "characterImpact": "proficiency"
+                "characterImpact": { "proficiency": ["dagger", "dart", "sling", "quarterstaff", "light-crossbow"] }
               },
-              { "featureName": "Tools", "text": "None", "characterImpact": "tools" },
-              { "featureName": "Saving Throws", "text": "Intelligence, Wisdom", "characterImpact": "proficiency" },
-
+              { "featureName": "Tools", "text": "None" },
+              {
+                "featureName": "Saving Throws",
+                "text": "Intelligence, Wisdom",
+                "characterImpact": { "savingThrow": ["int", "wis"] }
+              },
               {
                 "featureName": "Skills",
                 "text": "Choose two from the following:",
                 "type": "checkbox",
                 "limit": 2,
+                "characterImpact": { "skill": "$feature.selectedValue" },
                 "options": [
                   ["arcana", "Arcana"],
                   ["history", "History"],
@@ -383,12 +390,12 @@
             "featureName": "Equipment",
             "text": "You start with the following equipment, in addition to the equipment granted by your background:",
             "type": "subfeature",
-            "characterImpact": "equipment",
             "options": [
               {
                 "featureName": "",
                 "text": "",
                 "type": "radio",
+                "characterImpact": { "equipment": "$feature.selectedValue" },
                 "options": [
                   { "featureName": "", "text": "A quarterstaff" },
                   { "featureName": "", "text": "A dagger" }
@@ -398,6 +405,7 @@
                 "featureName": "",
                 "text": "",
                 "type": "radio",
+                "characterImpact": { "equipment": "$feature.selectedValue" },
                 "options": [
                   { "featureName": "", "text": "A component pouch" },
                   { "featureName": "", "text": "An arcane focus" }
@@ -407,12 +415,13 @@
                 "featureName": "",
                 "text": "",
                 "type": "radio",
+                "characterImpact": { "equipment": "$feature.selectedValue" },
                 "options": [
                   { "featureName": "", "text": "A scholar's pack" },
                   { "featureName": "", "text": "An explorer's pack" }
                 ]
               },
-              { "featureName": "", "text": "A spellbook" }
+              { "featureName": "", "text": "A spellbook", "characterImpact": { "equipment": "spellbook" } }
             ]
           }
         ]
@@ -504,7 +513,7 @@
     "glossaryType": "class",
     "features": [
       {
-        "featureName": "Wizard Progression Table",
+        "featureName": "Artificer Progression Table",
         "text": "",
         "type": "table",
         "table": [
@@ -798,7 +807,11 @@
             "type": "subfeature",
             "characterImpact": "none",
             "options": [
-              { "featureName": "Hit Dice", "text": "1d8 per Artificer level" },
+              {
+                "featureName": "Hit Dice",
+                "text": "1d8 per Artificer level",
+                "characterImpact": { "health": { "hitDice": 6 } }
+              },
               { "featureName": "Hit Points at level 1", "text": "8 + your constitution modifier" },
               {
                 "featureName": "Hit Points at Higher Levels",
@@ -814,17 +827,17 @@
               {
                 "featureName": "Armor",
                 "text": "Light Armor, Medium Armor, Shields",
-                "characterImpact": "proficiency"
+                "characterImpact": { "proficiency": ["light-armor", "medium-armor", "shield"] }
               },
               {
                 "featureName": "Weapons",
                 "text": "Simple Weapons",
-                "characterImpact": "proficiency"
+                "characterImpact": { "proficiency": ["simple-weapons"] }
               },
               {
                 "featureName": "Tools",
                 "text": "Thieves' Tools, Thinker's Tools, one type of artisan's tools of your choice: ",
-                "characterImpact": "tools",
+                "characterImpact": { "tool": "$feature.selectedValue" },
                 "type": "list",
                 "listOptions": [
                   ["alchemists-supplies", "Alchemist's Supplies"],
@@ -847,16 +860,26 @@
                 ]
               },
               {
+                "featureName": "",
+                "text": "",
+                "characterImpact": { "tool": "thieves-tools" }
+              },
+              {
+                "featureName": "",
+                "text": "",
+                "characterImpact": { "tool": "thinker-tools" }
+              },
+              {
                 "featureName": "Saving Throws",
                 "text": "Constitution, Intelligence",
-                "characterImpact": "proficiency"
+                "characterImpact": { "savingThrow": ["con", "int"] }
               },
-
               {
                 "featureName": "Skills",
                 "text": "Choose two from the following:",
                 "type": "checkbox",
                 "limit": 2,
+                "characterImpact": { "skill": "$feature.selectedValue" },
                 "options": [
                   ["arcana", "Arcana"],
                   ["history", "History"],
@@ -873,27 +896,42 @@
             "featureName": "Equipment",
             "text": "You start with the following equipment, in addition to the equipment granted by your background:",
             "type": "subfeature",
-            "characterImpact": "equipment",
             "options": [
               {
                 "featureName": "",
-                "text": "Any two simple weapons."
+                "text": "Any two simple weapons.",
+                "characterImpact": { "equipment": "todo" }
               },
               {
                 "featureName": "",
                 "text": "A light crossbow and 20 bolts",
-                "characterImpact": "ammunition"
+                "characterImpact": { "equipment": "light-crossbow" }
+              },
+              {
+                "featureName": "",
+                "text": "",
+                "characterImpact": { "consumables": ["bolt", 20] }
               },
               {
                 "featureName": "",
                 "text": "",
                 "type": "radio",
+                "characterImpact": { "equipment": "$feature.selectedValue" },
                 "options": [
                   { "featureName": "", "text": "Studded Leather Armor" },
                   { "featureName": "", "text": "Scale Mail" }
                 ]
               },
-              { "featureName": "", "text": "Thieves' Tools and a Dungeoneer's Pack" }
+              {
+                "featureName": "",
+                "text": "Thieves' Tools and a Dungeoneer's Pack",
+                "characterImpact": { "equipment": "dungeoneer-pack" }
+              },
+              {
+                "featureName": "",
+                "text": "",
+                "characterImpact": { "equipment": "thieves-tools" }
+              }
             ]
           }
         ]

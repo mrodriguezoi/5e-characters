@@ -135,16 +135,16 @@ function constructLiWithTitle(feature) {
   }
   if (feature.type === "list") {
     li.appendChild(createListFromOptions(feature.listOptions));
-    li.classList.add("ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", "-"));
+    li.classList.add("ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", ""));
   }
   if (feature.type === "radio") {
     li.appendChild(createRadioSelector(feature.options, feature.featureName));
-    li.classList.add("ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", "-"));
+    li.classList.add("ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", ""));
   }
 
   if (feature.type === "checkbox") {
     li.appendChild(createCheckboxSelector(feature.options, feature.limit, feature.featureName));
-    li.classList.add("ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", "-"));
+    li.classList.add("ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", ""));
   }
   if (feature.type === "subfeature") {
     let subfeatureContainer = document.createElement("ul");
@@ -152,9 +152,11 @@ function constructLiWithTitle(feature) {
     li.appendChild(subfeatureContainer);
   }
   if (feature.type === "table") {
-    li.appendChild(createTable(feature.table, [feature.featureName.toLowerCase().replaceAll(" ", "-")]));
+    li.appendChild(createTable(feature.table, [feature.featureName.toLowerCase().replaceAll(" ", "")]));
   }
-
+  if (feature.featureName === "" && feature.text === "" && feature.type === undefined) {
+    li.classList.add("hidden");
+  }
   return li;
 }
 function createListFromOptions(array) {
@@ -184,15 +186,15 @@ function createRadioSelector(array, featureName) {
     transformedFeatureName = i;
     i++;
   } else {
-    transformedFeatureName = featureName.replaceAll(" ", "-");
+    transformedFeatureName = featureName.replaceAll(" ", "");
   }
   array.forEach((option) => {
     let radioLi = constructLiWithTitle(option);
     let transformedOptionName;
     if (option.featureName !== "") {
-      transformedOptionName = option.featureName.replaceAll(" ", "-");
+      transformedOptionName = option.featureName.replaceAll(" ", "");
     } else {
-      transformedOptionName = option.text.replaceAll(" ", "-");
+      transformedOptionName = option.text.replaceAll(" ", "");
       transformedOptionName = transformedOptionName.replaceAll("A-", "");
       transformedOptionName = transformedOptionName.replaceAll("An-", "");
     }
@@ -206,7 +208,7 @@ function createRadioSelector(array, featureName) {
   return radioUlContainer;
 }
 function createCheckboxSelector(array, limit, featureName) {
-  let transformedFeatureName = featureName.replaceAll(" ", "-");
+  let transformedFeatureName = featureName.replaceAll(" ", "");
   let checkboxContainer = document.createElement("div");
   let form = document.createElement("form");
   array.forEach((option) => {
@@ -283,7 +285,7 @@ function constructDetails(inputArray, listContainerClass, contentContainerClass)
     let inputContentContainer = document.createElement("div");
     inputContainer.classList.add(
       input.glossaryType + "-details",
-      input.name.toLowerCase().replaceAll(" ", "-"),
+      input.name.toLowerCase().replaceAll(" ", ""),
       "fade-off"
     );
     inputContentContainer.classList.add(input.glossaryType + "-details-content");
@@ -311,7 +313,7 @@ function constructDetails(inputArray, listContainerClass, contentContainerClass)
       let raceAsiSidebar = document.querySelector(".race-asi");
       let capitalizedRaceName = input.name.charAt(0).toUpperCase() + input.name.slice(1);
       let subraceObject = {
-        featureName: "Sub-races:",
+        featureName: "Sub-races",
         text: ` Select a sub-race for your ${capitalizedRaceName}.`,
         type: "list",
         listOptions: input.subraces,
@@ -327,6 +329,7 @@ function constructDetails(inputArray, listContainerClass, contentContainerClass)
         text: "You can speak, read, and write Common and one other language that you and your DM agree is appropriate for the character.",
         type: "list",
         listOptions: languages,
+        characterImpact: { language: "$feature.selectedValue" },
       };
       featuresList.appendChild(constructLiWithTitle(languagesFeature));
       // Construct Sub-race features
@@ -366,10 +369,10 @@ function addRaceEventListeners() {
         raceListItems[j].removeAttribute("id");
       }
       event.target.setAttribute("id", "selected-race-button");
-      showListOptionDetails(allRaces, event.target.innerText.toLowerCase().replaceAll(" ", "-"), "selected-race");
+      showListOptionDetails(allRaces, event.target.innerText.toLowerCase().replaceAll(" ", ""), "selected-race");
       showListOptionDetails(
         raceImages,
-        event.target.innerText.replaceAll(" ", "-").toLowerCase(),
+        event.target.innerText.replaceAll(" ", "").toLowerCase(),
         "selected-race-image"
       );
     });
@@ -410,10 +413,10 @@ function addClassEventListeners() {
         subclassListItems[j].children[0].removeAttribute("id");
       }
       event.target.setAttribute("id", "selected-class-button");
-      showListOptionDetails(allClasses, event.target.innerText.toLowerCase().replaceAll(" ", "-"), "selected-class");
+      showListOptionDetails(allClasses, event.target.innerText.toLowerCase().replaceAll(" ", ""), "selected-class");
       showListOptionDetails(
         subclassSelector,
-        event.target.innerText.toLowerCase().replaceAll(" ", "-") + "-subclass-selector",
+        event.target.innerText.toLowerCase().replaceAll(" ", "") + "-subclass-selector",
         ""
       );
     });
@@ -424,7 +427,7 @@ function addClassEventListeners() {
         subclassListItems[j].firstElementChild.removeAttribute("id");
       }
       event.target.setAttribute("id", "selected-subclass-button");
-      showListOptionDetails(allClasses, event.target.innerText.toLowerCase().replaceAll(" ", "-"), "selected-class");
+      showListOptionDetails(allClasses, event.target.innerText.toLowerCase().replaceAll(" ", ""), "selected-class");
     });
   }
 }
@@ -440,7 +443,7 @@ function addBackgroundEventListeners() {
       event.target.setAttribute("id", "selected-background-button");
       showListOptionDetails(
         allBackgrounds,
-        event.target.innerText.toLowerCase().replaceAll(" ", "-"),
+        event.target.innerText.toLowerCase().replaceAll(" ", ""),
         "selected-background"
       );
     });
@@ -521,54 +524,101 @@ let character = {
   raceFeatures: [],
   subclassFeatures: [],
   backgroundFeatures: [],
+  proficiencies: [],
+  skills: [],
+  speedBase: 0,
+  speedIncrease: [],
 };
 function addSelectedFeature(feature) {
   if (feature.type === undefined || feature.type === "table") {
+    if (feature.characterImpact) {
+      characterImpact[Object.keys(feature.characterImpact)[0]].push(
+        feature.characterImpact[Object.keys(feature.characterImpact)[0]]
+      );
+    }
     return feature;
   }
   if (feature.type === "list") {
-    feature.selectedValue = document.querySelector(
-      ".ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", "-") + " select"
-    ).value;
-    return feature;
+    if (
+      document.querySelector(".ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", "") + " select").value
+    ) {
+      feature.selectedValue = document.querySelector(
+        ".ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", "") + " select"
+      ).value;
+      if (feature.characterImpact) {
+        characterImpact[Object.keys(feature.characterImpact)[0]].push(feature.selectedValue);
+      }
+      return feature;
+    } else {
+      // parent hasta que sea un strong no vacio
+      featuresErrorArray.push(feature.featureName);
+    }
   }
   if (feature.type === "subfeature") {
     feature.options.forEach((option) => addSelectedFeature(option));
     return feature;
   }
   if (feature.type === "radio") {
+    let checkedCounter = 0;
     document
-      .querySelectorAll(".ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", "-") + " input")
+      .querySelectorAll(".ui-input-" + feature.featureName.toLowerCase().replaceAll(" ", "") + " input")
       .forEach((input) => {
         if (input.checked) {
+          checkedCounter++;
           feature.selectedValue = input.value;
           addSelectedFeature(
-            feature.options.filter((option) => option.featureName.replaceAll(" ", "-") === feature.selectedValue)
+            feature.options.filter((option) => option.featureName.replaceAll(" ", "") === feature.selectedValue)
           );
+          if (feature.characterImpact) {
+            characterImpact[Object.keys(feature.characterImpact)[0]].push(input.value);
+          }
         }
       });
-    feature.options.forEach((option) => addSelectedFeature(option));
-    return feature;
+    if (checkedCounter) {
+      feature.options.forEach((option) => addSelectedFeature(option));
+      return feature;
+    } else {
+      featuresErrorArray.push(feature.featureName);
+    }
   }
   if (feature.type === "checkbox") {
     feature.selectedValue = [];
+    let checkedCounter = 0;
     document
-      .querySelectorAll(".checkbox-form." + feature.featureName.replaceAll(" ", "-") + " input")
+      .querySelectorAll(".checkbox-form." + feature.featureName.replaceAll(" ", "") + " input")
       .forEach((input) => {
         if (input.checked) {
+          checkedCounter++;
           feature.selectedValue.push(input.value);
+          if (feature.characterImpact) {
+            characterImpact[Object.keys(feature.characterImpact)[0]].push(input.value);
+          }
         }
       });
-    return feature;
+    if (checkedCounter === feature.limit) {
+      return feature;
+    } else {
+      featuresErrorArray.push(feature.featureName);
+    }
   }
 }
+let characterImpact, featuresErrorArray, errorArray;
 function createCharacter() {
-  let errorArray = [];
+  errorArray = [];
+  featuresErrorArray = [];
   // Checking that all required options were selected
   let selectedClassName = "";
   let selectedSubclassName = "";
   let selectedRaceName = "";
   let selectedBackgroundName = "";
+  let selectedSubraceName;
+  if (document.querySelector("#selected-race .ui-input-sub-races select")) {
+    if ((selectedSubraceName = document.querySelector("#selected-race .ui-input-sub-races select").value)) {
+      selectedSubraceName = document.querySelector("#selected-race .ui-input-sub-races select").value;
+    } else {
+      errorArray.push("Subrace");
+    }
+  }
   if (document.querySelector("#selected-class-button") !== null) {
     selectedClassName = document.querySelector("#selected-class-button").innerText.toLowerCase();
   } else {
@@ -608,11 +658,46 @@ function createCharacter() {
   const selectedRace = races.filter((race) => race.name === selectedRaceName);
   const selectedBackground = backgrounds.filter((background) => background.name === selectedBackgroundName);
   // Adding the features to the character object
+  //Adding Character Impact to Character:
+  characterImpact = {
+    speedBase: [],
+    resistance: [],
+    attack: [],
+    proficiency: [],
+    tool: [],
+    health: [],
+    skill: [],
+    spells: [],
+    spellPicker: [],
+    language: [],
+    consumables: [],
+    gold: [],
+    savingThrow: [],
+    equipment: [],
+  };
   selectedClass[0].features.forEach((feature) => character.classFeatures.push(addSelectedFeature(feature)));
   selectedSubclass[0].features.forEach((feature) => character.subclassFeatures.push(addSelectedFeature(feature)));
   selectedRace[0].features.forEach((feature) => character.raceFeatures.push(addSelectedFeature(feature)));
+  if (selectedSubraceName) {
+    selectedRace[0].subRaceFeatures.forEach((feature) => {
+      if (feature.dependency === selectedSubraceName) {
+        character.raceFeatures.push(addSelectedFeature(feature));
+      }
+    });
+  }
   selectedBackground[0].features.forEach((feature) => character.backgroundFeatures.push(addSelectedFeature(feature)));
-  //
+  if (featuresErrorArray.length) {
+    let featuresErrorArrayResult = "Please finish your selection of the following features: ";
+    featuresErrorArray.forEach((err, index) => {
+      if (index === featuresErrorArray.length - 1) {
+        featuresErrorArrayResult = featuresErrorArrayResult + err + ".";
+      } else {
+        featuresErrorArrayResult = featuresErrorArrayResult + err + ", ";
+      }
+    });
+    return featuresErrorArrayResult;
+  }
+
   // Showing the character details on the main page
   document.querySelector(".character-name p").textContent = character.name;
   let levelText = `${character.classes[0].subclass} ${character.classes[0].class} (${character.classes[0].level})`;
